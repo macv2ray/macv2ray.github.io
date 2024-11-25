@@ -1,4 +1,4 @@
-# 11月23日→19.1M/S|2024年最新免费节点Mac V2ray订阅链接地址  更新时间 2024-11-23 08:45:17
+# 11月25日→22.3M/S|2024年最新免费节点Mac V2ray订阅链接地址  更新时间 2024-11-25 10:00:06
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://macv2ray.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://macv2ray.github.io/uploads/2024/11/0-20241123.yaml
-- https://macv2ray.github.io/uploads/2024/11/1-20241123.yaml
-- https://macv2ray.github.io/uploads/2024/11/2-20241123.yaml
-- https://macv2ray.github.io/uploads/2024/11/3-20241123.yaml
-- https://macv2ray.github.io/uploads/2024/11/4-20241123.yml
+- https://macv2ray.github.io/uploads/2024/11/0-20241125.yaml
+- https://macv2ray.github.io/uploads/2024/11/1-20241125.yaml
+- https://macv2ray.github.io/uploads/2024/11/2-20241125.yaml
+- https://macv2ray.github.io/uploads/2024/11/3-20241125.yaml
+- https://macv2ray.github.io/uploads/2024/11/4-20241125.yml
 
 ### V2ray订阅链接
 
-- https://macv2ray.github.io/uploads/2024/11/0-20241123.txt
-- https://macv2ray.github.io/uploads/2024/11/1-20241123.txt
-- https://macv2ray.github.io/uploads/2024/11/2-20241123.txt
-- https://macv2ray.github.io/uploads/2024/11/3-20241123.txt
-- https://macv2ray.github.io/uploads/2024/11/4-20241123.txt
+- https://macv2ray.github.io/uploads/2024/11/0-20241125.txt
+- https://macv2ray.github.io/uploads/2024/11/1-20241125.txt
+- https://macv2ray.github.io/uploads/2024/11/2-20241125.txt
+- https://macv2ray.github.io/uploads/2024/11/3-20241125.txt
+- https://macv2ray.github.io/uploads/2024/11/4-20241125.txt
 
 ## 更多clash节点订阅 ：
 
