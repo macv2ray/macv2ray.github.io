@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-19147.htm" />
+    <meta charset="utf-8" />
+    <title>springMVC拦截器从Request中获取Json格式并解决request的请求流只能读取一次的问题</title>
+        <meta name="description" content="背景  在使用SSM（你问我什么叫SSM，我一拳锤爆你的狗头）做开发的时候，经常会使用@RequestBody注解，这个注解是非常的好用。但是如果你想在请求参数传到后台的时候做一个参数检验，当然可以！" />
+        <link rel="icon" href="__ADDON__/img/macv2ray/favicon.ico" type="image/x-icon"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">springMVC拦截器从Request中获取Json格式并解决request的请求流只能读取一次的问题</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night"> <h5 id="背景">背景</h5> <blockquote> <p>在使用SSM（你问我什么叫SSM，我一拳锤爆你的狗头）做开发的时候，经常会使用@RequestBody注解，这个注解是非常的好用。但是如果你想在请求参数传到后台的时候做一个参数检验，当然可以！使用SpringMVC的拦截器，在拦截器里把request的数据读取出来不就行了！！，但是在使用了拦截器的时候会出现一个问题！！！！你在拦截器读取了request的数据，在Controller里面@RequestBody注解获取Json就会失败就读取不到数据！！！！那就是RequestBody是流的形式读取的，流读取一次就没有了！！</p> </blockquote> <h5 id="为什么使用requestbody只能读取一遍请求数据流">为什么使用RequestBody只能读取一遍请求数据流？</h5> <blockquote> <p>那是因为流对应的是数据，数据放在内存中，有的是部分放在内存中。read 一次标记一次当前位置（mark position），第二次read就从标记位置继续读（从内存中copy）数据。 所以这就是为什么读了一次第二次是空了。 怎么让它不为空呢？只要inputstream 中的pos 变成0就可以重写读取当前内存中的数据。javaAPI中有一个方法<strong><em>public void reset()</em></strong> 这个方法就是可以重置pos为起始位置，但是不是所有的IO读取流都可以调用该方法！ServletInputStream是不能调用reset方法，这就导致了只能调用一次getInputStream()。</p> </blockquote> <h5 id="解决办法重写httpservletrequestwrapper方法">解决办法：重写HttpServletRequestWrapper方法</h5> <blockquote> <p>这种方法就是通过重写HttpServletRequestWrapper把request的保存下来，然后通过过滤器保存下来的request在填充进去，这样就可以多次读取request了</p> </blockquote> <p>1.重写HttpServletRequestWrapper方法</p> <pre class="prettyprint"><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RequestWrapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServletRequestWrapper</span> {<!-- --></span>     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String body;     <span class="hljs-keyword">public</span> <span class="hljs-title">RequestWrapper</span>(HttpServletRequest request) <span class="hljs-keyword">throws</span> IOException {         <span class="hljs-keyword">super</span>(request);         StringBuilder stringBuilder = <span class="hljs-keyword">new</span> StringBuilder();         BufferedReader bufferedReader = <span class="hljs-keyword">null</span>;         <span class="hljs-keyword">try</span> {             InputStream inputStream = request.getInputStream();             <span class="hljs-keyword">if</span> (inputStream != <span class="hljs-keyword">null</span>) {                 bufferedReader = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(inputStream));                 <span class="hljs-keyword">char</span>[] charBuffer = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-number">128</span>];                 <span class="hljs-keyword">int</span> bytesRead = -<span class="hljs-number">1</span>;                 <span class="hljs-keyword">while</span> ((bytesRead = bufferedReader.read(charBuffer)) &gt; <span class="hljs-number">0</span>) {                     stringBuilder.append(charBuffer, <span class="hljs-number">0</span>, bytesRead);                 }             } <span class="hljs-keyword">else</span> {                 stringBuilder.append(<span class="hljs-string">""</span>);             }         } <span class="hljs-keyword">catch</span> (IOException ex) {             <span class="hljs-keyword">throw</span> ex;         } <span class="hljs-keyword">finally</span> {             <span class="hljs-keyword">if</span> (bufferedReader != <span class="hljs-keyword">null</span>) {                 <span class="hljs-keyword">try</span> {                     bufferedReader.close();                 } <span class="hljs-keyword">catch</span> (IOException ex) {                     <span class="hljs-keyword">throw</span> ex;                 }             }         }         body = stringBuilder.toString();     }      <span class="hljs-annotation">@Override</span>     <span class="hljs-keyword">public</span> ServletInputStream <span class="hljs-title">getInputStream</span>() <span class="hljs-keyword">throws</span> IOException {         <span class="hljs-keyword">final</span> ByteArrayInputStream byteArrayInputStream = <span class="hljs-keyword">new</span> ByteArrayInputStream(body.getBytes());         ServletInputStream servletInputStream = <span class="hljs-keyword">new</span> ServletInputStream() {             <span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isFinished</span>() {                 <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;             }             <span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isReady</span>() {                 <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;             }             <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setReadListener</span>(ReadListener readListener) {}             <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span>() <span class="hljs-keyword">throws</span> IOException {                 <span class="hljs-keyword">return</span> byteArrayInputStream.read();             }         };         <span class="hljs-keyword">return</span> servletInputStream;      }     <span class="hljs-annotation">@Override</span>     <span class="hljs-keyword">public</span> BufferedReader <span class="hljs-title">getReader</span>() <span class="hljs-keyword">throws</span> IOException {         <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(<span class="hljs-keyword">this</span>.getInputStream()));     }     <span class="hljs-keyword">public</span> String <span class="hljs-title">getBody</span>() {         <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.body;     }  }</code></pre> <p>2.拦截器CommonInterceptor</p> <pre class="prettyprint"><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CommonInterceptor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HandlerInterceptorAdapter</span> {<!-- --></span>     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Log log = LogFactory.getLog(CommonInterceptor.class);     <span class="hljs-keyword">public</span> <span class="hljs-title">CommonInterceptor</span>() {     }     <span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">preHandle</span>(HttpServletRequest request, HttpServletResponse response, Object handler) <span class="hljs-keyword">throws</span> Exception {         RequestWrapper myRequestWrapper = <span class="hljs-keyword">new</span> RequestWrapper((HttpServletRequest) request);         String body = myRequestWrapper.getBody();         System.out.println(<span class="hljs-string">"我是拦截器："</span>+body);         <span class="hljs-comment">// do something</span>         <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;      }     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">postHandle</span>(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) <span class="hljs-keyword">throws</span> Exception {         <span class="hljs-keyword">super</span>.postHandle(request, response, handler, modelAndView);     }     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterCompletion</span>(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) <span class="hljs-keyword">throws</span> Exception {         <span class="hljs-keyword">super</span>.afterCompletion(request, response, handler, ex);     }     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterConcurrentHandlingStarted</span>(HttpServletRequest request, HttpServletResponse response, Object handler) <span class="hljs-keyword">throws</span> Exception {         <span class="hljs-keyword">super</span>.afterConcurrentHandlingStarted(request, response, handler);     } }</code></pre> <p>3.在spring-mvc.xml声明springMVC的拦截器</p> <pre class="prettyprint"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">mvc:interceptors</span>&gt;</span>     <span class="hljs-tag">&lt;<span class="hljs-title">mvc:interceptor</span>&gt;</span>         <span class="hljs-tag">&lt;<span class="hljs-title">mvc:mapping</span> <span class="hljs-attribute">path</span>=<span class="hljs-value">"/**"</span>/&gt;</span>         <span class="hljs-tag">&lt;<span class="hljs-title">bean</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"com.sdut.platform.core.CommonInterceptor"</span>/&gt;</span>     <span class="hljs-tag">&lt;/<span class="hljs-title">mvc:interceptor</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-title">mvc:interceptors</span>&gt;</span></code></pre> <p>4.过滤器HttpServletFilter类</p> <pre class="prettyprint"><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HttpServletFilter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Filter</span> {<!-- --></span>      <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span>(FilterConfig filterConfig) <span class="hljs-keyword">throws</span> ServletException {     }     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span>(ServletRequest request, ServletResponse response, FilterChain chain) <span class="hljs-keyword">throws</span> IOException, ServletException {         ServletRequest requestWrapper = <span class="hljs-keyword">null</span>;         System.out.println(<span class="hljs-string">"我是过滤器"</span>);         <span class="hljs-keyword">if</span>(request <span class="hljs-keyword">instanceof</span> HttpServletRequest) {             requestWrapper = <span class="hljs-keyword">new</span> RequestWrapper((HttpServletRequest) request);         }         <span class="hljs-keyword">if</span>(requestWrapper == <span class="hljs-keyword">null</span>) {             chain.doFilter(request, response);         } <span class="hljs-keyword">else</span> {             chain.doFilter(requestWrapper, response);         }     }     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">destroy</span>() {      } }</code></pre> <p>5.在web.xml中注册过滤器</p> <pre class="prettyprint"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">filter</span>&gt;</span>     <span class="hljs-tag">&lt;<span class="hljs-title">filter-name</span>&gt;</span>requestFilter<span class="hljs-tag">&lt;/<span class="hljs-title">filter-name</span>&gt;</span>     <span class="hljs-tag">&lt;<span class="hljs-title">filter-class</span>&gt;</span>com.sdut.platform.core.HttpServletFilter<span class="hljs-tag">&lt;/<span class="hljs-title">filter-class</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-title">filter</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-title">filter-mapping</span>&gt;</span>     <span class="hljs-tag">&lt;<span class="hljs-title">filter-name</span>&gt;</span>requestFilter<span class="hljs-tag">&lt;/<span class="hljs-title">filter-name</span>&gt;</span>     <span class="hljs-tag">&lt;<span class="hljs-title">url-pattern</span>&gt;</span>/*<span class="hljs-tag">&lt;/<span class="hljs-title">url-pattern</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-title">filter-mapping</span>&gt;</span></code></pre> <p>经过测试完全可以并且不出现其他错误。</p> <h5 id="解决办法aop切面获取request一般做日志管理会经常使用这种办法">解决办法：AOP切面获取request(一般做日志管理会经常使用这种办法)</h5> <p>这个办法我还没做测试 </p> <pre class="prettyprint"><code class="hljs avrasm">HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder<span class="hljs-preprocessor">.currentRequestAttributes</span>())<span class="hljs-preprocessor">.getRequest</span>()<span class="hljs-comment">;</span> HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder<span class="hljs-preprocessor">.currentRequestAttributes</span>())<span class="hljs-preprocessor">.getResponse</span>()<span class="hljs-comment">;</span></code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-18719.htm">国内生产宠物粮的上市公司有几家（中国宠物粮生产企业）</a></p>
+                                        <p>下一个：<a href="/news/article-19148.htm">哈尔滨宠物上门回收电话（哈尔滨宠物狗上门回收）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-node-subscribe-links.htm" title="11月25日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月25日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-high-speed-nodes.htm" title="11月23日→19.1M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月23日→19.1M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-free-node-subscribe.htm" title="11月28日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月28日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-free-high-speed-nodes.htm" title="11月15日→18.4M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月15日→18.4M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-26-free-v2ray.htm" title="9月26日→19M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月26日→19M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-8-clash-v2ray-ss-ssr.htm" title="10月8日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月8日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-free-node-subscribe-links.htm" title="10月31日→21.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月31日→21.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share-links.htm" title="11月4日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月4日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-high-speed-nodes.htm" title="11月27日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月27日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-8-free-high-speed-nodes.htm" title="9月8日→22.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月8日→22.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                        <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
