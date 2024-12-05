@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-20984.htm" />
+    <meta charset="utf-8" />
+    <title>Element修改弹窗类组件的层级</title>
+        <meta name="description" content="前情 Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库，在项目中我们就使用了它，非常nice 坑位 在使用Element组件的时候，一切都十分顺利，但是在使用弹" />
+        <link rel="icon" href="__ADDON__/img/macv2ray/favicon.ico" type="image/x-icon"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">Element修改弹窗类组件的层级</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<h3 id="前情">前情</h3> <p>Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库，在项目中我们就使用了它，非常nice</p> <h3 id="坑位">坑位</h3> <p>在使用Element组件的时候，一切都十分顺利，但是在使用弹框类组件Popover 的时候，发现并没有效果。</p> <h3 id="why">Why?</h3> <p>通过控制台查看元素后发现，其实Popover是有作用的，只是被页面上别的内容遮挡了，是因为zIndex低于页面上其它元素所致</p> <h3 id="解决方案">解决方案</h3> <p>通过查询Element文挡后发现官方是有考虑到层级问题，需要指定一个初始层级，后面的弹框类组件的层级会累加+1，这样就保证后面触发的层级始终高于前面的组件。</p> <p><strong>Element初始化时重置层级</strong></p> <p>Element组件使用有二种方式，对于不同的使用方式解决方式不同。</p> <p>完整引入 Element：</p> <pre><code class="language-jsx">import Vue from 'vue'; import Element from 'element-ui'; Vue.use(Element, { size: 'small', zIndex: 3000 });</code></pre> <p>按需引入Element:</p> <pre><code class="language-jsx">import Vue from 'vue'; import { Button } from 'element-ui';  Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 }; Vue.use(Button);</code></pre> <p>官方文挡-全局配置项：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://element.eleme.cn/#/zh-CN/component/quickstart"  target="_blank" rel="nofollow">https://element.eleme.cn/#/zh-CN/component/quickstart</a></p> <p><strong>如果Element已经初始化且已使用过弹框类组件</strong></p> <p>这种情况下通过修改Vue.prototype.$ELEMENT已经没有效果了，因为它已经被使用过，这时需要手动修改，后面弹窗的组件会在此值的基础上累加，代码如下：</p> <pre><code class="language-jsx">import PopupManager from "element-ui/lib/utils/popup/popup-manager"; PopupManager.zIndex = 30000;</code></pre> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-20522.htm">楼房养猫的十大禁忌（猫爬过的床单有细菌吗）</a></p>
+                                        <p>下一个：<a href="/news/article-20985.htm">济南领养动物救助站（济南小动物领养）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-free-subscribe-node.htm" title="10月29日→21.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月29日→21.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-13-clash-v2ray-ss-ssr.htm" title="10月13日→20.7M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月13日→20.7M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-node-subscribe-links.htm" title="11月25日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月25日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-20-free-v2ray.htm" title="10月20日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月20日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-node-share.htm" title="11月12日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月12日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-20984.htm" title="Element修改弹窗类组件的层级">Element修改弹窗类组件的层级</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-27-free-v2ray-subscribe.htm" title="10月27日→19.5M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月27日→19.5M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-19-free-subscribe-node.htm" title="10月19日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月19日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-20-node-share.htm" title="9月20日→21.4M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月20日→21.4M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-v2ray-subscribe.htm" title="11月20日→18.1M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月20日→18.1M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                        <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
