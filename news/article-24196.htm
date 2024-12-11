@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-24196.htm" />
+    <meta charset="utf-8" />
+    <title>SpringMVC学习笔记&#8211;文件上传与MultipartResolver</title>
+        <meta name="description" content="要在基于SpringMVC的Web应用程序中通过表单上传文件，那么MultipartResolver将是在服务器端处理文件上传的主要组件  &nbsp;multipart/form-data编码方式支" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">SpringMVC学习笔记&#8211;文件上传与MultipartResolver</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="htmledit_views">                     <strong>要在基于SpringMVC的Web应用程序中通过表单上传文件，那么MultipartResolver将是在服务器端处理文件上传的主要组件<br /></strong> </p> <p><strong>&nbsp;multipart/form-data编码方式支持基于表单的文件上传。</strong></p> <p><strong>使用MultipartResolver进行文件上传的简单分析：<br /></strong></p> <p><strong>MultipartResolver的接口定义如下：<br /></strong></p> <p><strong></strong></p> <pre><code class="language-java">public interface MultipartResolver{     boolean isMultipart(HttpServletRequest request); 	MultipartHttpsServletRequest resolverMultipart(HttpServletRequest request)throws MultipartException; 	void cleanupMultipart(MultipartHttpServletRequest request);  }</code></pre> <p><span style="font-family:KaiTi_GB2312">MultipartResolver 位于 HandlerMapping 之前，请求一来就交由它来处理。当 Web 请求到达 DispatcherServlet 并等待处理的时候，<br /> DispatcherServlet 首先会检查能否从自的 WebApplicationContext 中找到一个名称为 multipartResolver(由 DispatcherServlet 的<br /> 常量 MULTIPART_RESOLVER_BEAN_NAME 所决定)的 MultipartResolver 实例。如果能够获得一个 MultipartResolver 的实例，DispatcherServlet&nbsp;<br /> 将调用 MultipartResolver 的 isMultipart(request) 方法检查当前 Web 请求是否为 multipart类型。如果是，DispatcherServlet 将调用 MultipartResolver 的<br /> resolveMultipart(request) 方法，对原始 request 进行装饰，并返回一个 MultipartHttpServletRequest 供后继处理流程使用(最初的 HttpServletRequest 被偷梁<br /> 换柱成了 MultipartHttpServletRequest)，否则，直接返回最初的 HttpServletRequest</span><br />  </p> <p><strong><span style="font-family:KaiTi_GB2312">SpringMVC框架内为MultipartResolver提供了两个可用的实现类，即org.springframework.web.multipartcommons.CommonsMultipartResolver<br /> 和org.springframework.web.multipart.cos.CosMultipartResolver。前者使用CommonsFileUpload类库实现，后者则使用Oreilly Cos类库实现<br /> 我们选择使用CommonsFileUpload进行文件上传，需要在DispatcherServlet的WebApplicationContext中添加bean定义如下：</span><br /></strong></p> <p><strong><span style="font-family:KaiTi_GB2312"></span></strong></p> <pre><code class="language-html">&lt;bean id="multipartResolver" 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" 		p:maxUploadSize="1000000"&gt; &lt;bean/&gt;</code></pre> <p> CommonsMultipartResolver将负责分析当前multipart请求，然后将分析的结果附着到要返回的MultipartHttpservletRequest实例上。当后继处理<br /> <br /> 流程的controller处理web请求的时候，就可以使用特定的MultipartHttpsServletRequest进行上传文件的获取和处理。<br />  </p> <p><strong><span style="font-family:KaiTi_GB2312">但MultipartResolver返回MultipartHttpServlet给后继处理流程，并且后继处理流程中的组件也使用MultipartHttpServletRequest处理完相应的Web<br /> 请求，DispatcherServlet将保证调用MultipartResolver的CleanupMultipart()方法，释放处理文件上传过程中所占用的系统资源，这样，整个文件上传<br /> 的生命周期即告结束。<br /></span></strong></p> <p><strong><span style="font-family:KaiTi_GB2312">下面来介绍一下我实现的文件上传的例子<br /></span></strong></p> <p><strong><span style="font-family:KaiTi_GB2312"><br /></span></strong></p> <p><strong><span style="font-family:KaiTi_GB2312">要实现文件上传，首先添加一个MultipartResolver的实例到DispatcherServlet的WebApplicationContext中。<br /></span></strong></p> <p><strong><span style="font-family:KaiTi_GB2312"></span></strong></p> <pre><code class="language-html">&lt;bean id="multipartResolver" 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" 		p:maxUploadSize="1000000"&gt; 	&lt;/bean&gt;</code></pre> <p> 为了使用SimpleFormController专门处理表单的提交，我们需要为数据绑定提供一个Command对象，定义如下：<br />  </p> <p><strong><span style="font-family:KaiTi_GB2312"></span></strong></p> <pre><code class="language-java">public class FileUploadingCommand { 	private byte[] fileToUpload; 	private String comment; 	public byte[] getFileToUpload() { 		return fileToUpload; 	} 	public void setFileToUpload(byte[] fileToUpload) { 		this.fileToUpload = fileToUpload; 	} 	public String getComment() { 		return comment; 	} 	public void setComment(String comment) { 		this.comment = comment; 	} 	@Override 	public String toString() { 		return new ToStringBuilder(this).append("fileToUpload",fileToUpload).append("comment",comment).toString(); 	} }</code></pre> <p> 定义的最终的Controller实现类如下：<br />  </p> <p><strong><span style="font-family:KaiTi_GB2312"></span></strong></p> <pre><code class="language-java">public class FileUploadFormController extends SimpleFormController{     @Override 	protected void doSubmitAction(Object command) throws Exception { 		FileUploadingCommand commandBean=(FileUploadingCommand)command; 		byte[] fileContent=commandBean.getFileToUpload(); 		String comment=commandBean.getComment(); 		FileUtils.writeByteArrayToFile(new File("zhsi"), fileContent); 	} 	 	@Override 	protected void initBinder(HttpServletRequest request, 			ServletRequestDataBinder binder) throws Exception { 		super.initBinder(request, binder); 		binder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor()); 		 	} }</code></pre> <p> 为了在数据绑定过程数据能够成功转型，我们需要为DataBinder添加相应的自定义PropertyEditor实现，覆写SimpleFormController的initBinder()<br /> <br /> 方法可以达到目的。<br />  </p> <p><strong><span style="font-family:KaiTi_GB2312">下面是SpringMVC.xml配置文件：<br /></span></strong></p> <p><strong><span style="font-family:KaiTi_GB2312"></span></strong></p> <pre><code class="language-html">&lt;bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"&gt; 		&lt;property name="mappings"&gt; 			&lt;props&gt; 				&lt;prop key="login.do"&gt;login&lt;/prop&gt; 			&lt;/props&gt; 		&lt;/property&gt; 	&lt;/bean&gt; 	&lt;bean name="login" class="com.web.springMVC.controller.FileUploadFormController"&gt;  		&lt;property name="commandName"&gt; 			&lt;value&gt;command&lt;/value&gt; 		&lt;/property&gt; 		&lt;!-- 这里直接实现了将请求参数绑定到对象上 --&gt; 		&lt;property name="commandClass"&gt; 		&lt;value&gt;com.web.springMVC.model.FileUploadingCommand&lt;/value&gt; 		&lt;/property&gt; 		&lt;property name="successView" value="success"&gt;&lt;/property&gt;  	&lt;bean/&gt; 	&lt;bean id="multipartResolver" 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" 		p:maxUploadSize="1000000"&gt; 	&lt;/bean&gt; 	&lt;bean id="viewResolver" 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt; 		&lt;property name="prefix" value="/WEB-INF/jsp/" /&gt;  &lt;!-- 默认放在WebRoot下 --&gt; 		&lt;property name="suffix" value=".jsp" /&gt;  	&lt;/bean&gt;</code></pre> <p> 页面login.jsp：<br />  </p> <p><strong><span style="font-family:KaiTi_GB2312"></span></strong></p> <pre><code class="language-html">&lt;%@ page language="java" contentType="text/html; charset=UTF-8" 	pageEncoding="UTF-8"%&gt; &lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt; &lt;html&gt; &lt;head&gt; &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt; &lt;title&gt;Insert title here&lt;/title&gt; &lt;/head&gt; &lt;body&gt; 	&lt;form action="login.do" method="post" enctype="multipart/form-data"&gt; 		选择上传文件&lt;input name="fileToUpload" type="file"/&gt;&lt;br/&gt; 		文件说明&lt;textarea name="comment"&gt;&lt;/textarea&gt; 		&lt;input name="submit" type="submit" value="提交"/&gt; 	&lt;/form&gt; &lt;/body&gt; &lt;/html&gt;</code></pre> <p> 页面success.jsp</p> <p><strong><span style="font-family:KaiTi_GB2312"></span></strong></p> <pre><code class="language-html">&lt;body&gt; 	&lt;table&gt; 		&lt;tbody&gt; 			&lt;tr&gt; 				&lt;td&gt;User Info:&lt;/td&gt; 			&lt;/tr&gt; 			&lt;tr&gt; 				&lt;td&gt;&lt;c:out value="${command.comment}"&gt;&lt;/c:out&gt;&lt;/td&gt; 			&lt;/tr&gt; 		&lt;/tbody&gt; 	&lt;/table&gt; &lt;/body&gt;</code></pre> <p> 上述便可以实现简单的文件上传了</div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-24194.htm">js+jQuery实现网页打字机效果（带光标）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-free-high-speed-nodes.htm" title="12月10日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月10日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-node-share-links.htm" title="10月15日→22.5M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月15日→22.5M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-20066.htm" title="一片枫叶的拼音怎么写呀 一片枫叶的拼音怎么写呀怎么读">一片枫叶的拼音怎么写呀 一片枫叶的拼音怎么写呀怎么读</a></li>
+                        <li class="py-2"><a href="/news/article-23725.htm" title="Vue路由的模块自动化与统一加载">Vue路由的模块自动化与统一加载</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-node-subscribe.htm" title="12月1日→19.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月1日→19.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-18718.htm" title="使用Jenkins实现前端自动化打包部署（Linux版本）">使用Jenkins实现前端自动化打包部署（Linux版本）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-node-share.htm" title="11月8日→19M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月8日→19M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-free-subscribe-node.htm" title="10月29日→21.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月29日→21.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-22814.htm" title="面试必问的8个CSS响应式单位,你知道几个？">面试必问的8个CSS响应式单位,你知道几个？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-7-node-share.htm" title="12月7日→20.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月7日→20.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                        <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
