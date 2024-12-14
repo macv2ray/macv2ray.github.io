@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-24664.htm" />
+    <meta charset="utf-8" />
+    <title>vue跳转方式及传参 (包括打开新窗口)</title>
+        <meta name="description" content="本文实例讲述了vue跳转方式（打开新页面）及传参操作。分享给大家供大家参考，具体如下： 1. router-link跳转 // 直接写上跳转的地址&lt;router-linkto="/detail/" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">vue跳转方式及传参 (包括打开新窗口)</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>本文实例讲述了vue跳转方式（打开新页面）及传参操作。分享给大家供大家参考，具体如下：</p> <h2><a id="1_routerlink_2" rel="nofollow"></a>1. router-link跳转</h2> <pre><code class="prism language-html">// 直接写上跳转的地址<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span><span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/detail/one<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>spanfour<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>link跳转<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span><span class="token punctuation">&gt;</span></span> // 添加参数<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span><span class="token attr-name">:to</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{path:<span class="token punctuation">'</span>/detail/two<span class="token punctuation">'</span>, query:{id:1，name:<span class="token punctuation">'</span>vue<span class="token punctuation">'</span>}}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span><span class="token punctuation">&gt;</span></span> // 参数获取 id = this.$route.query.id // 新窗口打开<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span><span class="token attr-name">:to</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{path:<span class="token punctuation">'</span>/detail/three<span class="token punctuation">'</span>, query:{id:1，name:<span class="token punctuation">'</span>vue<span class="token punctuation">'</span>}}<span class="token punctuation">"</span></span><span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span><span class="token punctuation">&gt;</span></span></code></pre> <h2><a id="2_thisrouterpush_17" rel="nofollow"></a>2. this.$router.push跳转</h2> <pre><code class="prism language-javascript"><span class="token function">toDeail</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>path<span class="token punctuation">:</span><span class="token string">"/detail"</span><span class="token punctuation">,</span> query<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span>id<span class="token punctuation">:</span> e<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token comment">// 参数获取</span> id<span class="token operator">=</span><span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span>query<span class="token punctuation">.</span>id<span class="token function">toDeail</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>name<span class="token punctuation">:</span><span class="token string">"/detail"</span><span class="token punctuation">,</span> params<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span>id<span class="token punctuation">:</span> e<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token comment">// 注意地址需写在 name后面</span><span class="token comment">//用params传参时 要填router的name 不能用path</span><span class="token comment">//参数获取，params和query区别，query参数在地址栏显示，params的参数不在地址栏显示</span> id<span class="token operator">=</span><span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id</code></pre> <h2><a id="3_thisrouterreplace_32" rel="nofollow"></a>3. this.$router.replace跳转</h2> <pre><code class="prism language-javascript"><span class="token comment">//和push的区别，push有记录一个history，replace没有</span><span class="token function">toDeail</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>name<span class="token punctuation">:</span><span class="token string">'/detail'</span><span class="token punctuation">,</span> params<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span>id<span class="token punctuation">:</span> e<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre> <h2><a id="4_resolve_39" rel="nofollow"></a>4. resolve跳转</h2> <pre><code class="prism language-javascript"><span class="token comment">//resolve页面跳转可用新页面打开</span><span class="token comment">//2.1.0版本后，使用路由对象的resolve方法解析路由，可以得到location、router、href等目标路由的信息。得到href就可以使用window.open开新窗口了（这边应用：https://segmentfault.com/q/1010000009557100下的一个回答）</span><span class="token function">toDeail</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">const</span><span class="token keyword">new</span><span class="token operator">=</span><span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>name<span class="token punctuation">:</span><span class="token string">'/detail'</span><span class="token punctuation">,</span> params<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span>id<span class="token punctuation">:</span> e<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>   window<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token punctuation">.</span>href<span class="token punctuation">,</span><span class="token string">'_blank'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre> <pre><code class="prism language-javascript">接收方怎么接收参数<span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span>query<span class="token punctuation">.</span>serid和<span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span>params<span class="token punctuation">.</span>setid，以下举一个接收的例子 注意接收参数时是 $route 不是 $router<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>     testDemo<span class="token punctuation">{<!-- --></span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span>query<span class="token punctuation">.</span>setid<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>  接收的参数<span class="token punctuation">:</span><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>userlist<span class="token operator">--</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">{<!-- --></span>mallCode<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token keyword">export</span><span class="token keyword">default</span><span class="token punctuation">{<!-- --></span>   name<span class="token punctuation">:</span><span class="token string">"UserList"</span><span class="token punctuation">,</span>   date<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token punctuation">{<!-- --></span><span class="token string">"mallCode"</span><span class="token punctuation">:</span>mallCode<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span>   methods<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span><span class="token function">getParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 取到路由带过来的参数</span><span class="token keyword">const</span> routerParams<span class="token operator">=</span><span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span>query<span class="token punctuation">.</span>mallCode<span class="token punctuation">;</span><span class="token keyword">this</span><span class="token punctuation">.</span>mallCode<span class="token operator">=</span> routerParams<span class="token punctuation">;</span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 将数据放在当前组件的数据内</span><span class="token comment">//this.mallInfo.searchMap.mallCode = routerParams;</span><span class="token comment">//this.keyupMallName()</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span><span class="token operator">&lt;</span>style scoped<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span></code></pre> <p>希望本文所述对大家vue.js程序设计有所帮助。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-24196.htm">SpringMVC学习笔记&#8211;文件上传与MultipartResolver</a></p>
+                                        <p>下一个：<a href="/news/article-24665.htm">动物打什么针不会死（给动物打针的注射器）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-24-clash-v2ray-ss-ssr.htm" title="10月24日→21.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月24日→21.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-2-free-high-speed-nodes.htm" title="10月2日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月2日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-9-node-share-links.htm" title="10月9日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月9日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-high-speed-nodes.htm" title="11月23日→19.1M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月23日→19.1M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-20-free-v2ray.htm" title="10月20日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月20日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-25127.htm" title="Python——if语句">Python——if语句</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-subscribe-node.htm" title="11月21日→18.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月21日→18.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-19604.htm" title="Gin-使用GORM操作mysql 数据库">Gin-使用GORM操作mysql 数据库</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-v2ray.htm" title="9月28日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月28日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-free-v2ray.htm" title="10月21日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月21日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                        <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
