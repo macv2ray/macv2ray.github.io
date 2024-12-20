@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <title>Gin-使用GORM操作mysql 数据库</title>
         <meta name="description" content="本文已参与「新人创作礼」活动，一起开启掘金创作之路。  1、GORM概述 GORM是Golang的一个orm 框架(采用元数据来描述对象与关系映射的细节，元数据一般采用XML格式，并且存放在专门的对象" />
-        <link rel="icon" href="__ADDON__/img/macv2ray/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <!-- GLOBAL MANDATORY STYLES -->
@@ -19,8 +19,7 @@
     <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
     <!-- THEME STYLES -->
     <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
-    
-<!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -90,7 +89,8 @@
         <div class="container content-lg">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size: 16px;"> <p>本文已参与「新人创作礼」活动，一起开启掘金创作之路。</p> </h1> <h2>1、GORM概述</h2> <p>GORM是Golang的一个orm 框架(采用元数据来描述对象与关系映射的细节，元数据一般采用XML格式，并且存放在专门的对象一映射文件中)，功能齐全(具有关联、挂钩(hook)、支持预加载等)，对开发者非常友好。</p> <h2>2、Gin 中使用 GORM</h2> <p>### 1、毫无疑问，安装 ``` go get -u gorm.io/gorm </p> <p>go get -u gorm.io/driver/mysql ``` 如果使用了go mod 的管理，那就不需要了。 他自己会引</p> <p><code>go import ( "fmt" "gorm.io/driver/mysql" "gorm.io/gorm" ) </code> ### 2、使用GORM连接数据库</p> <p><code>go func init() { //passWord为数据库密码 dsn := "root:passWord@tcp(192.168.0.6:3306)/gin?charset=utf8mb4&amp;parseTime=True&amp;loc=L ocal" DB, err = gorm.Open(mysql.Open(dsn), &amp;gorm.Config{}) if err != nil { fmt.Println(err) } } </code></p> <h3>3、定义操作数据库的模型</h3> <p>#### 1、声明模型 模型是带有基本Go类型的普通结构，指针/别名，或者实现了Scanner和Valuer接口的自定义类型 ```go type User struct { ID uint Name string Email *string //指针 Age uint8 Birthday *time.Time //日期 MemberNumber sql.NullString ActivatedAt sql.NullTime CreatedAt time.Time</p> <p>} <code> 注意： </code> 1、结构体的名称必须<strong>首字母大写</strong> 2、结构体中的<strong>字段名称首字母必须大写</strong> 3、默认情况表名是结构体名称的复数形式 ```</p> <h2>4、约定( Conventions)</h2> <p>GORM 更喜欢约定而不是配置，默认情况下，GORM 使用<code>ID</code>作为主键，将结构名称复数<code>snake_cases</code>作为表名，<code>snake_case</code>作为列名，并使用<code>CreatedAt</code>,<code>UpdatedAt</code>来跟踪创建/更新时间。</p> <p>如果遵循 GORM 采用的约定，就会减少很多配置，不遵循的话就要自己配置</p> <h2>5、gorm.Model</h2> <p>GORM 定义了一个<code>gorm.Model</code>结构体，其中包括字段<code>ID</code>,&nbsp;<code>CreatedAt</code>,&nbsp;<code>UpdatedAt</code>,<code>DeletedAt</code></p> <p><code>go type Model struct { ID uint `gorm:"primaryKey"` CreatedAt time.Time UpdatedAt time.Time DeletedAt gorm.DeletedAt `gorm:"index"` } </code> 注意：<strong>我们可以将其嵌入到您的结构中以包含这些字段</strong> ### 嵌入式结构</p> <p><code>go //使用嵌入式 type User struct { gorm.Model Name string } //相当于(不) type User struct { ID uint `gorm:"primaryKey"` CreatedAt time.Time UpdatedAt time.Time DeletedAt gorm.DeletedAt `gorm:"index"` Name string } </code></p> <p>如果想了解的更加详细，可以去查看官方文档：https://gorm.io/docs/models.html#embedded_struct</p> </div></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size: 16px;"> <p>本文已参与「新人创作礼」活动，一起开启掘金创作之路。</p> </h1> <h2>1、GORM概述</h2> <p>GORM是Golang的一个orm 框架(采用元数据来描述对象与关系映射的细节，元数据一般采用XML格式，并且存放在专门的对象一映射文件中)，功能齐全(具有关联、挂钩(hook)、支持预加载等)，对开发者非常友好。</p> <h2>2、Gin 中使用 GORM</h2> <p>### 1、毫无疑问，安装 ``` go get -u gorm.io/gorm </p> <p>go get -u gorm.io/driver/mysql ``` 如果使用了go mod 的管理，那就不需要了。 他自己会引</p> <p><code>go import ( "fmt" "gorm.io/driver/mysql" "gorm.io/gorm" ) </code> ### 2、使用GORM连接数据库</p> <p><code>go func init() { //passWord为数据库密码 dsn := "root:passWord@tcp(192.168.0.6:3306)/gin?charset=utf8mb4&amp;parseTime=True&amp;loc=L ocal" DB, err = gorm.Open(mysql.Open(dsn), &amp;gorm.Config{}) if err != nil { fmt.Println(err) } } </code></p> <h3>3、定义操作数据库的模型</h3> <p>#### 1、声明模型 模型是带有基本Go类型的普通结构，指针/别名，或者实现了Scanner和Valuer接口的自定义类型 ```go type User struct { ID uint Name string Email *string //指针 Age uint8 Birthday *time.Time //日期 MemberNumber sql.NullString ActivatedAt sql.NullTime CreatedAt time.Time</p> <p>} <code> 注意： </code> 1、结构体的名称必须<strong>首字母大写</strong> 2、结构体中的<strong>字段名称首字母必须大写</strong> 3、默认情况表名是结构体名称的复数形式 ```</p> <h2>4、约定( Conventions)</h2> <p>GORM 更喜欢约定而不是配置，默认情况下，GORM 使用<code>ID</code>作为主键，将结构名称复数<code>snake_cases</code>作为表名，<code>snake_case</code>作为列名，并使用<code>CreatedAt</code>,<code>UpdatedAt</code>来跟踪创建/更新时间。</p> <p>如果遵循 GORM 采用的约定，就会减少很多配置，不遵循的话就要自己配置</p> <h2>5、gorm.Model</h2> <p>GORM 定义了一个<code>gorm.Model</code>结构体，其中包括字段<code>ID</code>,&nbsp;<code>CreatedAt</code>,&nbsp;<code>UpdatedAt</code>,<code>DeletedAt</code></p> <p><code>go type Model struct { ID uint `gorm:"primaryKey"` CreatedAt time.Time UpdatedAt time.Time DeletedAt gorm.DeletedAt `gorm:"index"` } </code> 注意：<strong>我们可以将其嵌入到您的结构中以包含这些字段</strong> ### 嵌入式结构</p> <p><code>go //使用嵌入式 type User struct { gorm.Model Name string } //相当于(不) type User struct { ID uint `gorm:"primaryKey"` CreatedAt time.Time UpdatedAt time.Time DeletedAt gorm.DeletedAt `gorm:"index"` Name string } </code></p> <p>如果想了解的更加详细，可以去查看官方文档：https://gorm.io/docs/models.html#embedded_struct</p> </div></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-19148.htm">哈尔滨宠物上门回收电话（哈尔滨宠物狗上门回收）</a></p>
                                         <p>下一个：<a href="/news/article-19605.htm">猫咪怎么除跳蚤（猫咪除跳蚤项圈有用吗）</a></p>
@@ -103,16 +103,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-12-free-node-subscribe.htm" title="10月12日→21.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月12日→21.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-29-free-node-subscribe-links.htm" title="9月29日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月29日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-21-free-v2ray.htm" title="10月21日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月21日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-18718.htm" title="使用Jenkins实现前端自动化打包部署（Linux版本）">使用Jenkins实现前端自动化打包部署（Linux版本）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-6-node-share-links.htm" title="10月6日→19.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月6日→19.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share.htm" title="11月18日→18.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月18日→18.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-14-free-subscribe-node.htm" title="9月14日→18.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月14日→18.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-25-clash-v2ray-ss-ssr.htm" title="10月25日→20M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月25日→20M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-26-free-node-subscribe-links.htm" title="10月26日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月26日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-node-share.htm" title="11月8日→19M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月8日→19M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-11-28-free-node-subscribe.htm" title="11月28日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月28日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-node-subscribe-links.htm" title="11月25日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月25日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24664.htm" title="vue跳转方式及传参 (包括打开新窗口)">vue跳转方式及传参 (包括打开新窗口)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-16-free-v2ray-subscribe.htm" title="10月16日→22.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月16日→22.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-17-node-share-links.htm" title="10月17日→20.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月17日→20.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-node-subscribe.htm" title="11月2日→20.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月2日→20.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-19-free-subscribe-node.htm" title="9月19日→19.1M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月19日→19.1M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-node-share-links.htm" title="10月15日→22.5M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月15日→22.5M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-7-node-share.htm" title="12月7日→20.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月7日→20.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -124,7 +124,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -151,6 +151,15 @@
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
                         <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
                     </p>
                 </div>

@@ -89,7 +89,8 @@
         <div class="container content-lg">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="htmledit_views"> <p><span style="font-family:Microsoft YaHei; font-size:14px">在写网站的时候，有时候可能需要打字机动画去实现一些页面效果的显示，我在网上找了很久也没有很完整的，符合我要求的代码，索性就结合网上的大神们的代码段自己写了一个</span></p> <p><span style="font-family:Microsoft YaHei; font-size:14px">HTML</span></p> <pre><code class="language-html">&lt;div class="container"&gt;&lt;/div&gt;</code></pre> <p><span style="font-family:Microsoft YaHei; font-size:14px"><br /> CSS</span> </p> <pre><code class="language-css">        .container{             float: left;             display: inline-block;             position: relative;         }         @keyframes blink-caret { 50% { background-color: transparent; } }         span{             animation:blink-caret 1s step-end infinite;             width: 3px;             height: 20px;             background-color: #000;             float: left;             position: absolute;             right: -10px;         }</code></pre> <p><span style="font-family:Microsoft YaHei; font-size:14px"><br /> JS</span> </p> <pre><code class="language-javascript">var s = 'Welcome to LoVueAn';     var con = $('.container');     var index = 0;     var length = s.length;     var tId = null;      function start(){         con.text('');         con.append('&lt;span&gt;&lt;/span&gt;');         tId=setInterval(function(){             con.append(s.charAt(index));             if(index++ === length){                 clearInterval(tId);                 index = 0;                 start()             }         },400);     }      start();</code></pre> <p><span style="font-family:Microsoft YaHei; font-size:14px"><br /> 效果图</span> </p> <p><span style="font-family:Microsoft YaHei; font-size:14px"><img decoding="async" src="http://img.555519.xyz/uploads/20230113/dc508c2867161c427012adf75a6e1008.jpg" alt="js+jQuery实现网页打字机效果（带光标）"><br /></span></p> <p><span style="font-family:Microsoft YaHei; font-size:14px">这段代码采用了JS中的定时器，支持输入完之后归零再次动画，通过append添加了一个span标签模拟光标，css动画渲染闪烁效果，再通过绝对定位始终依附在父容器的右方以达到模拟输入效果的目的。注意在表头引入jquery！</span></p> <p><span style="font-family:Microsoft YaHei; font-size:14px"><br /></span></p> <p><span style="font-family:Microsoft YaHei; font-size:14px">网上搜索到的一般都是通过原生JS写出，但没有光标效果，纯CSS写出来的又对容器的宽要求很高，光标一直悬于最后方不利于实战开发，我认为这种方法相对较好</span></p> </p></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><span style="font-family:Microsoft YaHei; font-size:14px">在写网站的时候，有时候可能需要打字机动画去实现一些页面效果的显示，我在网上找了很久也没有很完整的，符合我要求的代码，索性就结合网上的大神们的代码段自己写了一个</span></p> <p><span style="font-family:Microsoft YaHei; font-size:14px">HTML</span></p> <pre><code class="language-html">&lt;div class="container"&gt;&lt;/div&gt;</code></pre> <p><span style="font-family:Microsoft YaHei; font-size:14px"><br /> CSS</span> </p> <pre><code class="language-css">        .container{             float: left;             display: inline-block;             position: relative;         }         @keyframes blink-caret { 50% { background-color: transparent; } }         span{             animation:blink-caret 1s step-end infinite;             width: 3px;             height: 20px;             background-color: #000;             float: left;             position: absolute;             right: -10px;         }</code></pre> <p><span style="font-family:Microsoft YaHei; font-size:14px"><br /> JS</span> </p> <pre><code class="language-javascript">var s = 'Welcome to LoVueAn';     var con = $('.container');     var index = 0;     var length = s.length;     var tId = null;      function start(){         con.text('');         con.append('&lt;span&gt;&lt;/span&gt;');         tId=setInterval(function(){             con.append(s.charAt(index));             if(index++ === length){                 clearInterval(tId);                 index = 0;                 start()             }         },400);     }      start();</code></pre> <p><span style="font-family:Microsoft YaHei; font-size:14px"><br /> 效果图</span> </p> <p><span style="font-family:Microsoft YaHei; font-size:14px"><img decoding="async" src="http://img.555519.xyz/uploads/20230113/dc508c2867161c427012adf75a6e1008.jpg" alt="js+jQuery实现网页打字机效果（带光标）"><br /></span></p> <p><span style="font-family:Microsoft YaHei; font-size:14px">这段代码采用了JS中的定时器，支持输入完之后归零再次动画，通过append添加了一个span标签模拟光标，css动画渲染闪烁效果，再通过绝对定位始终依附在父容器的右方以达到模拟输入效果的目的。注意在表头引入jquery！</span></p> <p><span style="font-family:Microsoft YaHei; font-size:14px"><br /></span></p> <p><span style="font-family:Microsoft YaHei; font-size:14px">网上搜索到的一般都是通过原生JS写出，但没有光标效果，纯CSS写出来的又对容器的宽要求很高，光标一直悬于最后方不利于实战开发，我认为这种方法相对较好</span></p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-23726.htm">中国农大动物医院怎么样啊好吗（中国农大动物医院怎么样啊好吗多少钱）</a></p>
                                         <p>下一个：<a href="/news/article-24196.htm">SpringMVC学习笔记&#8211;文件上传与MultipartResolver</a></p>
@@ -102,16 +103,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-21893.htm" title="旋转矩阵与欧拉角的相互转换">旋转矩阵与欧拉角的相互转换</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-v2ray.htm" title="10月18日→20.1M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月18日→20.1M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-28-free-node-subscribe.htm" title="11月28日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月28日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-17-free-node-subscribe-links.htm" title="9月17日→22M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月17日→22M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-22357.htm" title="动物防疫工作部署会议讲话（动物防疫工作部署会议讲话内容）">动物防疫工作部署会议讲话（动物防疫工作部署会议讲话内容）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-subscribe-node.htm" title="11月21日→18.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月21日→18.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-21-free-high-speed-nodes.htm" title="9月21日→20.1M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月21日→20.1M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-24196.htm" title="SpringMVC学习笔记&#8211;文件上传与MultipartResolver">SpringMVC学习笔记&#8211;文件上传与MultipartResolver</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-28-node-share.htm" title="10月28日→19.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月28日→19.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-v2ray-subscribe.htm" title="11月20日→18.1M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月20日→18.1M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-23-node-share-links.htm" title="9月23日→18M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月23日→18M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26528.htm" title="【TypeScript】TypeScript 与 JavaScript 有何不同？">【TypeScript】TypeScript 与 JavaScript 有何不同？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share-links.htm" title="11月4日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月4日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-clash-v2ray-ss-ssr.htm" title="12月8日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月8日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-10-free-v2ray.htm" title="9月10日→19.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月10日→19.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-free-high-speed-nodes.htm" title="12月6日→21.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月6日→21.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-23725.htm" title="Vue路由的模块自动化与统一加载">Vue路由的模块自动化与统一加载</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-24-clash-v2ray-ss-ssr.htm" title="10月24日→21.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月24日→21.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26526.htm" title="Python格式化输出的三种方式：%、string.format()、f-string">Python格式化输出的三种方式：%、string.format()、f-string</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-node-subscribe-links.htm" title="11月25日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月25日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -123,7 +124,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -150,6 +151,15 @@
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
                         <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
                     </p>
                 </div>

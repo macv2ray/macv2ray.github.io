@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <title>面试必问的8个CSS响应式单位,你知道几个？</title>
         <meta name="description" content="大家好，我是半夏????，一个刚刚开始写文的沙雕程序员.如果喜欢我的文章，可以关注➕ 点赞 ???? 加我微信：frontendpicker，一起学习交流前端，成为更优秀的工程师～关注公众号：搞前端的" />
-        <link rel="icon" href="__ADDON__/img/macv2ray/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <!-- GLOBAL MANDATORY STYLES -->
@@ -19,8 +19,7 @@
     <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
     <!-- THEME STYLES -->
     <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
-    
-<!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -90,7 +89,8 @@
         <div class="container content-lg">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<blockquote> <p>大家好，我是半夏????，一个刚刚开始写文的沙雕程序员.如果喜欢我的文章，可以关注➕ 点赞 ???? 加我微信：<strong>frontendpicker</strong>，一起学习交流前端，成为更优秀的工程师～关注公众号：<strong><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://sylblog.xin/banxia/about"  target="_blank" rel="nofollow">搞前端的半夏</a></strong>,了解更多前端知识!<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://sylblog.xin/"  target="_blank" rel="nofollow">点我</a>探索新世界！</p> </blockquote> <blockquote> <p>原文链接 ==&gt;<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://sylblog.xin/archives/51"  target="_blank" rel="nofollow">http://sylblog.xin/archives/51</a></p> </blockquote> <h2 id="前言">前言</h2> <p>今天，我们生活在手机的世界里。有如此多的手机，有如此多的屏幕，屏幕的尺寸从当年的2.4英寸到3.5英寸、4.0英寸、5.0英寸等等，到现在基本上6.0英寸起步了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a897ee8edb98d9ca9b9b4f04d7282081.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"></p> <h2 id="em">em</h2> <p>它是相对于父字体大小的。</p> <p>比如给元素设置font-size: 2em，这里的默认字体大小实际上是继承自父亲的大小，font-size: 2em表示当前元素字体大小是父亲的2倍。</p> <h3 id="求下面em的px值">求下面em的px值</h3> <pre><code class="language-html">body{   font-size: 2em; } p {   font-size: 2em;   width: 2em; } &lt;body&gt; em &lt;div&gt;   &lt;p&gt;em&lt;/p&gt; &lt;/div&gt; &lt;/body&gt;</code></pre> <p>第一个em的大小是32px,第二个em的大小的是64px。</p> <p>html默认是16px，body是2em，是默认的2倍32px，<br /> div是32px，p是div的2倍64px。</p> <h2 id="ch">ch</h2> <p>它是相对于'0'（零）的宽度。<br /> 1ch就是一个'0'</p> <pre><code>div {   width: 3ch;   background: powderblue; }  &lt;div&gt;000000&lt;/div&gt;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/52276af24076803ba0a774923720fb02.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"></p> <h2 id="rem">rem</h2> <p>元素(html 节点)字体大小的倍数。</p> <p>比如一个元素设置 width: 2rem 表示该元素宽度为html节点的font-size 大小的2倍。</p> <p>如果html未设置font-size的大小，默认是16px。</p> <p>注意！：Chrome 默认最小字体大小为12px，小于12px的字体都显示12px大小。但是你可以Chrome浏览器的设置进行修改。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/108a7757593b9032fde301437685e757.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"></p> <h3 id="举例">举例</h3> <pre><code> html{  font-size: 10px; } body {   font-size: 18px; } h1 {   font-size: 1rem; }</code></pre> <p>这里的h1的字体大小是10px;</p> <h2 id="视口单位">视口单位</h2> <p>视口单位(Viewport units)</p> <h3 id="什么是视口">什么是视口？</h3> <p>MDN</p> <blockquote> <p>视口 (viewport) 代表当前可见的计算机图形区域。在 Web 浏览器术语中，通常与浏览器窗口相同，但不包括浏览器的 UI， 菜单栏等——即指你正在浏览的文档的那一部分。</p> </blockquote> <blockquote> <p>Web 浏览器包含两个 viewport，布局视口 (layout viewport) 和视觉视口 (visual viewport)。visual viewport 指当前浏览器中可见的部分，并且可以变化。当使用触屏双指缩放，当动态键盘在手机上弹出的时候，或者之前隐藏的地址栏变得可见的时候，visual viewport 缩小了，但是 layout viewport 却保持不变。</p> </blockquote> <p>视</p> <p>视口单位中的“视口”，是指布局视口，即window.innerWidth/window.innerHeight大小。</p> <h3 id="vw">vw</h3> <p>它相对于视口宽度的1% 。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/66c999bd1ee321e3b811f525874df2b6.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"><br /> 假设视口宽度1290px,则10vw 就是129px.</p> <p>通过下面的动图可以看到，当你拖拽浏览器的<strong>宽度</strong>的时候字体的大小是在变化的，拖拽<strong>高度</strong>的时候，字体大小是不变化的。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4cb40406c3818fb2bdb29a1323536b82.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"></p> <h3 id="vh">vh</h3> <p>1vw等于视口宽度的1%。</p> <p>通过下面的动图可以看到，当你拖拽浏览器的<strong>高度</strong>的时候字体的大小是在变化的，拖拽<strong>宽度</strong>的时候，字体大小是不变化的。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4b912a32c777be94dc7f93bf9b4b80ae.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"></p> <h3 id="vmin">vmin</h3> <p>vmin表示视口的宽度和高度中的较小值，也就是vw 和 vh 中的较小值。如果视口宽度大于其高度，则将根据高度计算该值。</p> <p>通过下面的动图可以看到：</p> <p>当你浏览器的<strong>宽度</strong>大于高度的时候，拖拽宽度,字体大小不变;拖拽高度，字体变化。</p> <p>当你浏览器的<strong>高度</strong>大于宽度的时候，拖拽高度,字体大小不变;拖拽宽度度，字体变化<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/291e033386a2c04e9bac618c16f25f11.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"></p> <h3 id="vmax">vmax</h3> <p>正好与vmin 相反</p> <h2 id="">%</h2> <p>它是相对于父元素的。</p> <p>% 对不同属性有不同的含义：</p> <p>例如：<br /> font-size: 200% 和font-size: 2em 一样，表示字体大小是默认（继承自父亲）字体大小的2倍。</p> <p>例如： line-height: 200% 表示行高是自己字体大小的2倍。</p> <p>例如：width: 100%表示自己content的宽度等于父亲content宽度的1倍。</p> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<blockquote> <p>大家好，我是半夏????，一个刚刚开始写文的沙雕程序员.如果喜欢我的文章，可以关注➕ 点赞 ???? 加我微信：<strong>frontendpicker</strong>，一起学习交流前端，成为更优秀的工程师～关注公众号：<strong><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://sylblog.xin/banxia/about"  target="_blank" rel="nofollow">搞前端的半夏</a></strong>,了解更多前端知识!<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://sylblog.xin/"  target="_blank" rel="nofollow">点我</a>探索新世界！</p> </blockquote> <blockquote> <p>原文链接 ==&gt;<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://sylblog.xin/archives/51"  target="_blank" rel="nofollow">http://sylblog.xin/archives/51</a></p> </blockquote> <h2 id="前言">前言</h2> <p>今天，我们生活在手机的世界里。有如此多的手机，有如此多的屏幕，屏幕的尺寸从当年的2.4英寸到3.5英寸、4.0英寸、5.0英寸等等，到现在基本上6.0英寸起步了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a897ee8edb98d9ca9b9b4f04d7282081.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"></p> <h2 id="em">em</h2> <p>它是相对于父字体大小的。</p> <p>比如给元素设置font-size: 2em，这里的默认字体大小实际上是继承自父亲的大小，font-size: 2em表示当前元素字体大小是父亲的2倍。</p> <h3 id="求下面em的px值">求下面em的px值</h3> <pre><code class="language-html">body{   font-size: 2em; } p {   font-size: 2em;   width: 2em; } &lt;body&gt; em &lt;div&gt;   &lt;p&gt;em&lt;/p&gt; &lt;/div&gt; &lt;/body&gt;</code></pre> <p>第一个em的大小是32px,第二个em的大小的是64px。</p> <p>html默认是16px，body是2em，是默认的2倍32px，<br /> div是32px，p是div的2倍64px。</p> <h2 id="ch">ch</h2> <p>它是相对于'0'（零）的宽度。<br /> 1ch就是一个'0'</p> <pre><code>div {   width: 3ch;   background: powderblue; }  &lt;div&gt;000000&lt;/div&gt;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/52276af24076803ba0a774923720fb02.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"></p> <h2 id="rem">rem</h2> <p>元素(html 节点)字体大小的倍数。</p> <p>比如一个元素设置 width: 2rem 表示该元素宽度为html节点的font-size 大小的2倍。</p> <p>如果html未设置font-size的大小，默认是16px。</p> <p>注意！：Chrome 默认最小字体大小为12px，小于12px的字体都显示12px大小。但是你可以Chrome浏览器的设置进行修改。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/108a7757593b9032fde301437685e757.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"></p> <h3 id="举例">举例</h3> <pre><code> html{  font-size: 10px; } body {   font-size: 18px; } h1 {   font-size: 1rem; }</code></pre> <p>这里的h1的字体大小是10px;</p> <h2 id="视口单位">视口单位</h2> <p>视口单位(Viewport units)</p> <h3 id="什么是视口">什么是视口？</h3> <p>MDN</p> <blockquote> <p>视口 (viewport) 代表当前可见的计算机图形区域。在 Web 浏览器术语中，通常与浏览器窗口相同，但不包括浏览器的 UI， 菜单栏等——即指你正在浏览的文档的那一部分。</p> </blockquote> <blockquote> <p>Web 浏览器包含两个 viewport，布局视口 (layout viewport) 和视觉视口 (visual viewport)。visual viewport 指当前浏览器中可见的部分，并且可以变化。当使用触屏双指缩放，当动态键盘在手机上弹出的时候，或者之前隐藏的地址栏变得可见的时候，visual viewport 缩小了，但是 layout viewport 却保持不变。</p> </blockquote> <p>视</p> <p>视口单位中的“视口”，是指布局视口，即window.innerWidth/window.innerHeight大小。</p> <h3 id="vw">vw</h3> <p>它相对于视口宽度的1% 。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/66c999bd1ee321e3b811f525874df2b6.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"><br /> 假设视口宽度1290px,则10vw 就是129px.</p> <p>通过下面的动图可以看到，当你拖拽浏览器的<strong>宽度</strong>的时候字体的大小是在变化的，拖拽<strong>高度</strong>的时候，字体大小是不变化的。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4cb40406c3818fb2bdb29a1323536b82.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"></p> <h3 id="vh">vh</h3> <p>1vw等于视口宽度的1%。</p> <p>通过下面的动图可以看到，当你拖拽浏览器的<strong>高度</strong>的时候字体的大小是在变化的，拖拽<strong>宽度</strong>的时候，字体大小是不变化的。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4b912a32c777be94dc7f93bf9b4b80ae.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"></p> <h3 id="vmin">vmin</h3> <p>vmin表示视口的宽度和高度中的较小值，也就是vw 和 vh 中的较小值。如果视口宽度大于其高度，则将根据高度计算该值。</p> <p>通过下面的动图可以看到：</p> <p>当你浏览器的<strong>宽度</strong>大于高度的时候，拖拽宽度,字体大小不变;拖拽高度，字体变化。</p> <p>当你浏览器的<strong>高度</strong>大于宽度的时候，拖拽高度,字体大小不变;拖拽宽度度，字体变化<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/291e033386a2c04e9bac618c16f25f11.jpg" alt="面试必问的8个CSS响应式单位,你知道几个？"></p> <h3 id="vmax">vmax</h3> <p>正好与vmin 相反</p> <h2 id="">%</h2> <p>它是相对于父元素的。</p> <p>% 对不同属性有不同的含义：</p> <p>例如：<br /> font-size: 200% 和font-size: 2em 一样，表示字体大小是默认（继承自父亲）字体大小的2倍。</p> <p>例如： line-height: 200% 表示行高是自己字体大小的2倍。</p> <p>例如：width: 100%表示自己content的宽度等于父亲content宽度的1倍。</p> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-22357.htm">动物防疫工作部署会议讲话（动物防疫工作部署会议讲话内容）</a></p>
                                         <p>下一个：<a href="/news/article-22815.htm">动物疫苗研发过程表（动物疫苗研发过程表格模板）</a></p>
@@ -103,16 +103,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-9-16-node-share.htm" title="9月16日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月16日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-subscribe-node.htm" title="11月11日→22.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月11日→22.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-v2ray.htm" title="9月28日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月28日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-31-free-node-subscribe-links.htm" title="10月31日→21.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月31日→21.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-high-speed-nodes.htm" title="11月27日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月27日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-19-free-subscribe-node.htm" title="9月19日→19.1M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月19日→19.1M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-8-clash-v2ray-ss-ssr.htm" title="10月8日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月8日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-10-25-clash-v2ray-ss-ssr.htm" title="10月25日→20M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月25日→20M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-29-free-node-subscribe-links.htm" title="9月29日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月29日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-25-free-v2ray.htm" title="9月25日→19.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月25日→19.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-30-clash-v2ray-ss-ssr.htm" title="11月30日→18.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月30日→18.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-18719.htm" title="国内生产宠物粮的上市公司有几家（中国宠物粮生产企业）">国内生产宠物粮的上市公司有几家（中国宠物粮生产企业）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-high-speed-nodes.htm" title="11月7日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月7日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-free-v2ray.htm" title="10月21日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月21日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-v2ray.htm" title="12月4日→20.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月4日→20.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-node-subscribe.htm" title="12月1日→19.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月1日→19.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-25594.htm" title="厦门宠物免费领养网站 厦门宠物免费领养网站有哪些">厦门宠物免费领养网站 厦门宠物免费领养网站有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-26071.htm" title="上海宠物领养救助基地（上海宠物领养救助基地有哪些）">上海宠物领养救助基地（上海宠物领养救助基地有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-19148.htm" title="哈尔滨宠物上门回收电话（哈尔滨宠物狗上门回收）">哈尔滨宠物上门回收电话（哈尔滨宠物狗上门回收）</a></li>
                     </ul>
     </div>
 </div>
@@ -124,7 +124,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -151,6 +151,15 @@
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
                         <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
                     </p>
                 </div>
