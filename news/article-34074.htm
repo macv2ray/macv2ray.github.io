@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-34074.htm" />
+    <meta charset="utf-8" />
+    <title>欧拉定理的C ++程序</title>
+        <meta name="description" content="这是一个C ++程序，它演示了Euler定理的实现。数字和模数必须是互质的，才能存在模数乘法逆。 算法 Begin &nbsp;&nbsp;&nbsp;Take&nbsp;input&nbsp;to&" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">欧拉定理的C ++程序</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>这是一个C ++程序，它演示了Euler定理的实现。数字和模数必须是互质的，才能存在模数乘法逆。</p> <h2>算法</h2> <pre>Begin &nbsp;&nbsp;&nbsp;Take&nbsp;input&nbsp;to&nbsp;find&nbsp;modular&nbsp;multiplicative&nbsp;inverse &nbsp;&nbsp;&nbsp;Take&nbsp;input&nbsp;as&nbsp;modular&nbsp;value &nbsp;&nbsp;&nbsp;Perform&nbsp;inverse&nbsp;array&nbsp;function: &nbsp;&nbsp;&nbsp;modInverse(x&nbsp;+&nbsp;1,&nbsp;0); &nbsp;&nbsp;&nbsp;modInverse[1]&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;=&nbsp;2&nbsp;to&nbsp;x &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modInverse[i]&nbsp;=&nbsp;(-(y&nbsp;/&nbsp;i)&nbsp;*&nbsp;modInverse[y&nbsp;mod&nbsp;i])&nbsp;mod&nbsp;y&nbsp;+&nbsp;y &nbsp;&nbsp;&nbsp;return&nbsp;modInverse End</pre> <h2>范例程式码</h2> <pre>#include&nbsp;&lt;iostream&gt; #include&nbsp;&lt;vector&gt; using&nbsp;namespace&nbsp;std; vector&lt;int&gt;&nbsp;inverseArray(int&nbsp;x,&nbsp;int&nbsp;y)&nbsp;{ &nbsp;&nbsp;&nbsp;vector&lt;int&gt;&nbsp;modInverse(x&nbsp;+&nbsp;1,&nbsp;0); &nbsp;&nbsp;&nbsp;modInverse[1]&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;2;&nbsp;i&nbsp;&lt;=&nbsp;x;&nbsp;i++)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modInverse[i]&nbsp;=&nbsp;(-(y&nbsp;/&nbsp;i)&nbsp;*&nbsp;modInverse[y&nbsp;%&nbsp;i])&nbsp;%&nbsp;y&nbsp;+&nbsp;y; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;return&nbsp;modInverse; } int&nbsp;main()&nbsp;{ &nbsp;&nbsp;&nbsp;vector&lt;int&gt;::iterator&nbsp;it; &nbsp;&nbsp;&nbsp;int&nbsp;a,&nbsp;m; &nbsp;&nbsp;&nbsp;cout&lt;&lt;"Enter&nbsp;number&nbsp;to&nbsp;find&nbsp;modular&nbsp;multiplicative&nbsp;inverse:&nbsp;"; &nbsp;&nbsp;&nbsp;cin&gt;&gt;a; &nbsp;&nbsp;&nbsp;cout&lt;&lt;"Enter&nbsp;Modular&nbsp;Value:&nbsp;"; &nbsp;&nbsp;&nbsp;cin&gt;&gt;m; &nbsp;&nbsp;&nbsp;cout&lt;&lt;inverseArray(a,&nbsp;m)[a]&lt;&lt;endl; }</pre> <p>输出结果</p> <pre>Enter&nbsp;number&nbsp;to&nbsp;find&nbsp;modular&nbsp;multiplicative&nbsp;inverse:&nbsp;26 Enter&nbsp;Modular&nbsp;Value:&nbsp;7 7</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-33605.htm">权力的游戏伯德瑞克（原创）权力的游戏 波德，斯巴达克斯结局，詹德利，</a></p>
+                                        <p>下一个：<a href="/news/article-34075.htm">北京动物疫苗生产厂家排名（北京动物疫苗生产厂家排名榜）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-30752.htm" title="猫不打疫苗为什么不能绝育（为什么猫不打疫苗不能洗澡）">猫不打疫苗为什么不能绝育（为什么猫不打疫苗不能洗澡）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-node-share.htm" title="10月7日→21M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月7日→21M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-30-free-high-speed-nodes.htm" title="12月30日→19M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月30日→19M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-20522.htm" title="楼房养猫的十大禁忌（猫爬过的床单有细菌吗）">楼房养猫的十大禁忌（猫爬过的床单有细菌吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-node-share-links.htm" title="11月9日→22.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月9日→22.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-6-node-share-links.htm" title="10月6日→19.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月6日→19.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-free-v2ray.htm" title="10月21日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月21日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-19605.htm" title="猫咪怎么除跳蚤（猫咪除跳蚤项圈有用吗）">猫咪怎么除跳蚤（猫咪除跳蚤项圈有用吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-5-node-share.htm" title="10月5日→21.1M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月5日→21.1M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-22815.htm" title="动物疫苗研发过程表（动物疫苗研发过程表格模板）">动物疫苗研发过程表（动物疫苗研发过程表格模板）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
