@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-35811.htm" />
+    <meta charset="utf-8" />
+    <title>uniapp自定义弹窗组件</title>
+        <meta name="description" content="介绍 uniapp自定义弹窗组件uniPop，基于uni-app开发的自定义模态弹窗|msg信息框|alert对话框|confirm确认框|toast弱提示框 支持多种动画效果、多弹窗类型ios/an" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">uniapp自定义弹窗组件</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>介绍<br /> uniapp自定义弹窗组件uniPop，基于uni-app开发的自定义模态弹窗|msg信息框|alert对话框|confirm确认框|toast弱提示框</p> <p>支持多种动画效果、多弹窗类型ios/android、可以自定义弹窗样式/自定义多按钮及事件/弹窗显示位置、自动关闭秒数、遮罩层透明度及点击遮罩是否关闭</p> <p>H5/小程序/App三端效果如下，亲测多端效果兼容性一致。(后续大图均展示App端)</p> <p>用法<br /> ◆ 弹窗uniPop.vue组件两种引入方式</p> <p>1、在main.js里引入全局组件</p> <pre><code>import uniPop from './components/uniPop/uniPop.vue'  Vue.component('uni-pop', uniPop)</code></pre> <p>2、在相应页面引入组件</p> <p>复制代码</p> <pre><code>import uniPop from './components/uniPop/uniPop.vue' export default {     data() {         return {             ...         }     },     components:{         uniPop     },     ... }</code></pre> <pre><code>&lt;template&gt;     &lt;view class="container"&gt;         ...                  &lt;!-- 弹窗模板 --&gt;         &lt;uni-pop ref="uniPop"&gt;&lt;/uni-pop&gt;     &lt;/view&gt; &lt;/template&gt;</code></pre> <p>msg信息框效果</p> <pre><code>this.$refs.uniPop.show({     content: 'msg消息提示框（5s后窗口关闭）',     shade: true,     shadeClose: false,     time: 5,     anim: 'fadeIn', })</code></pre> <pre><code>this.$refs.uniPop.show({     skin: 'toast',     content: 'loading',     icon: 'loading', //success | info | error | loading     shade: false,     time: 3 })</code></pre> <pre><code>let uniPop = this.$refs.uniPop uniPop.show({     skin: 'ios',     title: '开启新邮件提醒',     content: '为了保证新邮件能及时收到提醒，请前往系统 [设置] - [电池] 中关闭应用锁屏清理。',     shadeClose: false,          btns: [         {             text: '取消',             style: 'color: #2a83f2',             onTap() {                 uniPop.close();             }         },         {             text: '前往设置',             style: 'color: #2a83f2',             onTap() {                 console.log('您点击了前往设置！');             }         }     ] })</code></pre> <p>调用方式如上，只是传入参数不一样，下面就不一 一展示了</p> <p>◆ uniapp自定义模板template</p> <pre><code> /**   * @tpl        uni-app自定义弹窗组件 - uniPop.vue   * @author     andy by 2019-09-20   * @about      Q：282310962  wx：xy190310   */  &lt;template&gt;     &lt;view v-if="opts.isVisible" class="uniPop" :class="opts.isCloseCls"&gt;         &lt;view class="unipop__ui_panel"&gt;             &lt;view v-if="opts.shade" class="unipop__ui_mask" @tap="shadeTaped"&gt;&lt;/view&gt;             &lt;view class="unipop__ui_main"&gt;                 &lt;view class="unipop__ui_child" :style="opts.style"&gt;                     &lt;!-- 标题 --&gt;                     &lt;view v-if="opts.title" class="unipop__ui_tit"&gt;{<!-- -->{opts.title}}&lt;/view&gt;                     &lt;!-- 内容 --&gt;                     &lt;view v-if="opts.content" class="unipop__ui_cnt" :style="opts.contentStyle"&gt;                         {<!-- -->{opts.content}}                     &lt;/view&gt;                     &lt;view v-if="opts.btns" class="unipop__ui_btns"&gt;                         &lt;text v-for="(item,index) in opts.btns" :key="index" class="btn" :style="item.style" @tap="btnTaped(item)"&gt;{<!-- -->{item.text}}&lt;/text&gt;                     &lt;/view&gt;                 &lt;/view&gt;                 &lt;!-- xclose --&gt;                 &lt;view v-if="opts.xclose" class="unipop__xclose" @tap="close"&gt;&lt;/view&gt;             &lt;/view&gt;         &lt;/view&gt;     &lt;/view&gt; &lt;/template&gt;</code></pre> <p>◆ 默认参数配置</p> <pre><code>data() {     return {         defaultOptions: {             isVisible: false,       //是否显示弹窗                          title: '',              //标题             content: '',            //内容             contentStyle: '',       //内容样式             style: null,            //自定义弹窗样式             skin: '',               //弹窗风格             icon: '',               //弹窗图标             xclose: false,          //自定义关闭按钮                          shade: true,            //遮罩层             shadeClose: true,       //点击遮罩关闭             opacity: '',            //遮罩透明度             time: 0,                //自动关闭秒数             end: null,              //销毁弹窗回调函数                          anim: 'scaleIn',        //弹窗动画  scaleIn(默认) | fadeIn | shake | top | right | bottom | left             position: '',           //弹窗位置  top | right | bottom | left                          btns: null,             //弹窗按钮         },         opts: {},         timer: null     } },</code></pre> <p>◆ 通过Object.assign函数进行参数合并处理</p> <pre><code>methods: {     // 显示弹窗事件（处理传参）     show(args) {         this.opts = Object.assign({}, this.defaultOptions, args, {isVisible: true})         // console.log(this.opts)                  // 自动关闭         if(this.opts.time) {             this.timer = setTimeout(() =&gt; {                 this.close()             }, this.opts.time * 1000)         }     },     ... }</code></pre> <p>好了，uni-app自定义弹窗组件介绍就到这里，希望能喜欢????????~~</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-35142.htm">猫粮进口什么牌子好吃（进口猫粮档次排行）</a></p>
+                                        <p>下一个：<a href="/news/article-35812.htm">助理宠物医师资格证报考条件（助理宠物医师资格证报考条件及要求）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-30751.htm" title="Vue+SpringBoot实现Excel在线预览功能">Vue+SpringBoot实现Excel在线预览功能</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-v2ray.htm" title="9月28日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月28日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-35812.htm" title="助理宠物医师资格证报考条件（助理宠物医师资格证报考条件及要求）">助理宠物医师资格证报考条件（助理宠物医师资格证报考条件及要求）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-25-clash-v2ray-ss-ssr.htm" title="10月25日→20M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月25日→20M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26072.htm" title="动物诊疗许可证管理办法规定（动物诊疗许可证有效期哪里规定的）">动物诊疗许可证管理办法规定（动物诊疗许可证有效期哪里规定的）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-27-free-v2ray.htm" title="9月27日→22.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月27日→22.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21446.htm" title="去宠物医院绝育会不会被感染（去宠物医院绝育会不会被感染艾滋病）">去宠物医院绝育会不会被感染（去宠物医院绝育会不会被感染艾滋病）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-7-free-node-subscribe-links.htm" title="9月7日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月7日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-32649.htm" title="动物医院哪个学校好就业（动物医院前景好吗）">动物医院哪个学校好就业（动物医院前景好吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-free-v2ray-subscribe.htm" title="12月3日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月3日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
