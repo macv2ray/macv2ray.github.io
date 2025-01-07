@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-36958.htm" />
+    <meta charset="utf-8" />
+    <title>分享MySQL生产库内存异常增高的排查过程_Mysql_</title>
+        <meta name="description" content="目录  修改performance_schema 打开内存监控 查找内存消耗  统计事件消耗内存 统计线程消耗内存 定位具体SQL        近期频繁收到一个MySQL实例的内存使用率高的报警，今" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">分享MySQL生产库内存异常增高的排查过程_Mysql_</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">修改performance_schema</a></li> <li><a href="#_label1" rel="nofollow">打开内存监控</a></li> <li><a href="#_label2" rel="nofollow">查找内存消耗</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_2_0" rel="nofollow">统计事件消耗内存</a></li> <li><a href="#_lab2_2_1" rel="nofollow">统计线程消耗内存</a></li> <li><a href="#_lab2_2_2" rel="nofollow">定位具体SQL</a></li> </ul> </ul> </div> <p>    近期频繁收到一个MySQL实例的内存使用率高的报警，今天我们花时间排查一下问题出在哪里。</p> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>修改performance_schema</h2> <p>因为公司生产环境使用的阿里云RDS，修改参数相对方便，performance_schema默认为0，此次修改为1。修改之后提交参数，数据库会进行重启，建议在业务低峰进行。</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>打开内存监控</h2> <p>登录MySQL数据库，执行如下SQL，打开内存监控。</p> <div class="ay1code"> <pre class="brush:sql;">update performance_schema.setup_instruments set enabled = 'yes' where name like 'memory%';  </pre> </div> <p>打开之后验证一下。</p> <div class="ay1code"> <pre class="brush:sql;">select * from performance_schema.setup_instruments where name like 'memory%innodb%' limit 5;    </pre> </div> <p>**注意：**该命令是在线打开内存统计，所以只会统计打开后新增的内存对象，打开前的内存对象不会统计，建议您打开后等待一段时间再执行后续步骤，便于找出内存使用高的线程。</p> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>查找内存消耗</h2> <p class="maodian"><a name="_lab2_2_0" rel="nofollow"></a></p> <h3>统计事件消耗内存</h3> <div class="ay1code"> <pre class="brush:sql;">select event_name,         SUM_NUMBER_OF_BYTES_ALLOC  from performance_schema.memory_summary_global_by_event_name  order by SUM_NUMBER_OF_BYTES_ALLOC desc  LIMIT 10;  +---------------------------------------+-------------------------------------+  | event_name                            | SUM_NUMBER_OF_BYTES_ALLOC           |  +---------------------------------------+-------------------------------------+  | memory/sql/Filesort_buffer::sort_keys | 763523904056                        |  | memory/memory/HP_PTRS                 | 118017336096                        |  | memory/sql/thd::main_mem_root         | 114026214600                        |  | memory/mysys/IO_CACHE                 | 59723548888                         |  | memory/sql/QUICK_RANGE_SELECT::alloc  | 14381459680                         |  | memory/sql/test_quick_select          | 12859304736                         |  | memory/innodb/mem0mem                 | 7607681148                          |  | memory/sql/String::value              | 1405409537                          |  | memory/sql/TABLE                      | 1117918354                          |  | memory/innodb/btr0sea                 | 984013872                           |  +---------------------------------------+-------------------------------------+  </pre> </div> <p>可以看到内存消耗最高的event是Filesort_buffer，根据经验，这个应该是排序有关。</p> <p class="maodian"><a name="_lab2_2_1" rel="nofollow"></a></p> <h3>统计线程消耗内存</h3> <div class="ay1code"> <pre class="brush:sql;">select thread_id,         event_name,         SUM_NUMBER_OF_BYTES_ALLOC  from performance_schema.memory_summary_by_thread_by_event_name  order by SUM_NUMBER_OF_BYTES_ALLOC desc  limit 10;  +---------------------+---------------------------------------+-------------------------------------+  | thread_id           | event_name                            | SUM_NUMBER_OF_BYTES_ALLOC           |  +---------------------+---------------------------------------+-------------------------------------+  | 105                 | memory/memory/HP_PTRS                 | 69680198792                         |  | 183                 | memory/sql/Filesort_buffer::sort_keys | 49210098808                         |  | 154                 | memory/sql/Filesort_buffer::sort_keys | 43304339072                         |  | 217                 | memory/sql/Filesort_buffer::sort_keys | 37752275360                         |  | 2773                | memory/sql/Filesort_buffer::sort_keys | 31460644712                         |  | 218                 | memory/sql/Filesort_buffer::sort_keys | 31128994280                         |  | 2331                | memory/sql/Filesort_buffer::sort_keys | 28763981248                         |  | 106                 | memory/memory/HP_PTRS                 | 27938197584                         |  | 191                 | memory/sql/Filesort_buffer::sort_keys | 27701610224                         |  | 179                 | memory/sql/Filesort_buffer::sort_keys | 25624723968                         |  +---------------------+---------------------------------------+-------------------------------------+  </pre> </div> <p>可以看到内存消耗多的线程都跟<code>Filesort_buffer</code>相关。</p> <p class="maodian"><a name="_lab2_2_2" rel="nofollow"></a></p> <h3>定位具体SQL</h3> <p>根据前边我们查到的<code>thread_id</code>去日志里查找对应的SQL，阿里云RDS审计日志相对还是比较强大的。我们直接根据thread_id直接检索。</p> <p><img decoding="async" alt="记一次MySQL生产库内存异常增高的排查过程_MySQL" src="http://img.555519.xyz/uploads3/20220414/e4ea32a6f64228307239f1a48a2cb2d1.jpg"></p> <p>    我们在日志里看到大量这样的SQL，扫描行数在几千到几万不等。虽然每次查询时间并不长，大概在几十到几百毫秒，但是并发量很大。<br />    跟开发同学核实之后，这个查询没有做分页，取到的数据有很多行，而且最后要做排序，并且排序字段并没有合适的索引。到此，这次内存使用率出现异常的罪魁祸首已经找到。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-36473.htm">virtualenv介绍及基本使用</a></p>
+                                        <p>下一个：<a href="/news/article-36959.htm">怎么看幼猫性格好坏（怎么消除小猫刚到家的恐惧感）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-node-subscribe-links.htm" title="12月14日→23M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月14日→23M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-32171.htm" title="成年猫打疫苗要多少钱（成年猫打疫苗多少钱一针）">成年猫打疫苗要多少钱（成年猫打疫苗多少钱一针）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-3-node-share-links.htm" title="11月3日→22M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月3日→22M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-node-share-links.htm" title="10月15日→22.5M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月15日→22.5M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-high-speed-nodes.htm" title="11月26日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月26日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-28377.htm" title="义乌领养宠物的地方在哪里（义乌领养宠物的地方在哪里有）">义乌领养宠物的地方在哪里（义乌领养宠物的地方在哪里有）</a></li>
+                        <li class="py-2"><a href="/news/article-21894.htm" title="动物疫苗最新消息（动物疫苗价格查询）">动物疫苗最新消息（动物疫苗价格查询）</a></li>
+                        <li class="py-2"><a href="/news/article-25128.htm" title="宠物打疫苗不能洗澡的原因是什么（宠物打疫苗不能吃什么）">宠物打疫苗不能洗澡的原因是什么（宠物打疫苗不能吃什么）</a></li>
+                        <li class="py-2"><a href="/news/article-19147.htm" title="springMVC拦截器从Request中获取Json格式并解决request的请求流只能读取一次的问题">springMVC拦截器从Request中获取Json格式并解决request的请求流只能读取一次的问题</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-free-high-speed-nodes.htm" title="12月10日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月10日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

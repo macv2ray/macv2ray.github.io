@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-36472.htm" />
+    <meta charset="utf-8" />
+    <title>python连接MySQL数据库并读取数据库中的数据表存入list中</title>
+        <meta name="description" content="1 Python3安装pymysql第三方模块 2 操作Mysql数据库 3 封装成函数调用     Python2中是MySQLdb模块。 Python3中没有MySQLdb模块了，所以使用pymy" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">python连接MySQL数据库并读取数据库中的数据表存入list中</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3> </h3> <ul> <li><a href="#1_Python3pymysql_2" rel="nofollow">1 Python3安装pymysql第三方模块</a></li> <li><a href="#2_Mysql_10" rel="nofollow">2 操作Mysql数据库</a></li> <li><a href="#3__20" rel="nofollow">3 封装成函数调用</a></li> </ul> </div> </h1> <ul> <li>Python2中是MySQLdb模块。</li> <li>Python3中没有MySQLdb模块了，所以使用<strong>pymysql</strong> </li> </ul> <pre><code class="prism language-powershell">conda install pymysql </code></pre> </h1> <ol> <li>创建连接，指定数据库的ip地址，账号、密码、端口号、要操作的数据库、字符集</li> <li>创建游标</li> <li>执行sql</li> <li>获取结果</li> <li>关闭游标</li> <li>连接关闭</li> </ol> <p>详细可参考：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/hwtfamily/p/8982836.html"  rel="nofollow">https://www.cnblogs.com/hwtfamily/p/8982836.html</a></p> </h1> <p>以下代码亲测可用，配有详细注释：</p> <pre><code class="prism language-python"><span class="token comment"># -*- coding:utf-8 -*-</span> <span class="token comment"># 从MySQL数据库的数据表中读取每一行数据放入列表中，最后返回一个完整的列表</span>  <span class="token keyword">import</span> pymysql  <span class="token keyword">def</span> <span class="token function">get_mysql_list</span><span class="token punctuation">(</span>database<span class="token punctuation">,</span>table_name<span class="token punctuation">)</span><span class="token punctuation">:</span>     <span class="token comment">#  创建连接，指定数据库的ip地址，账号、密码、端口号、要操作的数据库、字符集</span>     host<span class="token punctuation">,</span>user<span class="token punctuation">,</span>pwd <span class="token operator">=</span> <span class="token string">'ip'</span><span class="token punctuation">,</span><span class="token string">'root'</span><span class="token punctuation">,</span><span class="token string">''</span>     conn <span class="token operator">=</span> pymysql<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>host<span class="token operator">=</span>host<span class="token punctuation">,</span> user<span class="token operator">=</span>user<span class="token punctuation">,</span> passwd<span class="token operator">=</span>pwd<span class="token punctuation">,</span> db<span class="token operator">=</span>database<span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">3306</span><span class="token punctuation">,</span> charset<span class="token operator">=</span><span class="token string">'utf8'</span><span class="token punctuation">)</span>    <span class="token comment"># port必须写int类型,MySQL的默认端口为3306. charset必须写utf8</span>     <span class="token comment"># 创建游标</span>     cursor <span class="token operator">=</span> conn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token comment"># 执行sql语句</span>     sql <span class="token operator">=</span> <span class="token string">'select * from %s ;'</span> <span class="token operator">%</span> table_name     cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>sql<span class="token punctuation">)</span>      <span class="token comment"># 获取到sql执行的全部结果</span>     results <span class="token operator">=</span> cursor<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span>     table_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>     <span class="token keyword">for</span> r <span class="token keyword">in</span> results<span class="token punctuation">:</span>         table_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 由于fetchall方法返回的一个元组，需要每一行为列表形式的数据，将其转换为list类型。</span>      cursor<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">#关闭游标</span>     conn<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment">#关闭连接</span>          <span class="token keyword">return</span> <span class="token builtin">list</span><span class="token punctuation">(</span>table_list<span class="token punctuation">)</span> <span class="token comment"># 返回一个完整的列表数据</span>   <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>     x<span class="token operator">=</span>get_mysql_list<span class="token punctuation">(</span><span class="token string">'spidersData'</span><span class="token punctuation">,</span> <span class="token string">'词典'</span><span class="token punctuation">)</span>     <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-36177.htm">猫喜欢你的10种表现（猫主动爬你身上说明了什么）</a></p>
+                                        <p>下一个：<a href="/news/article-36473.htm">virtualenv介绍及基本使用</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-23263.htm" title="猫咪疫苗要打多少针才有效（猫咪疫苗打几针比较好）">猫咪疫苗要打多少针才有效（猫咪疫苗打几针比较好）</a></li>
+                        <li class="py-2"><a href="/news/article-35812.htm" title="助理宠物医师资格证报考条件（助理宠物医师资格证报考条件及要求）">助理宠物医师资格证报考条件（助理宠物医师资格证报考条件及要求）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-subscribe-node.htm" title="11月11日→22.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月11日→22.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-16-free-v2ray-subscribe.htm" title="10月16日→22.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月16日→22.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-v2ray-subscribe.htm" title="11月16日→20.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月16日→20.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-30751.htm" title="Vue+SpringBoot实现Excel在线预览功能">Vue+SpringBoot实现Excel在线预览功能</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-10-free-v2ray.htm" title="10月10日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月10日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-free-v2ray-subscribe.htm" title="11月5日→18.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月5日→18.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24194.htm" title="js+jQuery实现网页打字机效果（带光标）">js+jQuery实现网页打字机效果（带光标）</a></li>
+                        <li class="py-2"><a href="/news/article-33118.htm" title="宠物粮生产机器厂家 宠物粮生产机器厂家排名">宠物粮生产机器厂家 宠物粮生产机器厂家排名</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

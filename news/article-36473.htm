@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-36473.htm" />
+    <meta charset="utf-8" />
+    <title>virtualenv介绍及基本使用</title>
+        <meta name="description" content="1.virtualenv介绍   2.安装virtualenv   3.virtualenv运行使用   4.virtualenv其他命令   综合    1.virtualenv介绍  在pytho" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">virtualenv介绍及基本使用</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <hr/> <blockquote> <ul> <li> <p>1.virtualenv介绍</p> </li> <li> <p>2.安装virtualenv</p> </li> <li> <p>3.virtualenv运行使用</p> </li> <li> <p>4.virtualenv其他命令</p> </li> <li> <p>综合</p> </li> </ul> </blockquote> <h2 id="1virtualenv介绍">1.virtualenv介绍</h2> <hr/> <p>在python开发中，我们可能会遇到一种情况，就是当前的项目依赖的是某一个版本，但是另一个项目依赖的是另一个版本，这样就会造成依赖冲突，而virtualenv就是解决这种情况的，virtualenv通过创建一个虚拟化的python运行环境，将我们所需的依赖安装进去的，不同项目之间相互不干扰，如下所示。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220819/405dea049cfc1f3ce9ca502193e7e15d.jpg" alt="virtualenv介绍及基本使用"></p> <h2 id="2安装virtualenv">2.安装virtualenv</h2> <hr/> <p>安装virtualenv比较简单，无论是在linux系统上还是windows上都可以通过<strong>pip</strong>来进行安装，如下：</p> <pre class="prettyprint"><code class="hljs cmake">pip<span class="hljs-keyword">install</span> virtualenv</code></pre> <p>如果安装不成功也可以下载virtualenv源码package，通过执行setup.py来安装virtualenv。同时因为python2和python3的不同，因此也有了两种pip和pip3两种python包安装工具，而两种工具安装的virtualenv也是不相同的，py2安装的virtualenv虚拟化出来的python运行环境是python2的，py3安装的virtualenv默认虚拟化环境则是python3的。</p> <h2 id="3virtualenv运行使用">3.virtualenv运行使用</h2> <hr/> <h3 id="31-创建虚拟化环境">3.1 创建虚拟化环境</h3> <hr/> <p>使用pycharm来作为本示例的编辑器，选择python2.7工作环境，新建工程<strong>virtualenvDemo</strong>,在控制台中输入命令：</p> <pre class="prettyprint"><code class="hljs">virtualenv venv</code></pre> <p>这时候便会在当前的项目中创建venv文件夹，为当前项目的虚拟python运行环境，如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220819/c4a6c95381ea72ca0a8c9a5dbc972797.jpg" alt="virtualenv介绍及基本使用"></p> <p>我本机此时默认的python环境为python2.7，那么此时创建的虚拟环境就是以python2.7创建的虚拟化环境，如果需要选择一个python解释器来创建虚拟化环境，命令则为：</p> <pre class="prettyprint"><code class="hljs lasso">virtualenv<span class="hljs-attribute">-p</span> /usr/bin/python2<span class="hljs-number">.7</span> venv</code></pre> <p>此时还需将当前工程的interpreter改为当前的虚拟环境，要不然会不起作用，这个不再详述。</p> <h3 id="32-启用">3.2 启用</h3> <hr/> <p>激活虚拟化环境的命令为：</p> <pre class="prettyprint"><code class="hljs bash"><span class="hljs-built_in">source</span> venv/bin/activate</code></pre> <p>激活后，在控制台会有一个带有(venv)的标志，如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220819/85704bf5af12185b5cd9359c69055a8e.jpg" alt="virtualenv介绍及基本使用"></p> <h3 id="33安装依赖">3.3安装依赖</h3> <hr/> <p>在以上完成之后就可以通过命令pip install 来安装python包了，这里安装python包就不需要root权限了，直接就可以安装十分方便。在venv的环境中，使用pip安装的包都不会再是全局性的包，只会在当前的虚拟环境中起作用，避免了污染系统环境。</p> <h3 id="34-退出当前系统环境">3.4 退出当前系统环境</h3> <hr/> <p>在控制台中输入命令deactivate后，就会推出当前的venv虚拟化环境。</p> <h2 id="4virtualenv其他命令">4.virtualenv其他命令</h2> <hr/> <p>virtualenv各种其他命令如下：</p> <p>“`<br /> 用法:</p> <p>$ virtualenv [OPTIONS] DEST_DIR<br /> 选项:<br /> –version<br /> 显示当前版本号。<br /> -h, –help<br /> 显示帮助信息。<br /> -v, –verbose<br /> 显示详细信息。<br /> -q, –quiet<br /> 不显示详细信息。<br /> -p PYTHON_EXE, –python=PYTHON_EXE<br /> 指定所用的python解析器的版本，比如 –python=python2.5 就使用2.5版本的解析器创建新的隔离环境。 默认使用的是当前系统安装(/usr/bin/python)的python解析器<br /> –clear<br /> 清空非root用户的安装，并重头开始创建隔离环境。<br /> –no-site-packages<br /> 令隔离环境不能访问系统全局的site-packages目录。<br /> –system-site-packages<br /> 令隔离环境可以访问系统全局的site-packages目录。<br /> –unzip-setuptools<br /> 安装时解压Setuptools或Distribute<br /> –relocatable<br /> 重定位某个已存在的隔离环境。使用该选项将修正脚本并令所有.pth文件使用相当路径。<br /> –distribute<br /> 使用Distribute代替Setuptools，也可设置环境变量VIRTUALENV_DISTRIBUTE达到同样效要。<br /> –extra-search-dir=SEARCH_DIRS<br /> 用于查找setuptools/distribute/pip发布包的目录。可以添加任意数量的–extra-search-dir路径。<br /> –never-download<br /> 禁止从网上下载任何数据。此时，如果在本地搜索发布包失败，virtualenv就会报错。<br /> –prompt==PROMPT<br /> 定义隔离环境的命令行前缀。<br /> “`</p> <h2 id="5综上">5.综上</h2> <hr/> <ul> <li> <p>virtualenv就是一个搭建虚拟化的python环境，便于不同的项目在同一台机器上开发运行。</p> </li> <li> <p>virtualenv更多的还是适用于本地开发不同的项目，但是在生产环境中还是使用docker给不同的项目创建不同的容器，各自分开运行为好，不宜放在一个单独的物理机中运行。</p> </li> </ul> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-36472.htm">python连接MySQL数据库并读取数据库中的数据表存入list中</a></p>
+                                        <p>下一个：<a href="/news/article-36958.htm">分享MySQL生产库内存异常增高的排查过程_Mysql_</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-free-v2ray-subscribe.htm" title="Mac V2ray|1月6日→21.2M/S|最新SSR/Clash/V2ray/Shadowrocket免费节点链接地址">Mac V2ray|1月6日→21.2M/S|最新SSR/Clash/V2ray/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-30752.htm" title="猫不打疫苗为什么不能绝育（为什么猫不打疫苗不能洗澡）">猫不打疫苗为什么不能绝育（为什么猫不打疫苗不能洗澡）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share-links.htm" title="11月4日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月4日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-23726.htm" title="中国农大动物医院怎么样啊好吗（中国农大动物医院怎么样啊好吗多少钱）">中国农大动物医院怎么样啊好吗（中国农大动物医院怎么样啊好吗多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-node-subscribe-links.htm" title="11月25日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月25日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-free-v2ray-subscribe.htm" title="11月5日→18.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月5日→18.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-node-share-links.htm" title="12月31日→18.3M/S|2025年最新免费节点Mac V2ray订阅链接地址">12月31日→18.3M/S|2025年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-23-free-node-subscribe-links.htm" title="12月23日→21.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月23日→21.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-clash-v2ray-ss-ssr.htm" title="12月8日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月8日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-18719.htm" title="国内生产宠物粮的上市公司有几家（中国宠物粮生产企业）">国内生产宠物粮的上市公司有几家（中国宠物粮生产企业）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
