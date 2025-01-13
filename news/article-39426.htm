@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-39426.htm" />
+    <meta charset="utf-8" />
+    <title>PHP回调/可调用对象详解</title>
+        <meta name="description" content="定义和用法 回调是PHP中的伪类型。在PHP 5.4中，引入了Callable类型提示，类似于Callback。当某个对象被标识为可调用时，意味着它可以用作可调用的函数。可调用对象可以是内置的或用户定" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">PHP回调/可调用对象详解</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h2>定义和用法</h2> <p>回调是PHP中的伪类型。在PHP 5.4中，引入了Callable类型提示，类似于Callback。当某个对象被标识为可调用时，意味着它可以用作可调用的函数。可调用对象可以是内置的或用户定义的函数，也可以是任何类内的方法。</p> <p>is_callable()函数可用于验证标识符是否可调用。PHP的call_user_function()接受函数名称作为参数。</p> <p>以下示例显示了一个内置函数是可调用的。</p> <h2>示例</h2> <pre>&lt;?php var_dump&nbsp;(is_callable("abs")); ?&gt;</pre> <p>输出结果</p> <p>这将产生以下结果-</p> <pre>bool(true)</pre> <p>在以下示例中，测试了用户定义的函数是否可调用。</p> <h2>示例</h2> <pre>&lt;?php function&nbsp;myfunction(){ &nbsp;&nbsp;&nbsp;echo&nbsp;"Hello&nbsp;World"; } echo&nbsp;is_callable("myfunction")&nbsp;.&nbsp;"\n"; call_user_func("myfunction") ?&gt;</pre> <p>输出结果</p> <p>这将产生以下结果-</p> <pre>1 Hello&nbsp;World</pre> <p>为了将对象方法作为可调用方法传递，对象本身及其方法作为数组中的两个元素传递</p> <h2>示例</h2> <pre>&lt;?php class&nbsp;myclass{ &nbsp;&nbsp;&nbsp;function&nbsp;mymethod(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"This&nbsp;is&nbsp;a&nbsp;callable"&nbsp;.&nbsp;"\n"; &nbsp;&nbsp;&nbsp;} } $obj=new&nbsp;myclass(); call_user_func(array($obj,&nbsp;"mymethod")); //array&nbsp;passed&nbsp;in&nbsp;literal&nbsp;form call_user_func([$obj,&nbsp;"mymethod"]); ?&gt;</pre> <p>输出结果</p> <p>这将产生以下结果-</p> <pre>This&nbsp;is&nbsp;a&nbsp;callable This&nbsp;is&nbsp;a&nbsp;callable</pre> <p>类中的静态方法也可以作为可调用方法传递。类的名称应该是数组参数中的第一个元素，而不是对象</p> <h2>示例</h2> <pre>&lt;?php class&nbsp;myclass{ &nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;mymethod(){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"This&nbsp;is&nbsp;a&nbsp;callable"&nbsp;.&nbsp;"\n"; &nbsp;&nbsp;&nbsp;} } $obj=new&nbsp;myclass(); call_user_func(array("myclass",&nbsp;"mymethod")); //using&nbsp;scope&nbsp;resolution&nbsp;operator call_user_func("myclass::mymethod"); ?&gt;</pre> <p>输出结果</p> <p>这将产生以下结果-</p> <pre>This&nbsp;is&nbsp;a&nbsp;callable This&nbsp;is&nbsp;a&nbsp;callable</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-38908.htm">关于不宜养狗的4个属相男人图片的信息</a></p>
+                                        <p>下一个：<a href="/news/article-39427.htm">三国杀新武将台词大全集（三国杀最新武将台词）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-19148.htm" title="哈尔滨宠物上门回收电话（哈尔滨宠物狗上门回收）">哈尔滨宠物上门回收电话（哈尔滨宠物狗上门回收）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-20-free-v2ray.htm" title="10月20日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月20日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-free-high-speed-nodes.htm" title="12月25日→21.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月25日→21.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-free-subscribe-node.htm" title="12月24日→18.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月24日→18.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-node-share-links.htm" title="10月15日→22.5M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月15日→22.5M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-31692.htm" title="宠物粮食加工厂挣钱吗知乎视频大全（宠物粮食加工厂设备）">宠物粮食加工厂挣钱吗知乎视频大全（宠物粮食加工厂设备）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-free-high-speed-nodes.htm" title="Mac V2ray|1月8日→20.3M/S|最新Clash/V2ray/Shadowrocket/SSR免费节点链接地址">Mac V2ray|1月8日→20.3M/S|最新Clash/V2ray/Shadowrocket/SSR免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-34545.htm" title="猫咪打疫苗多少钱一只（猫猫打疫苗多少钱一次）">猫咪打疫苗多少钱一只（猫猫打疫苗多少钱一次）</a></li>
+                        <li class="py-2"><a href="/news/article-36472.htm" title="python连接MySQL数据库并读取数据库中的数据表存入list中">python连接MySQL数据库并读取数据库中的数据表存入list中</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-clash-v2ray-ss-ssr.htm" title="12月8日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月8日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
