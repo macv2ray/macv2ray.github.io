@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-40896.htm" />
+    <meta charset="utf-8" />
+    <title>k8s入门之ConfigMap(九)_在线工具</title>
+        <meta name="description" content="ConfigMap是k8s的配置管理工具，通常用来保存明文的配置信息，以key-value形式传递配置。 一、使用命令创建ConfigMap对象 1.通过--from-literal参数创建 kube" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">k8s入门之ConfigMap(九)_在线工具</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>ConfigMap是k8s的配置管理工具，通常用来保存明文的配置信息，以key-value形式传递配置。</p> <p><strong>一、使用命令创建ConfigMap对象</strong></p> <p><strong>1.通过--from-literal参数创建</strong></p> <pre><code>kubectl create configmap mycm1 --from-literal=appid=order-app --from-literal=appsecret=dfdg12342</code></pre> <p><strong>（1）查看创建结果</strong></p> <pre><code>kubectl get secret</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/dd6c13b951762f103bc6eaabddc95e6a.jpg" alt="k8s入门之ConfigMap(九)_在线工具"></p> <p><strong>（2）使用describe命令查看详情</strong></p> <pre><code>kubectl describe secret mysecret1</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/12b368f906fafef6bb1ae0e3e53dd1c7.jpg" alt="k8s入门之ConfigMap(九)_在线工具"></p> <p><strong>（3）输出yaml文件格式查看详情</strong></p> <pre><code>kubectl get secret mysecret1 -o yaml</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/649058a18e24b198540b0c360ee8da1a.jpg" alt="k8s入门之ConfigMap(九)_在线工具"></p> <p><strong>2.通过已有的应用配置文件创建</strong></p> <p><strong>（1）创建一个应用的配置文件</strong></p> <pre><code>vi appsettings.json</code></pre> <p><strong>（2）写入以下测试内容</strong></p> <pre><code>{   "Logging": {     "LogLevel": {       "Default": "Information",       "Microsoft": "Warning",       "Microsoft.Hosting.Lifetime": "Information"     }   },   "AllowedHosts": "*" }</code></pre> <p><strong>（3）使用--from-file参数指定该文件</strong></p> <pre><code>kubectl create cm mycm2 --from-file=appsettings.json</code></pre> <p><font color="red">--from-file可以使用多次；也可以使用目录，表示该目录下所有的配置文件都会创建成cm对象，默认key为文件名。</font></p> <p><strong>（4）查看创建结果</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/7375ada01292f94523fb523fcb36a649.jpg" alt="k8s入门之ConfigMap(九)_在线工具"></p> <p><strong>二、使用yaml文件创建ConfigMap</strong></p> <p><strong>1.创建yaml文件</strong></p> <pre><code>vi cm-my3.yaml</code></pre> <p><strong>2.编写yaml文件内容</strong></p> <pre><code>apiVersion: v1 kind: ConfigMap metadata:    name: mycm3 data:   ordersvc-conf: |+     IP: "192.168.59.110" &nbsp;&nbsp;&nbsp;&nbsp;Port:&nbsp;10000</code></pre> <p><strong>3.执行创建命令</strong></p> <pre><code>kubectl apply -f cm-my3.yaml</code></pre> <p><strong>4.查看创建结果</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/99ed2c8074fa060e35d35ad059cef2ac.jpg" alt="k8s入门之ConfigMap(九)_在线工具"></p> <p><strong>三、使用ConfigMap对象</strong></p> <p><strong>1.通过环境变量的形式</strong></p> <p>liunx自带的命令env，用来查看当前系统的环境变量，我们可以把cm对象设置到环境变量上来查看。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/d29e50585a7a070146237004df1112d7.jpg" alt="k8s入门之ConfigMap(九)_在线工具"></p> <p><strong>（1）新建pod对象的yaml文件</strong></p> <pre><code>vi mycm1-env.yaml</code></pre> <p>（2）编写yaml文件内容</p> <pre><code> apiVersion: v1 kind: Pod metadata:   name: pod-test-mycm1 spec:   containers:   - name: pod-test-mycm1-bb     image: busybox     command: ["/bin/sh", "-c", "env"]     # 从cm对象中获取对应key的值赋值给环境变量     env:     - name: APPID       valueFrom:         configMapKeyRef:           name: mycm1           key: appid     - name: APPSECRET       valueFrom:         configMapKeyRef:           name: mycm1           key: appsecret</code></pre> <p>（3）创建pod</p> <pre><code>kubectl create -f mycm1-env.yaml</code></pre> <p><strong>（4）查看pod，在默认名称空间下</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/2ce2f0cd2402b51f8e94c43bcc914a06.jpg" alt="k8s入门之ConfigMap(九)_在线工具"></p> <p>通过查看此pod的日志，可以看到输出的环境变量信息是mycm1对象的信息</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/fa3a5e8be719a352404e002d421445b9.jpg" alt="k8s入门之ConfigMap(九)_在线工具"></p> <p><strong>2.通过vloume挂载方式</strong></p> <p><strong>（1）新建pod对象的yaml文件</strong></p> <pre><code>vi mycm2-volume.yaml</code></pre> <p>（2）编写yaml文件内容</p> <pre><code>apiVersion: v1 kind: Pod metadata:   name: pod-test-mycm2 spec:   containers:   - name: pod-test-mycm2-bb     image: busybox     command: ["/bin/sh", "-c", "cat /etc/cms/my-appsettings.json"]     volumeMounts:     - name: cms       mountPath: /etc/cms   volumes:   - name: cms     configMap:      name: mycm2      items:      # 把cm对象挂载到文件名      - key: appsettings.json &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path:&nbsp;my-appsettings.json</code></pre> <p><strong>（3）创建pod</strong></p> <pre><code>kubectl create -f mycm2-volume.yaml</code></pre> <p><strong>（4）查看pod，在默认名称空间下</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/0f84dea432f64fe3ef0575117a285de4.jpg" alt="k8s入门之ConfigMap(九)_在线工具"></p> <p>通过查看此pod的日志，可以看到输出的信息是mycm2对象中的数据</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/46818514f2396010f055e54d8dace4b0.jpg" alt="k8s入门之ConfigMap(九)_在线工具"></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-40404.htm">猫抓伤后11天死了（被猫抓伤后猫十天不死就没事了吗?）</a></p>
+                                        <p>下一个：<a href="/news/article-40897.htm">开个宠物食品店需要什么证 开个宠物食品店需要什么证件</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-29794.htm" title="被猫咬了没有打针会不会致命（被猫咬了没打针会传染吗）">被猫咬了没有打针会不会致命（被猫咬了没打针会传染吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-17-free-v2ray-subscribe.htm" title="11月17日→22.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月17日→22.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-39427.htm" title="三国杀新武将台词大全集（三国杀最新武将台词）">三国杀新武将台词大全集（三国杀最新武将台词）</a></li>
+                        <li class="py-2"><a href="/news/article-32170.htm" title="Rabbit MQ 怎么保证可靠性、幂等性、消费顺序">Rabbit MQ 怎么保证可靠性、幂等性、消费顺序</a></li>
+                        <li class="py-2"><a href="/news/article-36177.htm" title="猫喜欢你的10种表现（猫主动爬你身上说明了什么）">猫喜欢你的10种表现（猫主动爬你身上说明了什么）</a></li>
+                        <li class="py-2"><a href="/news/article-34074.htm" title="欧拉定理的C ++程序">欧拉定理的C ++程序</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-high-speed-nodes.htm" title="11月26日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月26日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-20522.htm" title="楼房养猫的十大禁忌（猫爬过的床单有细菌吗）">楼房养猫的十大禁忌（猫爬过的床单有细菌吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-10-free-v2ray.htm" title="10月10日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月10日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-22356.htm" title="穷人养什么狗（适合穷人养的狗有哪些又不会乱叫）">穷人养什么狗（适合穷人养的狗有哪些又不会乱叫）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
