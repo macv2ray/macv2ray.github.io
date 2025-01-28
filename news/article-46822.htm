@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-46822.htm" />
+    <meta charset="utf-8" />
+    <title>Eureka Server及Client 配置信息详解</title>
+        <meta name="description" content="文章目录  EurekaDashboardProperties（仪表盘配置） EurekaClientConfigBean(客户端配置Bean) EurekaServerConfigBean (服务配" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Mac V2ray机场节点订阅分享">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://macv2ray.github.io/news/article-46822.htm" />
+    <meta property="og:site_name" content="Mac V2ray机场节点订阅分享" />
+    <meta property="og:title" content="Eureka Server及Client 配置信息详解" />
+    <meta property="og:image" content="https://macv2ray.github.io/uploads/20240907-2/df3dbe783682fa1ef6cd9a4468936e09.webp" />
+        <meta property="og:release_date" content="2025-01-27T08:17:46" />
+    <meta property="og:updated_time" content="2025-01-27T08:17:46" />
+        <meta property="og:description" content="文章目录  EurekaDashboardProperties（仪表盘配置） EurekaClientConfigBean(客户端配置Bean) EurekaServerConfigBean (服务配" />
+        
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Eureka Server及Client 配置信息详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">Eureka Server及Client 配置信息详解</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#EurekaDashboardProperties_5" rel="nofollow">EurekaDashboardProperties（仪表盘配置）</a></li> <li><a href="#EurekaClientConfigBeanBean_13" rel="nofollow">EurekaClientConfigBean(客户端配置Bean)</a></li> <li><a href="#EurekaServerConfigBean_Bean_66" rel="nofollow">EurekaServerConfigBean (服务配置Bean)</a></li> </ul> </div> <hr/> </h1> <blockquote> <p>仪表盘即前端管理界面： 配置： eureka.dashboard.名称</p> </blockquote> <table> <thead> <tr> <th>名称</th> <th>默认值</th> <th>说明</th> </tr> </thead> <tbody> <tr> <td>path</td> <td>/</td> <td>访问仪表盘的路径</td> </tr> <tr> <td>enable</td> <td>true</td> <td>是否开启仪表盘</td> </tr> </tbody> </table> </h1> <blockquote> <ol> <li>配置前缀 eureka.client.</li> <li>详细参考：spring-cloud-netflix-eureka-client.jar下“META-INF/spring-configtion-metadata.json”</li> </ol> </blockquote> <table> <thead> <tr> <th>名称</th> <th>默认值</th> <th>说明</th> </tr> </thead> <tbody> <tr> <td>enabled</td> <td>true</td> <td>客户端是否已启用</td> </tr> <tr> <td>EurekaTransportConfig transport</td> <td>new CloudEurekaTransportConfig()</td> <td></td> </tr> <tr> <td>registryFetchIntervalSeconds</td> <td>30</td> <td>从Eureka服务端获取注册表间隔时间（秒）</td> </tr> <tr> <td>instanceInfoReplicationIntervalSeconds</td> <td>30</td> <td>实例信息复制到Eureka服务器间隔时间30（秒）</td> </tr> <tr> <td>initialInstanceInfoReplicationIntervalSeconds</td> <td>40</td> <td>初始化实例信息复制到Eureka服务器间隔时间（秒）</td> </tr> <tr> <td>eurekaServiceUrlPollIntervalSeconds</td> <td>300</td> <td>客户端循环Eureka服务器端URL间隔时间</td> </tr> <tr> <td>proxyPort</td> <td></td> <td>代理端口</td> </tr> <tr> <td>proxyHost</td> <td></td> <td>代理主机</td> </tr> <tr> <td>proxyUserName</td> <td></td> <td>代理用户名</td> </tr> <tr> <td>proxyPassword</td> <td></td> <td>代理密码</td> </tr> <tr> <td>eurekaServerReadTimeoutSeconds</td> <td>8</td> <td>读取Eureka服务端超时时间（秒）</td> </tr> <tr> <td>eurekaServerConnectTimeoutSeconds</td> <td>5</td> <td>连接Eureka服务端超时时间（秒）</td> </tr> <tr> <td>backupRegistryImpl</td> <td></td> <td>回退注册表信息实现，只有当Eureka客户端第一次启动有效</td> </tr> <tr> <td>eurekaServerTotalConnections</td> <td>200</td> <td>连接Eureka服务器端总连接数</td> </tr> <tr> <td>eurekaServerTotalConnectionsPerHost</td> <td>50</td> <td>连接Eureka服务器端主机总连接数</td> </tr> <tr> <td>eurekaServerURLContext</td> <td></td> <td>获取Eureka服务器端URL上下文，当URL列表来自DNS时需要设置。</td> </tr> <tr> <td>eurekaServerPort</td> <td></td> <td>Eureka服务端端口号</td> </tr> <tr> <td>eurekaServerDNSName</td> <td></td> <td>Eureka服务器端DNS名称，当需要开启DNS动态更新Eureka服务端URLS</td> </tr> <tr> <td>region</td> <td>“us-east-1”</td> <td>实例所在区域</td> </tr> <tr> <td>eurekaConnectionIdleTimeoutSeconds</td> <td>30</td> <td>Eureka连接空闲超时时间（秒），即HTTP在关闭之前可以保持空闲</td> </tr> <tr> <td>registryRefreshSingleVipAddress</td> <td></td> <td>刷新单个VIP地址注册表</td> </tr> <tr> <td>heartbeatExecutorThreadPoolSize</td> <td>2</td> <td>心跳执行器线程池大小</td> </tr> <tr> <td>heartbeatExecutorExponentialBackOffBound</td> <td>10</td> <td>心跳执行器指数回退边界，是重试延迟最大倍值。</td> </tr> <tr> <td>cacheRefreshExecutorThreadPoolSize</td> <td>2</td> <td>缓存刷新执行器线程池大小</td> </tr> <tr> <td>cacheRefreshExecutorExponentialBackOffBound</td> <td>10</td> <td>缓存刷新执行器指数回退边界，是重试延迟最大倍值。</td> </tr> <tr> <td>serviceUrl</td> <td>HashMap(String,String)</td> <td>服务器端URLMap</td> </tr> <tr> <td>gZipContent</td> <td>true</td> <td>开启gZip压缩内容</td> </tr> <tr> <td>useDnsForFetchingServiceUrls</td> <td>false</td> <td>使用DNS获取服务端URL列表</td> </tr> <tr> <td>registerWithEureka</td> <td>true</td> <td>注册实例到Eureka服务器端</td> </tr> <tr> <td>preferSameZoneEureka</td> <td>true</td> <td>首选同一区域Eureka服务</td> </tr> <tr> <td>logDeltaDiff</td> <td>false</td> <td>对数增量差异</td> </tr> <tr> <td>disableDelta</td> <td>false</td> <td>开启增量</td> </tr> <tr> <td>fetchRemoteRegionsRegistry</td> <td></td> <td>获取远程区域注册表</td> </tr> <tr> <td>availabilityZones</td> <td>HashMap(String,String)</td> <td>可用区域</td> </tr> <tr> <td>filterOnlyUpInstances</td> <td>true</td> <td>仅刷选UP实例</td> </tr> <tr> <td>fetchRegistry</td> <td>true</td> <td>获取注册表</td> </tr> <tr> <td>dollarReplacement</td> <td>_-</td> <td>替换美元号，在序列化和反序列化时</td> </tr> <tr> <td>escapeCharReplacement</td> <td>__</td> <td>转义字符替换，在序列化和反序列化时</td> </tr> <tr> <td>allowRedirects</td> <td>false</td> <td>允许重定向，即是否可重定向到从集群</td> </tr> <tr> <td>onDemandUpdateStatusChange</td> <td>true</td> <td>按需更新状态更改，本地状态更新触发远程注册或更新</td> </tr> <tr> <td>encoderName</td> <td>false</td> <td>编码器名称</td> </tr> <tr> <td>decoderName</td> <td>false</td> <td>解码器名称</td> </tr> <tr> <td>clientDataAccept</td> <td>EurekaAccept.full.name</td> <td>客户端数据接受</td> </tr> <tr> <td>shouldUnregisterOnShutdown</td> <td>ture</td> <td>实例下线时注销在Eureka服务器端的信息</td> </tr> <tr> <td>shouldEnforceRegistrationAtInit</td> <td>false</td> <td>在初始化时是否强制注册</td> </tr> <tr> <td>order</td> <td>0</td> <td>排序</td> </tr> </tbody> </table> </h1> <blockquote> <ol> <li>配置前缀 eureka.server.</li> <li>详细参考：spring-cloud-netflix-eureka-server.jar下“META-INF/spring-configtion-metadata.json”</li> </ol> </blockquote> <table> <thead> <tr> <th>名称</th> <th>默认值</th> <th>说明</th> </tr> </thead> <tbody> <tr> <td>aWSAccessId</td> <td></td> <td></td> </tr> <tr> <td>aWSSecretKey</td> <td></td> <td></td> </tr> <tr> <td>eIPBindRebindRetries</td> <td>3</td> <td>eIP 重试绑定次数</td> </tr> <tr> <td>eIPBindingRetryIntervalMs</td> <td>5 * MINUTES</td> <td>eIP重试绑定间隔时间（毫秒）</td> </tr> <tr> <td>eIPBindingRetryIntervalMsWhenUnbound</td> <td>1 * MINUTES</td> <td>eIP重试绑定时间间隔（毫秒）当未绑定时</td> </tr> <tr> <td>enableSelfPreservation</td> <td>true</td> <td>启用自我保护</td> </tr> <tr> <td>renewalPercentThreshold</td> <td>0.85</td> <td>续约百分比阀值</td> </tr> <tr> <td>renewalThresholdUpdateIntervalMs</td> <td>15 * MINUTES</td> <td>更新续约阀值间隔时间（毫秒）</td> </tr> <tr> <td>peerEurekaNodesUpdateIntervalMs</td> <td>10 * MINUTES</td> <td>对等Eureka节点更新间隔时间</td> </tr> <tr> <td>numberOfReplicationRetries</td> <td>5</td> <td>复制重试次数</td> </tr> <tr> <td>peerEurekaStatusRefreshTimeIntervalMs</td> <td>30 * 1000</td> <td>对等Eureka状态刷新时间间隔（毫秒）</td> </tr> <tr> <td>waitTimeInMsWhenSyncEmpty</td> <td>5 * MINUTES</td> <td>同步为空时的等待时间（毫秒</td> </tr> <tr> <td>peerNodeConnectTimeoutMs</td> <td>200</td> <td>对等节点连接超时时间（毫秒）</td> </tr> <tr> <td>peerNodeReadTimeoutMs</td> <td>200</td> <td>对等节点读取超时时间（毫秒）</td> </tr> <tr> <td>peerNodeTotalConnections</td> <td>1000</td> <td>对等节点总连接数</td> </tr> <tr> <td>peerNodeTotalConnectionsPerHost</td> <td>500</td> <td>对等节点主机总连接数</td> </tr> <tr> <td>peerNodeConnectionIdleTimeoutSeconds</td> <td>30</td> <td>对等节点连接空闲超时时间（秒）</td> </tr> <tr> <td>retentionTimeInMSInDeltaQueue</td> <td>3 * MINUTES</td> <td>增量队列中的保留时间（毫秒）</td> </tr> <tr> <td>deltaRetentionTimerIntervalInMs</td> <td>30 * 1000</td> <td>增量保留计时器间隔（毫秒）</td> </tr> <tr> <td>evictionIntervalTimerInMs</td> <td>60 * 1000</td> <td>去除计时器间隔时间（毫秒）</td> </tr> <tr> <td>aSGQueryTimeoutMs</td> <td>300</td> <td>aSG查询超时时间（毫秒）</td> </tr> <tr> <td>aSGUpdateIntervalMs</td> <td>5 * MINUTES</td> <td>aSG更新间隔时间（毫秒）</td> </tr> <tr> <td>aSGCacheExpiryTimeoutMs</td> <td>10 * MINUTES</td> <td>aSG缓存过期时间（毫秒）</td> </tr> <tr> <td>responseCacheAutoExpirationInSeconds</td> <td>180</td> <td>响应缓存自动过期时间（秒）</td> </tr> <tr> <td>responseCacheUpdateIntervalMs</td> <td>30 * 1000</td> <td>响应缓存更新时间时间（毫秒）</td> </tr> <tr> <td>useReadOnlyResponseCache</td> <td>true</td> <td>使用只读响应缓存</td> </tr> <tr> <td>disableDelta</td> <td>false</td> <td>禁用增量</td> </tr> <tr> <td>maxIdleThreadInMinutesAgeForStatusReplication</td> <td>10</td> <td>状态复制的最大空闲线程数（分钟）</td> </tr> <tr> <td>minThreadsForStatusReplication</td> <td>1</td> <td>状态复制的最小线程数</td> </tr> <tr> <td>maxThreadsForStatusReplication</td> <td>1</td> <td>状态复制的最大线程数</td> </tr> <tr> <td>maxElementsInStatusReplicationPool</td> <td>10000</td> <td>状态复制池中的最大元素数</td> </tr> <tr> <td>syncWhenTimestampDiffers</td> <td>true</td> <td>当时间戳不同时同步</td> </tr> <tr> <td>registrySyncRetries</td> <td>0</td> <td>注册表同步重试次数</td> </tr> <tr> <td>registrySyncRetryWaitMs</td> <td>30 * 1000</td> <td>注册表同步重试等待时间（毫秒）</td> </tr> <tr> <td>maxElementsInPeerReplicationPool</td> <td>10000</td> <td>对等复制池中的最大元素数</td> </tr> <tr> <td>maxIdleThreadAgeInMinutesForPeerReplication</td> <td>15</td> <td>对等复制的最大空闲线程时间（分钟）</td> </tr> <tr> <td>minThreadsForPeerReplication</td> <td>5</td> <td>对等复制最小线程数</td> </tr> <tr> <td>maxThreadsForPeerReplication</td> <td>20</td> <td>对等复制最大线程数</td> </tr> <tr> <td>maxTimeForReplication</td> <td>30000</td> <td>复制最长时间</td> </tr> <tr> <td>primeAwsReplicaConnections</td> <td>true</td> <td></td> </tr> <tr> <td>disableDeltaForRemoteRegions</td> <td>fasle</td> <td>禁用远程区域增量</td> </tr> <tr> <td>remoteRegionConnectTimeoutMs</td> <td>1000</td> <td>远程区域连接超时时间(毫秒)</td> </tr> <tr> <td>remoteRegionReadTimeoutMs</td> <td>1000</td> <td>远程区域读超时时间（毫秒）</td> </tr> <tr> <td>remoteRegionTotalConnections</td> <td>1000</td> <td>远程区域总连接数</td> </tr> <tr> <td>remoteRegionTotalConnectionsPerHost</td> <td>500</td> <td>远程区域主机总连接数</td> </tr> <tr> <td>remoteRegionConnectionIdleTimeoutSeconds</td> <td>30</td> <td>远程区域连接空闲超时时间（秒）</td> </tr> <tr> <td>gZipContentFromRemoteRegion</td> <td>true</td> <td>获取远程区域内容gZip压缩</td> </tr> <tr> <td>remoteRegionUrlsWithName</td> <td>Map&lt;String,String&gt;</td> <td>远程区域URL和名称</td> </tr> <tr> <td>remoteRegionUrls</td> <td>String[]</td> <td>远程区域URLS</td> </tr> <tr> <td>remoteRegionAppWhitelist</td> <td>HashMap&lt;String,Set&gt;</td> <td>远程区域APP白名单</td> </tr> <tr> <td>remoteRegionRegistryFetchInterval</td> <td>30</td> <td>远程区域注册表获取间隔时间</td> </tr> <tr> <td>remoteRegionFetchThreadPoolSize</td> <td>20</td> <td>远程区域获取线程池大小</td> </tr> <tr> <td>remoteRegionTrustStore</td> <td>“”</td> <td>远程区域信任存储</td> </tr> <tr> <td>remoteRegionTrustStorePassword</td> <td>“changeit”</td> <td>远程区域信任密码</td> </tr> <tr> <td>disableTransparentFallbackToOtherRegion</td> <td>false</td> <td>禁用透明回退到其他区域</td> </tr> <tr> <td>batchReplication</td> <td></td> <td>批量复制</td> </tr> <tr> <td>rateLimiterEnabled = false</td> <td>速率限制器是否启用</td> <td></td> </tr> <tr> <td>rateLimiterThrottleStandardClients</td> <td>false</td> <td>速率限制器节流标准客户端</td> </tr> <tr> <td>rateLimiterPrivilegedClients</td> <td>Collections.emptySet()</td> <td></td> </tr> <tr> <td>rateLimiterBurstSize</td> <td>10</td> <td>速率限制器并发大小</td> </tr> <tr> <td>rateLimiterRegistryFetchAverageRate</td> <td>500</td> <td>速率限制注册表获取平均速率</td> </tr> <tr> <td>rateLimiterFullFetchAverageRate</td> <td>100</td> <td>速率限制全取平均速率</td> </tr> <tr> <td>logIdentityHeaders</td> <td>true</td> <td>日志标识头</td> </tr> <tr> <td>listAutoScalingGroupsRoleName</td> <td>“ListAutoScalingGroups”</td> <td>列表自动缩放组角色名称</td> </tr> <tr> <td>enableReplicatedRequestCompression</td> <td>false</td> <td>启动复制请求压缩</td> </tr> <tr> <td>jsonCodecName</td> <td></td> <td>json编码器名称</td> </tr> <tr> <td>xmlCodecName</td> <td></td> <td>xml编码器名称</td> </tr> <tr> <td>route53BindRebindRetries</td> <td>3</td> <td></td> </tr> <tr> <td>route53BindingRetryIntervalMs</td> <td>5 * MINUTES</td> <td></td> </tr> <tr> <td>route53DomainTTL</td> <td>30</td> <td></td> </tr> <tr> <td>bindingStrategy</td> <td>AwsBindingStrategy.EIP</td> <td></td> </tr> <tr> <td>minAvailableInstancesForPeerReplication</td> <td>-1</td> <td>对等复制的最小可用实例数</td> </tr> <tr> <td>initialCapacityOfResponseCache</td> <td>1000</td> <td>响应缓存的初始容量</td> </tr> <tr> <td>expectedClientRenewalIntervalSeconds</td> <td>30</td> <td>预期客户端续订间隔时间（秒）</td> </tr> <tr> <td>useAwsAsgApi</td> <td>true</td> <td>使用AwsAsgApi</td> </tr> <tr> <td>myUrl</td> <td></td> <td></td> </tr> </tbody> </table> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-46345.htm">JSON.parse 和 JSON.stringify 详解_在线工具</a></p>
+                                        <p>下一个：<a href="/news/article-46823.htm">动物疫苗的种类有哪些图片及名称大全 动物疫苗的种类有哪些图片及名称大全集</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-31180.htm" title="python之33个关键字详解_Python之33个关键字是哪些">python之33个关键字详解_Python之33个关键字是哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-free-subscribe-node.htm" title="12月24日→18.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月24日→18.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-35811.htm" title="uniapp自定义弹窗组件">uniapp自定义弹窗组件</a></li>
+                        <li class="py-2"><a href="/news/article-26071.htm" title="上海宠物领养救助基地（上海宠物领养救助基地有哪些）">上海宠物领养救助基地（上海宠物领养救助基地有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-36473.htm" title="virtualenv介绍及基本使用">virtualenv介绍及基本使用</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-24-clash-v2ray-ss-ssr.htm" title="10月24日→21.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月24日→21.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-43374.htm" title="广州哪里有领养猫咪的地方（广州哪里有领养猫咪的地方）">广州哪里有领养猫咪的地方（广州哪里有领养猫咪的地方）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-node-subscribe-links.htm" title="12月14日→23M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月14日→23M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-22357.htm" title="动物防疫工作部署会议讲话（动物防疫工作部署会议讲话内容）">动物防疫工作部署会议讲话（动物防疫工作部署会议讲话内容）</a></li>
+                        <li class="py-2"><a href="/news/article-39900.htm" title="kafka生产者发送消息可靠性">kafka生产者发送消息可靠性</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
