@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-48263.htm" />
+    <meta charset="utf-8" />
+    <title>CEPH-4：ceph RadowGW对象存储功能详解</title>
+        <meta name="description" content="一个完整的ceph集群，可以提供块存储、文件系统和对象存储。 本节主要介绍对象存储RadosGw功能如何灵活的使用，集群背景： $ ceph -s    cluster:     id:     f0" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Mac V2ray机场节点订阅分享">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://macv2ray.github.io/news/article-48263.htm" />
+    <meta property="og:site_name" content="Mac V2ray机场节点订阅分享" />
+    <meta property="og:title" content="CEPH-4：ceph RadowGW对象存储功能详解" />
+    <meta property="og:image" content="https://macv2ray.github.io/uploads/20240907-2/5394cecfcf5a497e290f2d563798d4cf.webp" />
+        <meta property="og:release_date" content="2025-01-30T06:44:49" />
+    <meta property="og:updated_time" content="2025-01-30T06:44:49" />
+        <meta property="og:description" content="一个完整的ceph集群，可以提供块存储、文件系统和对象存储。 本节主要介绍对象存储RadosGw功能如何灵活的使用，集群背景： $ ceph -s    cluster:     id:     f0" />
+        
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="CEPH-4：ceph RadowGW对象存储功能详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                                                <a class="logo-wrap" href="/">
+                            <span>Mac V2ray</span>
+                        </a>
+                                            </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">关于</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="#">联系</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">CEPH-4：ceph RadowGW对象存储功能详解</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <p>一个完整的ceph集群，可以提供块存储、文件系统和对象存储。</p> <p>本节主要介绍对象存储RadosGw功能如何灵活的使用，集群背景：</p> <pre><code class="language-bash">$ ceph -s    cluster:     id:     f0a8789e-6d53-44fa-b76d-efa79bbebbcf     health: HEALTH_OK     services:     mon: 1 daemons, quorum a (age 2d)     mgr: a(active, since 2d)     mds: cephfs:1 {0=cephfs-a=up:active} 1 up:standby-replay     osd: 1 osds: 1 up (since 2d), 1 in (since 2d)     rgw: 1 daemon active (my.store.a)     data:     pools:   10 pools, 200 pgs     objects: 1.29k objects, 3.5 GiB     usage:   60 GiB used, 798 GiB / 858 GiB avail     pgs:     200 active+clean     io:     client:   852 B/s rd, 1 op/s rd, 0 op/s wr</code></pre> <h2 id="什么是对象存储">什么是对象存储</h2> <ol> <li>对象存储，又称键值存储，通过其接口指令，例如简单的GET、PUT、DEL等，向存储服务上传下载数据；</li> <li>对象存储中所有数据都被认为是一个对象。所以，任何数据都可以存入对象存储中，如图片、视频、<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://so.csdn.net/so/search?q=%E9%9F%B3%E9%A2%91&amp;spm=1001.2101.3001.7020"  target="_blank" rel="nofollow">音频</a>等；</li> <li>常见的对象存储厂商有Swift、S3等，ceph就支持Swift API和AWS S3两种标准。</li> </ol> <h2 id="ceph对象存储的构成">ceph对象存储的构成</h2> <p>Ceph对象存储是通过 RGW组件 来实现，什么是 rgw 呢？</p> <ol> <li>rgw全称Rados Gateway，是一种服务，使客户端能够利用标准对象存储API来访问ceph对象网关；</li> <li>ceph 0.8版本之后使用Civeweb的web服务器来响应api请求，说白了，rgw里边就是一个web服务；</li> <li>客户端使用http/https协议通过RESTful API与rgw通信；</li> <li>rgw通过librados与ceph集群通信，利用cephx加密协议与ceph存储通信；</li> <li>rgw通过bucket来实现数据存储和多用户的隔离；</li> <li>可以部署多个rgw，实现负载均衡及高可用。</li> </ol> <p>ceph RadosGW中有一个bucket桶的概念，一般项目或者分类会使用bucket来进行隔离，bucket的权限控制，想要操作某个bucket，操作用户必须有对此bucket的对应操作权限，bucket最终的数据其实还是通过PG来落盘到后端的osd存储中的。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e27bb8e8a9785c5b785ba4158279a75a.jpg" alt="CEPH-4：ceph RadowGW对象存储功能详解 "></p> <h2 id="radosgw存储池作用">RadosGW存储池作用</h2> <p>rgw安装流程请参考之前的部署文档，此处不在赘述，默认端口7480，能够curl通就表示安装成功：</p> <pre><code class="language-bash">$ curl 10.153.204.13:30080 &lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;ListAllMyBucketsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"&gt;&lt;Owner&gt;&lt;ID&gt;anonymous&lt;/ID&gt;&lt;DisplayName&gt;&lt;/DisplayName&gt;&lt;/Owner&gt;&lt;Buckets&gt;&lt;/Buckets&gt;&lt;/ListAllMyBucketsResult&gt;</code></pre> <blockquote> <p>我这里更改了默认端口，改为了30080</p> </blockquote> <p>rgw安装完毕后，会有一些默认创建的存储池：</p> <pre><code class="language-bash">$ ceph osd lspools | grep rgw  1 .rgw.root 3 my-store.rgw.control 6 my-store.rgw.meta 7 my-store.rgw.log 8 my-store.rgw.buckets.index 9 my-store.rgw.buckets.non-ec 10 my-store.rgw.buckets.data</code></pre> <p>这些存储池也是分为两种类型的，一种是元数据存储池，一种是数据存储池：</p> <ul> <li>.rgw.root : 包含realm（领域信息），比如zone和zonegroup。</li> <li>rgw.log：存储日志信息，用户记录各种log信息。</li> <li>rgw.control：系统控制池，在有数据更新时，通知其它RGW更新缓存。</li> <li>rgw.meta：元数据存储池，通过不同的名称空间分别存储不同的rados对象，这些名称空间包括用户的UID，及其Bucket映射信息的名称空间users.uid，用户的密钥名称空间users.keys，用户的emai名称空间users.email，用户的subuser的名称空间 users.swift，bucket的名称空间root等。</li> <li>rgw.buckets.index：存放bucket到object的索引信息。</li> <li>rgw.buckets.non-ec：数据的额外信息存储池。</li> <li>rgw.buckets.data：存放对象的数据</li> </ul> <h2 id="radosgw常用操作详解">RadosGW常用操作详解</h2> <p><strong>查看全部zone</strong></p> <pre><code class="language-bash">$ radosgw-admin zone list  {     "default_info": "a06a6df5-68a4-47f0-9afa-2ac1c09aee58",     "zones": [         "my-store"     ] }</code></pre> <blockquote> <p>默认为default，我这里更改名字叫my-store</p> </blockquote> <p><strong>查看zone详情</strong></p> <pre><code class="language-bash">$ radosgw-admin zone get --rgw-zone=my-store {     "id": "a06a6df5-68a4-47f0-9afa-2ac1c09aee58",     "name": "my-store",     "domain_root": "my-store.rgw.meta:root",     "control_pool": "my-store.rgw.control",     "gc_pool": "my-store.rgw.log:gc",     "lc_pool": "my-store.rgw.log:lc",     "log_pool": "my-store.rgw.log",     "intent_log_pool": "my-store.rgw.log:intent",     "usage_log_pool": "my-store.rgw.log:usage",     "roles_pool": "my-store.rgw.meta:roles",     "reshard_pool": "my-store.rgw.log:reshard",     "user_keys_pool": "my-store.rgw.meta:users.keys",     "user_email_pool": "my-store.rgw.meta:users.email",     "user_swift_pool": "my-store.rgw.meta:users.swift",     "user_uid_pool": "my-store.rgw.meta:users.uid",     "otp_pool": "my-store.rgw.otp",     "system_key": {         "access_key": "",         "secret_key": ""     },     "placement_pools": [         {             "key": "default-placement",             "val": {                 "index_pool": "my-store.rgw.buckets.index",                 "storage_classes": {                     "STANDARD": {                         "data_pool": "my-store.rgw.buckets.data"                     }                 },                 "data_extra_pool": "my-store.rgw.buckets.non-ec",                 "index_type": 0             }         }     ],     "realm_id": "" }</code></pre> <p><strong>radosgw创建新用户认证</strong></p> <pre><code class="language-bash">$ radosgw-admin user create --uid="vfan" --display-name="my vfan"{     "user_id": "vfan",     "display_name": "my vfan",     "email": "",     "suspended": 0,     "max_buckets": 1000,     "subusers": [],     "keys": [         {             "user": "vfan",             "access_key": "Q6VGP3LYMH99D0A9GUV0",             "secret_key": "NVDfq7CBJgpUnCXKqbgVuKvI3siWNbx0sRltClA4"         }     ],     "swift_keys": [],     "caps": [],     "op_mask": "read, write, delete",     "default_placement": "",     "default_storage_class": "",     "placement_tags": [],     "bucket_quota": {         "enabled": false,         "check_on_raw": false,         "max_size": -1,         "max_size_kb": 0,         "max_objects": -1     },     "user_quota": {         "enabled": false,         "check_on_raw": false,         "max_size": -1,         "max_size_kb": 0,         "max_objects": -1     },     "temp_url_keys": [],     "type": "rgw",     "mfa_ids": [] }</code></pre> <p><strong>新建一个子用户</strong></p> <p>为了给用户新建一个子用户 (Swift 接口) ，必须为该子用户指定用户的 ID(<code>--uid={username}</code>)，子用户的 ID 以及访问级别：</p> <pre><code class="language-bash">$ radosgw-admin subuser create --uid=vfan --subuser=vfan:swift --access=full {     "user_id": "vfan",     "display_name": "my vfan",     "email": "",     "suspended": 0,     "max_buckets": 1000,     "subusers": [         {             "id": "vfan:swift",             "permissions": "full-control"         }     ],     "keys": [         {             "user": "vfan",             "access_key": "Q6VGP3LYMH99D0A9GUV0",             "secret_key": "NVDfq7CBJgpUnCXKqbgVuKvI3siWNbx0sRltClA4"         }     ],     "swift_keys": [         {             "user": "vfan:swift",             "secret_key": "GrjjD8yJgr2khUCIeRmggNMWqnganFlhMKMMom9s"         }     ],     "caps": [],     "op_mask": "read, write, delete", }</code></pre> <blockquote> <p>--access=full并不仅仅代表读写，因为他还包括访问权限策略。</p> </blockquote> <p><strong>查看user列表</strong></p> <pre><code class="language-bash">$ radosgw-admin user list  [     "vfan",     "ceph-object-user" ]</code></pre> <p><strong>禁用或启动一个用户</strong></p> <p>创建账户后，默认是启用状态，可以将其设置为关闭状态：</p> <pre><code class="language-bash">## 停用一个用户 $ radosgw-admin user suspend --uid=vfan  ## 启用一个用户 $ radosgw-admin user enable --uid=vfan</code></pre> <blockquote> <p>主要是用户中的"suspended"值发生了变化，开启为0，关闭为1。</p> </blockquote> <p><strong>添加或删除 用户管理权限</strong></p> <pre><code class="language-bash">## 添加 $ radosgw-admin caps add --uid=vfan --caps="users=*"  ## 删除 $ radosgw-admin caps rm --uid=vfan --caps="users=write"</code></pre> <blockquote> <p>--caps="[users|buckets|metadata|usage|zone]=[*|read|write|read, write]"</p> </blockquote> <p><strong>删除用户 或 子用户</strong></p> <pre><code class="language-bash">## 删除用户 $ radosgw-admin user rm --uid=vfan  ## 删除子用户 $ radosgw-admin subuser rm --subuser=vfan:swift</code></pre> <p><strong>查看所有的bucket桶</strong></p> <pre><code class="language-bash">$ radosgw-admin bucket list  [     "my-test-bucket" ]</code></pre> <p><strong>查看桶内对象</strong></p> <pre><code class="language-bash">$ radosgw-admin bucket list --bucket=my-test-bucket [     {         "name": "hello.txt",         "instance": "",         "ver": {             "pool": 10,             "epoch": 1         },         "locator": "",         "exists": "true",         "meta": {             "category": 1,             "size": 12,             "mtime": "2022-03-30T10:51:38.420295Z",             "etag": "ed076287532e86365e841e92bfc50d8c",             "storage_class": "",             "owner": "vfan",             "owner_display_name": "my vfan",             "content_type": "application/octet-stream",             "accounted_size": 12,             "user_data": "",             "appendable": "false"         },         "tag": "a06a6df5-68a4-47f0-9afa-2ac1c09aee58.24132.17942",         "flags": 0,         "pending_map": [],         "versioned_epoch": 0     } ]</code></pre> <p><strong>查看存储桶详情</strong></p> <pre><code class="language-bash">$ radosgw-admin bucket stats --bucket=my-test-bucket {     "bucket": "my-test-bucket",     "num_shards": 0,     "tenant": "",     "zonegroup": "fd710024-4ba3-41bb-9f96-579d8f03dd1b",     "placement_rule": "default-placement",     "explicit_placement": {         "data_pool": "",         "data_extra_pool": "",         "index_pool": ""     },     "id": "a06a6df5-68a4-47f0-9afa-2ac1c09aee58.24134.1",     "marker": "a06a6df5-68a4-47f0-9afa-2ac1c09aee58.24134.1",     "index_type": "Normal",     "owner": "vfan",     "ver": "0#2",     "master_ver": "0#0",     "mtime": "2022-03-30T10:51:38.323147Z",     "creation_time": "2022-03-30T10:51:38.321498Z",     "max_marker": "0#",     "usage": {         "rgw.main": {             "size": 12,             "size_actual": 4096,             "size_utilized": 12,             "size_kb": 1,             "size_kb_actual": 4,             "size_kb_utilized": 1,             "num_objects": 1         }     },     "bucket_quota": {         "enabled": false,         "check_on_raw": false,         "max_size": -1,         "max_size_kb": 0,         "max_objects": -1     } }</code></pre> <p><strong>查看用户配额</strong></p> <pre><code class="language-bash">$ radosgw-admin user info --uid=vfan | grep -A 5 "quota"     "bucket_quota": {         "enabled": false,         "check_on_raw": false,         "max_size": -1,         "max_size_kb": 0,         "max_objects": -1 --     "user_quota": {         "enabled": false,         "check_on_raw": false,         "max_size": -1,         "max_size_kb": 0,         "max_objects": -1</code></pre> <blockquote> <p>默认这些配额都是未激活的，处于false状态。</p> </blockquote> <p><strong>激活用户配额</strong></p> <pre><code class="language-bash">$ radosgw-admin quota enable --quota-scope=user --uid=vfan  $ radosgw-admin user info --uid=vfan | grep -A 5 "quota"     "bucket_quota": {         "enabled": false,         "check_on_raw": false,         "max_size": -1,         "max_size_kb": 0,         "max_objects": -1 --     "user_quota": {         "enabled": true,         "check_on_raw": false,         "max_size": -1,         "max_size_kb": 0,         "max_objects": -1</code></pre> <blockquote> <p>已激活用户配额，此时可以修改最大限额，默认是不限制。</p> </blockquote> <p><strong>更新配额</strong></p> <pre><code class="language-bash">$ radosgw-admin quota set --uid=vfan --quota-scope=user --max-objects=10000 --max-size=107374182400 [cephadmin@yq01-aip-aikefu10.yq01.baidu.com ~]$ radosgw-admin user info --uid=vfan | grep -A 5 "quota"         "bucket_quota": {         "enabled": false,         "check_on_raw": false,         "max_size": -1,         "max_size_kb": 0,         "max_objects": -1 --     "user_quota": {         "enabled": true,         "check_on_raw": false,         "max_size": 107374182400,         "max_size_kb": 104857600,         "max_objects": 10000</code></pre> <blockquote> <p>max_size单位是bytes，max_size_kb单位是kb。</p> </blockquote> <h2 id="操纵radosgw">操纵radosgw</h2> <p>一般对象存储都由开发在代码层面控制，几乎不需要我们运维人员操作什么，只需要把用户权限和集群维护好就没啥问题了，接下来用一段python代码来演示其bucket以及增删文件的操作。也有一些命令可以实现，例如s3cmd等。</p> <h3 id="需要先安装好python3环境以及python的boto模块"><strong>需要先安装好python3环境，以及python的boto模块</strong></h3> <pre><code class="language-bash"># pip3 install boto-2.41.0-py2.py3-none-any.whl</code></pre> <blockquote> <p>如果没有pip源，离线下载地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://pypi.org/simple/boto/"  target="_blank" rel="nofollow">https://pypi.org/simple/boto/</a></p> </blockquote> <h3 id="python脚本编写"><strong>python脚本编写</strong></h3> <p><strong>这里测试使用上边演示新创建的用户vfan</strong></p> <p>vi ceph-s3.py</p> <pre><code class="language-python">import boto.s3.connection  access_key = 'Q6VGP3LYMH99D0A9GUV0' #创建S3用户时返回的AK secret_key = 'NVDfq7CBJgpUnCXKqbgVuKvI3siWNbx0sRltClA4' #S3用户的SK host = '10.153.204.13' # RWG节点IP和端口 port = 30080 # 新建一个连接 conn = boto.connect_s3(         aws_access_key_id=access_key,         aws_secret_access_key=secret_key,         host=host, port=port,         is_secure=False, calling_format=boto.s3.connection.OrdinaryCallingFormat(),        ) # 新建一个Bucket bucket = conn.create_bucket('my-vfan-bucket')  # 列出用户的所有Bucket for bucket in conn.get_all_buckets():     print("桶名称: %s, 创建时间: %s" %(bucket.name,bucket.creation_date))  # 列出Bucket内容 for key in bucket.list():     print("key名称: %s, 文件大小: %s, 修改时间: %s" %(key.name,key.size,key.last_modified))  # 新建一个对象 key = bucket.new_key('hi.txt') key.set_contents_from_string('Hello World!')  # 下载一个对象到文件 key = bucket.get_key('hi.txt') key.get_contents_to_filename('/tmp/hi.txt')</code></pre> <p>执行py脚本</p> <pre><code class="language-bash"># python3 ceph-s3.py 桶名称: my-test-bucket, 创建时间: 2022-03-30T10:51:38.321Z 桶名称: my-vfan-bucket, 创建时间: 2022-04-01T07:32:54.671Z  # cat /tmp/hi.txt  Hello World!</code></pre> <blockquote> <p>已经新创建了一个名为my-vfan-bucket的bucket，并新建了一个对象hi.txt，并下载到了本地的/tmp目录下。</p> </blockquote> <p><strong>可以优化一下脚本，使其可以单项操作</strong></p> <pre><code class="language-python">#!/usr/bin/python # -*- coding: utf-8 -*-  """ @Time    : 2021-12-22 19:14 @Author  : xxxxxx @Email   : xxxxxx @File    : bucket.py @Software: PyCharm """ import boto import boto.s3.connection   class Bucket():     """     ceph中bucket相关的类     boto s3 api手册：http://boto.readthedocs.org/en/latest/ref/s3.html     boto s3 api用法：https://docs.ceph.com/en/latest/radosgw/s3/python/#     """     def __init__(self, ak, sk, host, port):         self.ak = ak         self.sk = sk         self.host = host         self.port = port         self.conn = boto.connect_s3(aws_access_key_id=self.ak, aws_secret_access_key=self.sk, host=self.host,                                     port=self.port, is_secure=False,                                     calling_format=boto.s3.connection.OrdinaryCallingFormat())         print self.conn      def bucketList(self):         """         获取所有的bucketList         :return:         """         for bucket in self.conn.get_all_buckets():             print("{name}\t{created}".format(name=bucket.name, created=bucket.creation_date))      def bucketCreate(self, bucketName):         """         创建bucket         :return:         """         createRes = self.conn.create_bucket(bucketName)         print createRes      def bucketDelete(self):         """         删除bucket         :return:         """         pass  if __name__ == "__main__":     """     主函数     """     access_key = "FHPC3HED7P7J8ADFQVOD"     secret_key = "Zgf01sjynnAbNS6yCO99VFphDQ6sOlmPBRRd7P2E"     host = "xxxxx"     port = 8000     bucketName = 'share'     bucket = Bucket(access_key, secret_key, host, port)     # 创建bucket     bucket.bucketCreate(bucketName)     # 查看bucket列表     # bucket.bucketList()</code></pre> <blockquote> <p>可以再基于此脚本优化，增加其他功能。</p> </blockquote> <p><strong>RadosGW相关操作至此已演示介绍完毕，后续会陆续介绍一些自定义crush规则、pg及一些常用的参数配置。</strong></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-47810.htm">动物打了疫苗了被抓还要打针吗多少钱一次（动物打疫苗后的不良反应）</a></p>
+                                        <p>下一个：<a href="/news/article-48264.htm">t恤家衣服怎么样好看吗(t恤家价格)</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-free-v2ray.htm" title="12月5日→20.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月5日→20.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-29792.htm" title="宠物粮食厂家有些款不能网上销售 宠物粮食厂家有些款不能网上销售吗">宠物粮食厂家有些款不能网上销售 宠物粮食厂家有些款不能网上销售吗</a></li>
+                        <li class="py-2"><a href="/news/article-40897.htm" title="开个宠物食品店需要什么证 开个宠物食品店需要什么证件">开个宠物食品店需要什么证 开个宠物食品店需要什么证件</a></li>
+                        <li class="py-2"><a href="/news/article-41387.htm" title="动物医院环评如何办理（宠物医院环评选址要求）">动物医院环评如何办理（宠物医院环评选址要求）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-free-high-speed-nodes.htm" title="11月23日→19.1M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月23日→19.1M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-38907.htm" title="养猫咪的人（养猫咪的人是怎么样的）">养猫咪的人（养猫咪的人是怎么样的）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-free-high-speed-nodes.htm" title="12月9日→18.4M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月9日→18.4M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-v2ray.htm" title="Mac V2ray|1月22日→19.9M/S|最新V2ray/Shadowrocket/Clash/SSR免费节点链接地址">Mac V2ray|1月22日→19.9M/S|最新V2ray/Shadowrocket/Clash/SSR免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-43373.htm" title="动物疫苗一般多少钱打一针啊视频（动物疫苗价格查询）">动物疫苗一般多少钱打一针啊视频（动物疫苗价格查询）</a></li>
+                        <li class="py-2"><a href="/news/article-22814.htm" title="面试必问的8个CSS响应式单位,你知道几个？">面试必问的8个CSS响应式单位,你知道几个？</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
