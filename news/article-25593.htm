@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="no-js">
+<html xml:lang="zh-CN" lang="zh-CN" class="no-js">
 
 <head>
         <link rel="canonical" href="https://macv2ray.github.io/news/article-25593.htm" />
@@ -7,8 +7,37 @@
     <title>Vue组件通信之跨组件跨层级传递</title>
         <meta name="description" content="第一个方法就是转换为父子层级关系来解决（虽然可以解决，但是如果业务逻辑较多了嵌套比较深以后维护就会非常繁琐），至于详情请参考上一篇内容； 这里主要说另一种方法event-bus （事件总线），就是借助" />
         <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Mac V2ray机场节点订阅分享">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://macv2ray.github.io/news/article-25593.htm" />
+    <meta property="og:site_name" content="Mac V2ray机场节点订阅分享" />
+    <meta property="og:title" content="Vue组件通信之跨组件跨层级传递" />
+    <meta property="og:image" content="https://macv2ray.github.io/uploads/20240907-2/d59244e9b89ae2cc32b0c3316e6406c9.webp" />
+        <meta property="og:release_date" content="2024-12-14T10:12:13" />
+    <meta property="og:updated_time" content="2024-12-14T10:12:13" />
+        <meta property="og:description" content="第一个方法就是转换为父子层级关系来解决（虽然可以解决，但是如果业务逻辑较多了嵌套比较深以后维护就会非常繁琐），至于详情请参考上一篇内容； 这里主要说另一种方法event-bus （事件总线），就是借助" />
+        
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Vue组件通信之跨组件跨层级传递">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
     <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
@@ -103,16 +132,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-21894.htm" title="动物疫苗最新消息（动物疫苗价格查询）">动物疫苗最新消息（动物疫苗价格查询）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-17-free-v2ray-subscribe.htm" title="11月17日→22.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月17日→22.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-30268.htm" title="新手开网店适合开什么店（拼多多网店能挣钱吗）">新手开网店适合开什么店（拼多多网店能挣钱吗）</a></li>
-                        <li class="py-2"><a href="/news/article-27454.htm" title="特殊线性表&#8212;&#8212;&#8212;-栈（1）">特殊线性表&#8212;&#8212;&#8212;-栈（1）</a></li>
-                        <li class="py-2"><a href="/news/article-23264.htm" title="动物医院实践心得500字怎么写的 动物医院实践心得500字怎么写的啊">动物医院实践心得500字怎么写的 动物医院实践心得500字怎么写的啊</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-v2ray.htm" title="12月17日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月17日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-30-free-high-speed-nodes.htm" title="12月30日→19M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月30日→19M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-28847.htm" title="安安宠物医院官网（安安宠物医院简介）">安安宠物医院官网（安安宠物医院简介）</a></li>
-                        <li class="py-2"><a href="/news/article-25128.htm" title="宠物打疫苗不能洗澡的原因是什么（宠物打疫苗不能吃什么）">宠物打疫苗不能洗澡的原因是什么（宠物打疫苗不能吃什么）</a></li>
-                        <li class="py-2"><a href="/news/article-19605.htm" title="猫咪怎么除跳蚤（猫咪除跳蚤项圈有用吗）">猫咪怎么除跳蚤（猫咪除跳蚤项圈有用吗）</a></li>
+                        <li class="py-2"><a href="/news/article-32650.htm" title="猫粮利润率多少合理（猫粮的利润率）">猫粮利润率多少合理（猫粮的利润率）</a></li>
+                        <li class="py-2"><a href="/news/article-46344.htm" title="MySQL之内连接、外连接的含义和具体使用">MySQL之内连接、外连接的含义和具体使用</a></li>
+                        <li class="py-2"><a href="/news/article-44862.htm" title="长沙宠物救援队（长沙宠物救援队电话）">长沙宠物救援队（长沙宠物救援队电话）</a></li>
+                        <li class="py-2"><a href="/news/article-42877.htm" title="动物疫苗可以自己打吗现在（动物疫苗可以自己打吗现在疫情）">动物疫苗可以自己打吗现在（动物疫苗可以自己打吗现在疫情）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-node-share-links.htm" title="Mac V2ray|1月17日→22.7M/S|最新Shadowrocket/SSR/V2ray/Clash免费节点链接地址">Mac V2ray|1月17日→22.7M/S|最新Shadowrocket/SSR/V2ray/Clash免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-24-free-v2ray.htm" title="Mac V2ray|1月24日→22.2M/S|最新Clash/Shadowrocket/V2ray/SSR免费节点链接地址">Mac V2ray|1月24日→22.2M/S|最新Clash/Shadowrocket/V2ray/SSR免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-20065.htm" title="动物医院在哪个位置好 动物医院在哪个位置好一点">动物医院在哪个位置好 动物医院在哪个位置好一点</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-free-node-subscribe-links.htm" title="11月25日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月25日→21.7M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-40404.htm" title="猫抓伤后11天死了（被猫抓伤后猫十天不死就没事了吗?）">猫抓伤后11天死了（被猫抓伤后猫十天不死就没事了吗?）</a></li>
+                        <li class="py-2"><a href="/news/article-22815.htm" title="动物疫苗研发过程表（动物疫苗研发过程表格模板）">动物疫苗研发过程表（动物疫苗研发过程表格模板）</a></li>
                     </ul>
     </div>
 </div>
@@ -124,19 +153,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
@@ -163,7 +189,7 @@
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                        <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
                     </p>
                 </div>
             </div>

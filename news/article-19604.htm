@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="no-js">
+<html xml:lang="zh-CN" lang="zh-CN" class="no-js">
 
 <head>
         <link rel="canonical" href="https://macv2ray.github.io/news/article-19604.htm" />
@@ -7,8 +7,37 @@
     <title>Gin-使用GORM操作mysql 数据库</title>
         <meta name="description" content="本文已参与「新人创作礼」活动，一起开启掘金创作之路。  1、GORM概述 GORM是Golang的一个orm 框架(采用元数据来描述对象与关系映射的细节，元数据一般采用XML格式，并且存放在专门的对象" />
         <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Mac V2ray机场节点订阅分享">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://macv2ray.github.io/news/article-19604.htm" />
+    <meta property="og:site_name" content="Mac V2ray机场节点订阅分享" />
+    <meta property="og:title" content="Gin-使用GORM操作mysql 数据库" />
+    <meta property="og:image" content="https://macv2ray.github.io/uploads/20240907-2/a197e693492d65b1f89d6ab6fa45850e.webp" />
+        <meta property="og:release_date" content="2024-12-01T10:00:55" />
+    <meta property="og:updated_time" content="2024-12-01T10:00:55" />
+        <meta property="og:description" content="本文已参与「新人创作礼」活动，一起开启掘金创作之路。  1、GORM概述 GORM是Golang的一个orm 框架(采用元数据来描述对象与关系映射的细节，元数据一般采用XML格式，并且存放在专门的对象" />
+        
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Gin-使用GORM操作mysql 数据库">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
     <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
@@ -103,16 +132,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-node-subscribe-links.htm" title="12月28日→21.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月28日→21.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-15-free-high-speed-nodes.htm" title="11月15日→18.4M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月15日→18.4M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-28376.htm" title="兰州哪里有卖狗粮的地方呀（兰州狗粮批发市场在哪）">兰州哪里有卖狗粮的地方呀（兰州狗粮批发市场在哪）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-5-node-share.htm" title="10月5日→21.1M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月5日→21.1M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-20-node-share.htm" title="9月20日→21.4M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月20日→21.4M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-high-speed-nodes.htm" title="11月27日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月27日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-v2ray-subscribe.htm" title="11月24日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月24日→21.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-31180.htm" title="python之33个关键字详解_Python之33个关键字是哪些">python之33个关键字详解_Python之33个关键字是哪些</a></li>
-                        <li class="py-2"><a href="/news/article-20522.htm" title="楼房养猫的十大禁忌（猫爬过的床单有细菌吗）">楼房养猫的十大禁忌（猫爬过的床单有细菌吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-21-free-v2ray.htm" title="12月21日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月21日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-free-high-speed-nodes.htm" title="Mac V2ray|1月11日→19.2M/S|最新Shadowrocket/Clash/SSR/V2ray免费节点链接地址">Mac V2ray|1月11日→19.2M/S|最新Shadowrocket/Clash/SSR/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27918.htm" title="动物疫苗的种类及使用方法有哪些英语翻译（动物疫苗的种类及使用方法有哪些英语翻译成中文）">动物疫苗的种类及使用方法有哪些英语翻译（动物疫苗的种类及使用方法有哪些英语翻译成中文）</a></li>
+                        <li class="py-2"><a href="/news/article-20984.htm" title="Element修改弹窗类组件的层级">Element修改弹窗类组件的层级</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-subscribe-node.htm" title="11月21日→18.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月21日→18.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-44361.htm" title="宠颐生动物医院是连锁的吗（宠颐生总部电话）">宠颐生动物医院是连锁的吗（宠颐生总部电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-node-share-links.htm" title="Mac V2ray|1月10日→20.1M/S|最新Clash/V2ray/SSR/Shadowrocket免费节点链接地址">Mac V2ray|1月10日→20.1M/S|最新Clash/V2ray/SSR/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-free-node-subscribe-links.htm" title="Mac V2ray|1月31日→21.7M/S|最新Clash/SSR/V2ray/Shadowrocket免费节点链接地址">Mac V2ray|1月31日→21.7M/S|最新Clash/SSR/V2ray/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-35142.htm" title="猫粮进口什么牌子好吃（进口猫粮档次排行）">猫粮进口什么牌子好吃（进口猫粮档次排行）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-node-share.htm" title="Mac V2ray|1月29日→21.3M/S|最新SSR/Clash/Shadowrocket/V2ray免费节点链接地址">Mac V2ray|1月29日→21.3M/S|最新SSR/Clash/Shadowrocket/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-20985.htm" title="济南领养动物救助站（济南小动物领养）">济南领养动物救助站（济南小动物领养）</a></li>
                     </ul>
     </div>
 </div>
@@ -124,19 +153,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
@@ -163,7 +189,7 @@
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                        <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
                     </p>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="no-js">
+<html xml:lang="zh-CN" lang="zh-CN" class="no-js">
 
 <head>
         <link rel="canonical" href="https://macv2ray.github.io/news/article-36176.htm" />
@@ -7,8 +7,37 @@
     <title>python神经网络Keras构建CNN网络训练_python</title>
         <meta name="description" content="目录  Keras中构建CNN的重要函数  1、Conv2D 2、MaxPooling2D 3、Flatten  全部代码    利用Keras构建完普通BP神经网络后，还要会构建CNN  Keras" />
         <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Mac V2ray机场节点订阅分享">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://macv2ray.github.io/news/article-36176.htm" />
+    <meta property="og:site_name" content="Mac V2ray机场节点订阅分享" />
+    <meta property="og:title" content="python神经网络Keras构建CNN网络训练_python" />
+    <meta property="og:image" content="https://macv2ray.github.io/uploads/20240907-2/87e7f31df34e61c7e5fd3a79f5c7e8ed.webp" />
+        <meta property="og:release_date" content="2025-01-05T09:46:10" />
+    <meta property="og:updated_time" content="2025-01-05T09:46:10" />
+        <meta property="og:description" content="目录  Keras中构建CNN的重要函数  1、Conv2D 2、MaxPooling2D 3、Flatten  全部代码    利用Keras构建完普通BP神经网络后，还要会构建CNN  Keras" />
+        
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="python神经网络Keras构建CNN网络训练_python">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
     <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
@@ -103,16 +132,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-27917.htm" title="Vue结合ElementUI上传Base64编码后的图片实例_vue.js">Vue结合ElementUI上传Base64编码后的图片实例_vue.js</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-7-free-node-subscribe.htm" title="Mac V2ray|1月7日→19.3M/S|最新V2ray/Clash/Shadowrocket/SSR免费节点链接地址">Mac V2ray|1月7日→19.3M/S|最新V2ray/Clash/Shadowrocket/SSR免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-13-node-share.htm" title="12月13日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月13日→18.2M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-20985.htm" title="济南领养动物救助站（济南小动物领养）">济南领养动物救助站（济南小动物领养）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-22-clash-v2ray-ss-ssr.htm" title="12月22日→21.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月22日→21.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-28-node-share.htm" title="10月28日→19.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月28日→19.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-26526.htm" title="Python格式化输出的三种方式：%、string.format()、f-string">Python格式化输出的三种方式：%、string.format()、f-string</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-node-subscribe.htm" title="11月13日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月13日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-34545.htm" title="猫咪打疫苗多少钱一只（猫猫打疫苗多少钱一次）">猫咪打疫苗多少钱一只（猫猫打疫苗多少钱一次）</a></li>
-                        <li class="py-2"><a href="/news/article-21894.htm" title="动物疫苗最新消息（动物疫苗价格查询）">动物疫苗最新消息（动物疫苗价格查询）</a></li>
+                        <li class="py-2"><a href="/news/article-39901.htm" title="河南十大兽药品牌公司（河南兽药排行前50名）">河南十大兽药品牌公司（河南兽药排行前50名）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-node-subscribe-links.htm" title="12月14日→23M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月14日→23M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-29792.htm" title="宠物粮食厂家有些款不能网上销售 宠物粮食厂家有些款不能网上销售吗">宠物粮食厂家有些款不能网上销售 宠物粮食厂家有些款不能网上销售吗</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-subscribe-node.htm" title="11月11日→22.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月11日→22.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share.htm" title="11月18日→18.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月18日→18.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-free-subscribe-node.htm" title="11月6日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月6日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-49308.htm" title="宠物粮行业分析图（宠物粮行业分析图表）">宠物粮行业分析图（宠物粮行业分析图表）</a></li>
+                        <li class="py-2"><a href="/news/article-33605.htm" title="权力的游戏伯德瑞克（原创）权力的游戏 波德，斯巴达克斯结局，詹德利，">权力的游戏伯德瑞克（原创）权力的游戏 波德，斯巴达克斯结局，詹德利，</a></li>
+                        <li class="py-2"><a href="/news/article-43374.htm" title="广州哪里有领养猫咪的地方（广州哪里有领养猫咪的地方）">广州哪里有领养猫咪的地方（广州哪里有领养猫咪的地方）</a></li>
+                        <li class="py-2"><a href="/news/article-26995.htm" title="农大宠物医院医生简介（农大宠物医院营业时间）">农大宠物医院医生简介（农大宠物医院营业时间）</a></li>
                     </ul>
     </div>
 </div>
@@ -124,16 +153,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

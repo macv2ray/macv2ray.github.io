@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="no-js">
+<html xml:lang="zh-CN" lang="zh-CN" class="no-js">
 
 <head>
         <link rel="canonical" href="https://macv2ray.github.io/news/article-26526.htm" />
@@ -7,8 +7,37 @@
     <title>Python格式化输出的三种方式：%、string.format()、f-string</title>
         <meta name="description" content="目录 一、%方式 二、string.format()方式 三、f-string方式  活动地址：CSDN21天学习挑战赛   &nbsp; &nbsp; &nbsp; &nbsp;用%来格式化字符串是" />
         <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Mac V2ray机场节点订阅分享">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://macv2ray.github.io/news/article-26526.htm" />
+    <meta property="og:site_name" content="Mac V2ray机场节点订阅分享" />
+    <meta property="og:title" content="Python格式化输出的三种方式：%、string.format()、f-string" />
+    <meta property="og:image" content="https://macv2ray.github.io/uploads/20240907-2/7beea2c00bcc2a6e5ac552f1e42cec8a.webp" />
+        <meta property="og:release_date" content="2024-12-16T10:12:02" />
+    <meta property="og:updated_time" content="2024-12-16T10:12:02" />
+        <meta property="og:description" content="目录 一、%方式 二、string.format()方式 三、f-string方式  活动地址：CSDN21天学习挑战赛   &nbsp; &nbsp; &nbsp; &nbsp;用%来格式化字符串是" />
+        
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python格式化输出的三种方式：%、string.format()、f-string">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
     <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
@@ -103,16 +132,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-2-free-high-speed-nodes.htm" title="10月2日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址">10月2日→19.6M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-29794.htm" title="被猫咬了没有打针会不会致命（被猫咬了没打针会传染吗）">被猫咬了没有打针会不会致命（被猫咬了没打针会传染吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-16-node-share.htm" title="9月16日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月16日→22.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-29313.htm" title="宠物用品批发进货渠道电商有哪些平台（宠物用品货源渠道）">宠物用品批发进货渠道电商有哪些平台（宠物用品货源渠道）</a></li>
-                        <li class="py-2"><a href="/news/article-20065.htm" title="动物医院在哪个位置好 动物医院在哪个位置好一点">动物医院在哪个位置好 动物医院在哪个位置好一点</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-v2ray.htm" title="9月28日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月28日→18.9M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-13-free-node-subscribe-links.htm" title="9月13日→22.7M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月13日→22.7M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-21893.htm" title="旋转矩阵与欧拉角的相互转换">旋转矩阵与欧拉角的相互转换</a></li>
-                        <li class="py-2"><a href="/news/article-28376.htm" title="兰州哪里有卖狗粮的地方呀（兰州狗粮批发市场在哪）">兰州哪里有卖狗粮的地方呀（兰州狗粮批发市场在哪）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-25-free-v2ray.htm" title="9月25日→19.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">9月25日→19.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-free-high-speed-nodes.htm" title="12月10日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址">12月10日→19.3M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-46823.htm" title="动物疫苗的种类有哪些图片及名称大全 动物疫苗的种类有哪些图片及名称大全集">动物疫苗的种类有哪些图片及名称大全 动物疫苗的种类有哪些图片及名称大全集</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-27-free-node-subscribe.htm" title="Mac V2ray|1月27日→19.3M/S|最新SSR/Clash/V2ray/Shadowrocket免费节点链接地址">Mac V2ray|1月27日→19.3M/S|最新SSR/Clash/V2ray/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-23725.htm" title="Vue路由的模块自动化与统一加载">Vue路由的模块自动化与统一加载</a></li>
+                        <li class="py-2"><a href="/news/article-27454.htm" title="特殊线性表&#8212;&#8212;&#8212;-栈（1）">特殊线性表&#8212;&#8212;&#8212;-栈（1）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-20-clash-v2ray-ss-ssr.htm" title="Mac V2ray|1月20日→21.5M/S|最新SSR/V2ray/Shadowrocket/Clash免费节点链接地址">Mac V2ray|1月20日→21.5M/S|最新SSR/V2ray/Shadowrocket/Clash免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-39900.htm" title="kafka生产者发送消息可靠性">kafka生产者发送消息可靠性</a></li>
+                        <li class="py-2"><a href="/news/article-33604.htm" title="被猫抓了五天了打疫苗来得及吗（被猫抓了五天了打疫苗来得及吗）">被猫抓了五天了打疫苗来得及吗（被猫抓了五天了打疫苗来得及吗）</a></li>
+                        <li class="py-2"><a href="/news/article-38414.htm" title="Spring的两种依赖注入方式:setter方法注入与构造方法注入">Spring的两种依赖注入方式:setter方法注入与构造方法注入</a></li>
+                        <li class="py-2"><a href="/news/article-36473.htm" title="virtualenv介绍及基本使用">virtualenv介绍及基本使用</a></li>
                     </ul>
     </div>
 </div>
@@ -124,19 +153,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
@@ -163,7 +189,7 @@
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                        <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
                     </p>
                 </div>
             </div>
