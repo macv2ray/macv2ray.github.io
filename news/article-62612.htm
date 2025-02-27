@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-62612.htm" />
+    <meta charset="utf-8" />
+    <title>linux查看redis的主从,linux中redis的主从</title>
+        <meta name="description" content="主从模式的概念请自行百度！ 主服务器只执行写操作。从服务器执行读操作。 主服务器中的数据会同步到从服务器中。 在从服务器中打开redis目录中的redis.conf文件 vim /usr/local/" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Mac V2ray机场节点订阅分享">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://macv2ray.github.io/news/article-62612.htm" />
+    <meta property="og:site_name" content="Mac V2ray机场节点订阅分享" />
+    <meta property="og:title" content="linux查看redis的主从,linux中redis的主从" />
+    <meta property="og:image" content="https://macv2ray.github.io/uploads/20240907-2/ea71a405cc37554b0a456f87965ae585.webp" />
+        <meta property="og:release_date" content="2025-02-25T04:58:54" />
+    <meta property="og:updated_time" content="2025-02-25T04:58:54" />
+        <meta property="og:description" content="主从模式的概念请自行百度！ 主服务器只执行写操作。从服务器执行读操作。 主服务器中的数据会同步到从服务器中。 在从服务器中打开redis目录中的redis.conf文件 vim /usr/local/" />
+        
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="linux查看redis的主从,linux中redis的主从">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a class="logo-wrap" href="/">
+                                                <span>Mac V2ray</span>
+                                                </a>
+                    </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/client.htm">客户端</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">linux查看redis的主从,linux中redis的主从</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size:16px;"> <p>主从模式的概念请自行百度！</p> <p>主服务器只执行写操作。从服务器执行读操作。</p> <p>主服务器中的数据会同步到从服务器中。</p> <p>在从服务器中打开redis目录中的redis.conf文件</p> <p>vim /usr/local/redis/redis.conf</p> <p>/slaveof 进行搜索</p> <p>会发现＃slaveof</p> <p> 主服务器的ip地址</p> <p>&nbsp; 主服务器的端口号</p> <p>请自行修改。</p> <p>配置文件中 　　slave－read－only&nbsp; yes 只让读，改成no就可以写了。</p> <p>更改之后保存退出</p> <p>杀死之前的redis进程，从新启动redis就可以了。</p> <p>linux中redis伪主从搭建</p> <p>1.解压redis.tgz到usr/local/redis下 2.在redis/下执行 make 3.在redis/src/下执行 make install PREFIX=/usr/local/red ...</p> <p>Linux中redis安装配置及使用详解</p> <p>Linux中redis安装配置及使用详解 一. Redis基本知识 1.Redis 的数据类型 字符串 , 列表 (lists) , 集合 (sets) , 有序集合 (sorts sets) , 哈 ...</p> <p>Linux中redis主从配置</p> <p>假设要在6380开启redis 1.添加配置文件:复制redis.conf为redis_6380.conf 2.修改配置文件:修改redis_6380.conf中port.pidfile 3.防火墙: ...</p> <p>Linux中Redis的安装</p> <p>一.下载redis redis官网地址:http://www.redis.io/ 下载地址:http://download.redis.io/releases/ redis中文文档地址:http:// ...</p> <p>Linux中redis的安装与配置</p> <p>redis官网地址:http://www.redis.io/ redis安装 在Linux下安装Redis非常简单,这里以2.8.3版本为例,具体步骤如下: 1.下载源码,解压缩后编译源码. $ mk ...</p> <p>Linux中mysql5&amp;period;7主从配置</p> <p>MySQL主从配置(两台Linux之间) 简介 Linux下MySQL数据库的主从同步用来实现读写分离.主数据库进行数据的插入,删除与更新:从数据库专门用来查询操作,缓解数据库的压力.让运行海量数据的 ...</p> <p>linux中redis的php扩展安装</p> <p>PHP中的扩展一般都是在安装环境的时候就已经装好了的.但是有的一些扩展在后期想要加上去的话也是可以的.php支持后期安装扩展. 想要安装扩展就需要先去下载安装扩展所需要的扩展源码包.autoconf. ...</p> <p>linux中redis安装</p> <p>一.登录redis官网下载redis-3.0.7.tar.gz 二.通过ftp工具上传至自己的服务器中 三.tar -zxvf redis-3.0.7.tar.gz解压 四.cd redis-3.0. ...</p> <p>linux系统中 redis 保存数据的5种形式 linux后端模式启动 jedis无法通过IP地址和端口号访问如何修改linux防火墙</p> <p>vim修改redis.conf配置文件(我的已经复制到虚拟机的/usr/local/redis/bin目录下)为daemonize yes, 以后端模式启动 ./redis-server redis. ...</p> <p>随机推荐</p> <p>篇三：访问JSON静态文件</p> <p>背景:在定位的时候带出车牌号的前两位,这里就有一个地址和车牌号前两位的映射关系,这个映射关系起初是通过Ajax在页面加载的时候请求去数据库里面查出来赋给一个变量,然后去操作,但是这个过程通常需要4~7 ...</p> <p>JavaScript基础—dom&amp;comma;事件</p> <p>Js基础-DOM 1:dom:文档对象模型 Dom就是html页面的模型,将每个标签都作为一个对象,js通过调用dom中的属性,方法就可以对网页中的文本框,层等元素进行编程控制.Dom就是一些让jav ...</p> <p>BZOJ4590&amp;colon; &amp;lbrack;Shoi2015&amp;rsqb;自动刷题机</p> <p>显然看着就是二分,仔细看的话显然刷的题数随n增大单调不升. 挂了一发是因为无解输出一个-1而不是两个…… #include #include</p> <p>git 学习笔记6--remote &amp;amp&amp;semi; log</p> <p>git 学习笔记6--remote &amp; log 创建SSH Keys ssh-keygen -t rsa -C "1050244110@qq.com" 本地关联远程 git ...</p> <p>AspxGridView 数据的汇总统计</p> <p>AspxGridView底部增加数据汇总行 这个功能在AspxGridView中不用复杂的代码实现,&nbsp;实际上只是设置下GridView的属性而已 1. ShowFooter设置为True,即显示. 位 ...</p> <p>sp&amp;lowbar;MSforeachtable使用方法 查看库中所有表的空间大小</p> <p>sp_MSforeachtable使用方法 1)说明系统存储过程sp_MSforeachtable和sp_MSforeachdb,是微软提供的两个不公开的存储过程,从ms sql 6.5开始.存放在S ...</p> <p>Java数据解析---JSON</p> <p>一.Java数据解析分为:XML解析和JSON解析 XML解析即是对XML文件中的数据解析,而JSON解析即对规定形式的数据解析,比XML解析更加方便 JSON解析基于两种结构: 1.键值对类型 { ...</p> <p>c&amp;plus;&amp;plus; 启动exe(启动别的exe程序)</p> <p>http://blog.csdn.net/sdcxyz/article/details/13631613 1例程 1.1面向过程例程如下: #include #inc ...</p> <p>uoj &amp;num;58【WC2013】糖果公园</p> <p>http://uoj.ac/problem/58 树上带修莫队模板题 #include ; typedef long long i64; ],*ptr=buf ...</p> <p>uva-10026-贪心</p> <p>题意:有N项工作,每项工作完成需要n天,如果不开始做每天罚fee,开始做即不罚钱,求任务的执行顺序,使得罚钱最少.如果有多组答案,取下标排列最小的那组 解题思路: 考虑工作tn(dn,fn) , 假如 ...</p> </div> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-62016.htm">武汉宠物领养中心官网 武汉宠物领养中心官网电话</a></p>
+                                        <p>下一个：<a href="/news/article-62613.htm">被猫抓不用***的图片（孩子10几天后才说被猫咬了）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-27-free-node-subscribe.htm" title="Mac V2ray|1月27日→19.3M/S|最新SSR/Clash/V2ray/Shadowrocket免费节点链接地址">Mac V2ray|1月27日→19.3M/S|最新SSR/Clash/V2ray/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-39426.htm" title="PHP回调/可调用对象详解">PHP回调/可调用对象详解</a></li>
+                        <li class="py-2"><a href="/news/article-40896.htm" title="k8s入门之ConfigMap(九)_在线工具">k8s入门之ConfigMap(九)_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-v2ray-subscribe.htm" title="11月16日→20.8M/S|2024年最新免费节点Mac V2ray订阅链接地址">11月16日→20.8M/S|2024年最新免费节点Mac V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-18719.htm" title="国内生产宠物粮的上市公司有几家（中国宠物粮生产企业）">国内生产宠物粮的上市公司有几家（中国宠物粮生产企业）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-free-node-subscribe-links.htm" title="Mac V2ray|1月31日→21.7M/S|最新Clash/SSR/V2ray/Shadowrocket免费节点链接地址">Mac V2ray|1月31日→21.7M/S|最新Clash/SSR/V2ray/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-20984.htm" title="Element修改弹窗类组件的层级">Element修改弹窗类组件的层级</a></li>
+                        <li class="py-2"><a href="/news/article-30269.htm" title="宠物领养条约最新版（宠物领养协议具有法律效应吗）">宠物领养条约最新版（宠物领养协议具有法律效应吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-free-subscribe-node.htm" title="Mac V2ray|2月18日→18.6M/S|最新SSR/V2ray/Clash/Shadowrocket免费节点链接地址">Mac V2ray|2月18日→18.6M/S|最新SSR/V2ray/Clash/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-3-free-v2ray.htm" title="Mac V2ray|2月3日→22.3M/S|最新Clash/SSR/V2ray/Shadowrocket免费节点链接地址">Mac V2ray|2月3日→22.3M/S|最新Clash/SSR/V2ray/Shadowrocket免费节点链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">81</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
