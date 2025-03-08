@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-69480.htm" />
+    <meta charset="utf-8" />
+    <title>docker-compose部署etcd 集群</title>
+        <meta name="description" content="docker-compose单机搭建etcd 集群  编写docker-compose.yml 运行docker-compose 检查搭建状态   查看节点启动情况 查看挂载的数据卷   测试节点  " />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Mac V2ray机场节点订阅分享">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://macv2ray.github.io/news/article-69480.htm" />
+    <meta property="og:site_name" content="Mac V2ray机场节点订阅分享" />
+    <meta property="og:title" content="docker-compose部署etcd 集群" />
+    <meta property="og:image" content="https://macv2ray.github.io/uploads/20240907-2/7aa9f47b4aef4ca227e6ad41a9c86086.webp" />
+        <meta property="og:release_date" content="2025-03-08T05:05:22" />
+    <meta property="og:updated_time" content="2025-03-08T05:05:22" />
+        <meta property="og:description" content="docker-compose单机搭建etcd 集群  编写docker-compose.yml 运行docker-compose 检查搭建状态   查看节点启动情况 查看挂载的数据卷   测试节点  " />
+        
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="docker-compose部署etcd 集群">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a class="logo-wrap" href="/">
+                                                <span>Mac V2ray</span>
+                                                </a>
+                    </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/client.htm">客户端</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">docker-compose部署etcd 集群</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>docker-compose单机搭建etcd 集群</h3> <ul> <li><a href="#dockercomposeyml_1" rel="nofollow">编写docker-compose.yml</a></li> <li><a href="#dockercompose_86" rel="nofollow">运行docker-compose</a></li> <li><a href="#_102" rel="nofollow">检查搭建状态</a></li> <li> <ul> <li><a href="#_103" rel="nofollow">查看节点启动情况</a></li> <li><a href="#_111" rel="nofollow">查看挂载的数据卷</a></li> </ul> </li> <li><a href="#_139" rel="nofollow">测试节点</a></li> <li> <ul> <li><a href="#etcd1key_140" rel="nofollow">从etcd1写一个key</a></li> <li><a href="#etcd2value_148" rel="nofollow">从etcd2读一个value</a></li> </ul> </li> <li><a href="#Golang__etcd__158" rel="nofollow">Golang 与 etcd 简单交互</a></li> </ul> </div> </h1> <pre><code class="prism language-bash">version: <span class="token string">"3.0"</span>  networks:   etcd-net:           <span class="token comment"># 网络</span>     driver: bridge    <span class="token comment"># 桥接模式</span>  volumes:   etcd1_data:         <span class="token comment"># 挂载到本地的数据卷名</span>     driver: <span class="token builtin class-name">local</span>   etcd2_data:     driver: <span class="token builtin class-name">local</span>   etcd3_data:     driver: <span class="token builtin class-name">local</span> <span class="token comment">###</span> <span class="token comment">### etcd 其他环境配置见：https://doczhcn.gitbook.io/etcd/index/index-1/configuration</span> <span class="token comment">###</span> services:   etcd1:     image: bitnami/etcd:latest  <span class="token comment"># 镜像</span>     container_name: etcd1       <span class="token comment"># 容器名 --name</span>     restart: always             <span class="token comment"># 总是重启</span>     networks:       - etcd-net                <span class="token comment"># 使用的网络 --network</span>     ports:                      <span class="token comment"># 端口映射 -p</span>       - <span class="token string">"20000:2379"</span>       - <span class="token string">"20001:2380"</span>     environment:                <span class="token comment"># 环境变量 --env</span>       - <span class="token assign-left variable">ALLOW_NONE_AUTHENTICATION</span><span class="token operator">=</span>yes                       <span class="token comment"># 允许不用密码登录</span>       - <span class="token assign-left variable">ETCD_NAME</span><span class="token operator">=</span>etcd1                                     <span class="token comment"># etcd 的名字</span>       - <span class="token assign-left variable">ETCD_INITIAL_ADVERTISE_PEER_URLS</span><span class="token operator">=</span>http://etcd1:2380  <span class="token comment"># 列出这个成员的伙伴 URL 以便通告给集群的其他成员</span>       - <span class="token assign-left variable">ETCD_LISTEN_PEER_URLS</span><span class="token operator">=</span>http://0.0.0.0:2380           <span class="token comment"># 用于监听伙伴通讯的URL列表</span>       - <span class="token assign-left variable">ETCD_LISTEN_CLIENT_URLS</span><span class="token operator">=</span>http://0.0.0.0:2379         <span class="token comment"># 用于监听客户端通讯的URL列表</span>       - <span class="token assign-left variable">ETCD_ADVERTISE_CLIENT_URLS</span><span class="token operator">=</span>http://etcd1:2379        <span class="token comment"># 列出这个成员的客户端URL，通告给集群中的其他成员</span>       - <span class="token assign-left variable">ETCD_INITIAL_CLUSTER_TOKEN</span><span class="token operator">=</span>etcd-cluster             <span class="token comment"># 在启动期间用于 etcd 集群的初始化集群记号</span>       - <span class="token assign-left variable">ETCD_INITIAL_CLUSTER</span><span class="token operator">=</span>etcd1<span class="token operator">=</span>http://etcd1:2380,etcd2<span class="token operator">=</span>http://etcd2:2380,etcd3<span class="token operator">=</span>http://etcd3:2380 <span class="token comment"># 为启动初始化集群配置</span>       - <span class="token assign-left variable">ETCD_INITIAL_CLUSTER_STATE</span><span class="token operator">=</span>new                      <span class="token comment"># 初始化集群状态</span>     volumes:       - etcd1_data:/bitnami/etcd                            <span class="token comment"># 挂载的数据卷</span>    etcd2:     image: bitnami/etcd:latest     container_name: etcd2     restart: always     networks:       - etcd-net     ports:       - <span class="token string">"20002:2379"</span>       - <span class="token string">"20003:2380"</span>     environment:       - <span class="token assign-left variable">ALLOW_NONE_AUTHENTICATION</span><span class="token operator">=</span>yes       - <span class="token assign-left variable">ETCD_NAME</span><span class="token operator">=</span>etcd2       - <span class="token assign-left variable">ETCD_INITIAL_ADVERTISE_PEER_URLS</span><span class="token operator">=</span>http://etcd2:2380       - <span class="token assign-left variable">ETCD_LISTEN_PEER_URLS</span><span class="token operator">=</span>http://0.0.0.0:2380       - <span class="token assign-left variable">ETCD_LISTEN_CLIENT_URLS</span><span class="token operator">=</span>http://0.0.0.0:2379       - <span class="token assign-left variable">ETCD_ADVERTISE_CLIENT_URLS</span><span class="token operator">=</span>http://etcd2:2379       - <span class="token assign-left variable">ETCD_INITIAL_CLUSTER_TOKEN</span><span class="token operator">=</span>etcd-cluster       - <span class="token assign-left variable">ETCD_INITIAL_CLUSTER</span><span class="token operator">=</span>etcd1<span class="token operator">=</span>http://etcd1:2380,etcd2<span class="token operator">=</span>http://etcd2:2380,etcd3<span class="token operator">=</span>http://etcd3:2380       - <span class="token assign-left variable">ETCD_INITIAL_CLUSTER_STATE</span><span class="token operator">=</span>new     volumes:       - etcd2_data:/bitnami/etcd    etcd3:     image: bitnami/etcd:latest     container_name: etcd3     restart: always     networks:       - etcd-net     ports:       - <span class="token string">"20004:2379"</span>       - <span class="token string">"20005:2380"</span>     environment:       - <span class="token assign-left variable">ALLOW_NONE_AUTHENTICATION</span><span class="token operator">=</span>yes       - <span class="token assign-left variable">ETCD_NAME</span><span class="token operator">=</span>etcd3       - <span class="token assign-left variable">ETCD_INITIAL_ADVERTISE_PEER_URLS</span><span class="token operator">=</span>http://etcd3:2380       - <span class="token assign-left variable">ETCD_LISTEN_PEER_URLS</span><span class="token operator">=</span>http://0.0.0.0:2380       - <span class="token assign-left variable">ETCD_LISTEN_CLIENT_URLS</span><span class="token operator">=</span>http://0.0.0.0:2379       - <span class="token assign-left variable">ETCD_ADVERTISE_CLIENT_URLS</span><span class="token operator">=</span>http://etcd3:2379       - <span class="token assign-left variable">ETCD_INITIAL_CLUSTER_TOKEN</span><span class="token operator">=</span>etcd-cluster       - <span class="token assign-left variable">ETCD_INITIAL_CLUSTER</span><span class="token operator">=</span>etcd1<span class="token operator">=</span>http://etcd1:2380,etcd2<span class="token operator">=</span>http://etcd2:2380,etcd3<span class="token operator">=</span>http://etcd3:2380       - <span class="token assign-left variable">ETCD_INITIAL_CLUSTER_STATE</span><span class="token operator">=</span>new     volumes:       - etcd3_data:/bitnami/etcd </code></pre> </h1> <pre><code class="prism language-bash"><span class="token punctuation">[</span>root@centos8 etcdtest<span class="token punctuation">]</span><span class="token comment"># tree</span> <span class="token builtin class-name">.</span> └── docker-compose.yml  <span class="token number">0</span> directories, <span class="token number">1</span> <span class="token function">file</span> <span class="token punctuation">[</span>root@centos8 etcdtest<span class="token punctuation">]</span><span class="token comment"># docker-compose up -d</span> <span class="token punctuation">[</span>+<span class="token punctuation">]</span> Running <span class="token number">4</span>/4  ⠿ Network etcdtest_etcd-net  Created                                                                                                                                 <span class="token number">0</span>.1s  ⠿ Container etcd3            Started                                                                                                                                 <span class="token number">0</span>.6s  ⠿ Container etcd1            Started                                                                                                                                 <span class="token number">0</span>.7s  ⠿ Container etcd2            Started                                                                                                                                 <span class="token number">0</span>.7s <span class="token punctuation">[</span>root@centos8 etcdtest<span class="token punctuation">]</span><span class="token comment"># </span> </code></pre> </h1> <h2> <a id="_103" rel="nofollow"></a>查看节点启动情况</h2> <pre><code class="prism language-bash"><span class="token punctuation">[</span>root@centos8 etcdtest<span class="token punctuation">]</span><span class="token comment"># docker ps</span> CONTAINER ID   IMAGE                 COMMAND                  CREATED          STATUS          PORTS                                                                                      NAMES 89469f98491f   bitnami/etcd:latest   <span class="token string">"/opt/bitnami/script…"</span>   <span class="token number">54</span> seconds ago   Up <span class="token number">53</span> seconds   <span class="token number">0.0</span>.0.0:20004-<span class="token operator">&gt;</span><span class="token number">2379</span>/tcp, :::20004-<span class="token operator">&gt;</span><span class="token number">2379</span>/tcp, <span class="token number">0.0</span>.0.0:20005-<span class="token operator">&gt;</span><span class="token number">2380</span>/tcp, :::20005-<span class="token operator">&gt;</span><span class="token number">2380</span>/tcp   etcd3 5454f5a719a2   bitnami/etcd:latest   <span class="token string">"/opt/bitnami/script…"</span>   <span class="token number">54</span> seconds ago   Up <span class="token number">53</span> seconds   <span class="token number">0.0</span>.0.0:20000-<span class="token operator">&gt;</span><span class="token number">2379</span>/tcp, :::20000-<span class="token operator">&gt;</span><span class="token number">2379</span>/tcp, <span class="token number">0.0</span>.0.0:20001-<span class="token operator">&gt;</span><span class="token number">2380</span>/tcp, :::20001-<span class="token operator">&gt;</span><span class="token number">2380</span>/tcp   etcd1 bf989f9512b5   bitnami/etcd:latest   <span class="token string">"/opt/bitnami/script…"</span>   <span class="token number">54</span> seconds ago   Up <span class="token number">53</span> seconds   <span class="token number">0.0</span>.0.0:20002-<span class="token operator">&gt;</span><span class="token number">2379</span>/tcp, :::20002-<span class="token operator">&gt;</span><span class="token number">2379</span>/tcp, <span class="token number">0.0</span>.0.0:20003-<span class="token operator">&gt;</span><span class="token number">2380</span>/tcp, :::20003-<span class="token operator">&gt;</span><span class="token number">2380</span>/tcp   etcd2 </code></pre> <h2> <a id="_111" rel="nofollow"></a>查看挂载的数据卷</h2> <pre><code class="prism language-bash"><span class="token punctuation">[</span>root@centos8 etcdtest<span class="token punctuation">]</span><span class="token comment"># docker volume ls</span> DRIVER    VOLUME NAME <span class="token builtin class-name">local</span>     etcdtest_etcd1_data <span class="token builtin class-name">local</span>     etcdtest_etcd2_data <span class="token builtin class-name">local</span>     etcdtest_etcd3_data  </code></pre> <pre><code class="prism language-bash"><span class="token punctuation">[</span>root@centos8 etcdtest<span class="token punctuation">]</span><span class="token comment"># docker inspect etcd1 </span>  <span class="token string">"Mounts"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>     <span class="token punctuation">{<!-- --></span>         <span class="token string">"Type"</span><span class="token builtin class-name">:</span> <span class="token string">"volume"</span>,         <span class="token string">"Name"</span><span class="token builtin class-name">:</span> <span class="token string">"etcdtest_etcd1_data"</span>,         <span class="token string">"Source"</span><span class="token builtin class-name">:</span> <span class="token string">"/var/lib/docker/volumes/etcdtest_etcd1_data/_data"</span>,         <span class="token string">"Destination"</span><span class="token builtin class-name">:</span> <span class="token string">"/bitnami/etcd"</span>,         <span class="token string">"Driver"</span><span class="token builtin class-name">:</span> <span class="token string">"local"</span>,         <span class="token string">"Mode"</span><span class="token builtin class-name">:</span> <span class="token string">"z"</span>,         <span class="token string">"RW"</span><span class="token builtin class-name">:</span> true,         <span class="token string">"Propagation"</span><span class="token builtin class-name">:</span> <span class="token string">""</span>     <span class="token punctuation">}</span> <span class="token punctuation">]</span>  </code></pre> </h1> <h2> <a id="etcd1key_140" rel="nofollow"></a>从etcd1写一个key</h2> <pre><code class="prism language-bash"><span class="token punctuation">[</span>root@centos8 etcdtest<span class="token punctuation">]</span><span class="token comment"># docker exec -it etcd1 bash</span> I have no name<span class="token operator">!</span>@5454f5a719a2:/opt/bitnami/etcd$ etcdctl put name <span class="token string">"i am wxf"</span> OK </code></pre> <h2> <a id="etcd2value_148" rel="nofollow"></a>从etcd2读一个value</h2> <pre><code class="prism language-bash"><span class="token punctuation">[</span>wxf@centos8 ~<span class="token punctuation">]</span>$ docker <span class="token builtin class-name">exec</span> -it etcd2 <span class="token function">bash</span> I have no name<span class="token operator">!</span>@bf989f9512b5:/opt/bitnami/etcd$ etcdctl get name name i am wxf </code></pre> <p>搭建成功！</p> </h1> <pre><code class="prism language-bash">package main  <span class="token function">import</span> <span class="token punctuation">(</span> 	<span class="token string">"context"</span> 	<span class="token string">"fmt"</span> 	<span class="token string">"go.etcd.io/etcd/client/v3"</span> 	<span class="token string">"time"</span> <span class="token punctuation">)</span>  func <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	cli, err :<span class="token operator">=</span> clientv3.New<span class="token punctuation">(</span>clientv3.Config<span class="token punctuation">{<!-- --></span> 		Endpoints:   <span class="token punctuation">[</span><span class="token punctuation">]</span>string<span class="token punctuation">{<!-- --></span><span class="token string">"http://192.168.135.10:20000"</span>, <span class="token string">"http://192.168.135.10:20002"</span>, <span class="token string">"http://192.168.135.10:20004"</span><span class="token punctuation">}</span>, 		DialTimeout: <span class="token number">5</span> * time.Second, 	<span class="token punctuation">}</span><span class="token punctuation">)</span> 	<span class="token keyword">if</span> err <span class="token operator">!=</span> nil <span class="token punctuation">{<!-- --></span> 		fmt.Printf<span class="token punctuation">(</span><span class="token string">"connect to etcd failed, err:%v<span class="token entity" title="\n">\n</span>"</span>, err<span class="token punctuation">)</span> 		<span class="token builtin class-name">return</span> 	<span class="token punctuation">}</span> 	defer cli.Close<span class="token punctuation">(</span><span class="token punctuation">)</span> 	fmt.Println<span class="token punctuation">(</span><span class="token string">"connect to etcd success"</span><span class="token punctuation">)</span> 	defer cli.Close<span class="token punctuation">(</span><span class="token punctuation">)</span>  	go Watch<span class="token punctuation">(</span>cli<span class="token punctuation">)</span>  	Create<span class="token punctuation">(</span>cli<span class="token punctuation">)</span> 	Read<span class="token punctuation">(</span>cli<span class="token punctuation">)</span> 	Delete<span class="token punctuation">(</span>cli<span class="token punctuation">)</span> 	Update<span class="token punctuation">(</span>cli<span class="token punctuation">)</span> 	<span class="token keyword">select</span> <span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span> <span class="token punctuation">}</span>  func Watch<span class="token punctuation">(</span>cli *clientv3.Client<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	rch :<span class="token operator">=</span> cli.Watch<span class="token punctuation">(</span>context.Background<span class="token punctuation">(</span><span class="token punctuation">)</span>, <span class="token string">"name"</span><span class="token punctuation">)</span> // <span class="token builtin class-name">type</span> WatchChan <span class="token operator">&lt;</span>-chan WatchResponse 	<span class="token keyword">for</span> wresp :<span class="token operator">=</span> range rch <span class="token punctuation">{<!-- --></span> 		<span class="token keyword">for</span> _, ev :<span class="token operator">=</span> range wresp.Events <span class="token punctuation">{<!-- --></span> 			fmt.Printf<span class="token punctuation">(</span><span class="token string">"Type: %s Key:%s Value:%s<span class="token entity" title="\n">\n</span>"</span>, ev.Type, ev.Kv.Key, ev.Kv.Value<span class="token punctuation">)</span> 		<span class="token punctuation">}</span> 	<span class="token punctuation">}</span> 	fmt.Println<span class="token punctuation">(</span><span class="token string">"out"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>  func Create<span class="token punctuation">(</span>cli *clientv3.Client<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	// put 	ctx, cancel :<span class="token operator">=</span> context.WithTimeout<span class="token punctuation">(</span>context.Background<span class="token punctuation">(</span><span class="token punctuation">)</span>, time.Second*5<span class="token punctuation">)</span> 	_, err :<span class="token operator">=</span> cli.Put<span class="token punctuation">(</span>ctx, <span class="token string">"name"</span>, <span class="token string">"wxf"</span><span class="token punctuation">)</span> 	cancel<span class="token punctuation">(</span><span class="token punctuation">)</span> 	<span class="token keyword">if</span> err <span class="token operator">!=</span> nil <span class="token punctuation">{<!-- --></span> 		fmt.Printf<span class="token punctuation">(</span><span class="token string">"put to etcd failed, err:%v<span class="token entity" title="\n">\n</span>"</span>, err<span class="token punctuation">)</span> 		<span class="token builtin class-name">return</span> 	<span class="token punctuation">}</span> <span class="token punctuation">}</span>  func Read<span class="token punctuation">(</span>cli *clientv3.Client<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	//get 	ctx, cancel :<span class="token operator">=</span> context.WithTimeout<span class="token punctuation">(</span>context.Background<span class="token punctuation">(</span><span class="token punctuation">)</span>, time.Second*5<span class="token punctuation">)</span> 	resp, err :<span class="token operator">=</span> cli.Get<span class="token punctuation">(</span>ctx, <span class="token string">"name"</span><span class="token punctuation">)</span> 	cancel<span class="token punctuation">(</span><span class="token punctuation">)</span> 	<span class="token keyword">if</span> err <span class="token operator">!=</span> nil <span class="token punctuation">{<!-- --></span> 		fmt.Printf<span class="token punctuation">(</span><span class="token string">"get from etcd failed, err:%v<span class="token entity" title="\n">\n</span>"</span>, err<span class="token punctuation">)</span> 		<span class="token builtin class-name">return</span> 	<span class="token punctuation">}</span> 	<span class="token keyword">for</span> _, ev :<span class="token operator">=</span> range resp.Kvs <span class="token punctuation">{<!-- --></span> 		fmt.Printf<span class="token punctuation">(</span><span class="token string">"Type: %s Key:%s Value:%s<span class="token entity" title="\n">\n</span>"</span>, <span class="token string">"READ"</span>, ev.Key, ev.Value<span class="token punctuation">)</span> 	<span class="token punctuation">}</span> <span class="token punctuation">}</span>  func Update<span class="token punctuation">(</span>cli *clientv3.Client<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	// put 	ctx, cancel :<span class="token operator">=</span> context.WithTimeout<span class="token punctuation">(</span>context.Background<span class="token punctuation">(</span><span class="token punctuation">)</span>, time.Second*5<span class="token punctuation">)</span> 	_, err :<span class="token operator">=</span> cli.Put<span class="token punctuation">(</span>ctx, <span class="token string">"name"</span>, <span class="token string">"xyy"</span><span class="token punctuation">)</span> 	cancel<span class="token punctuation">(</span><span class="token punctuation">)</span> 	<span class="token keyword">if</span> err <span class="token operator">!=</span> nil <span class="token punctuation">{<!-- --></span> 		fmt.Printf<span class="token punctuation">(</span><span class="token string">"put to etcd failed, err:%v<span class="token entity" title="\n">\n</span>"</span>, err<span class="token punctuation">)</span> 		<span class="token builtin class-name">return</span> 	<span class="token punctuation">}</span> <span class="token punctuation">}</span>  func Delete<span class="token punctuation">(</span>cli *clientv3.Client<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	//del 	ctx, cancel :<span class="token operator">=</span> context.WithTimeout<span class="token punctuation">(</span>context.Background<span class="token punctuation">(</span><span class="token punctuation">)</span>, time.Second*5<span class="token punctuation">)</span> 	_, err :<span class="token operator">=</span> cli.Delete<span class="token punctuation">(</span>ctx, <span class="token string">"name"</span><span class="token punctuation">)</span> 	cancel<span class="token punctuation">(</span><span class="token punctuation">)</span> 	<span class="token keyword">if</span> err <span class="token operator">!=</span> nil <span class="token punctuation">{<!-- --></span> 		fmt.Printf<span class="token punctuation">(</span><span class="token string">"delete from etcd failed, err:%v<span class="token entity" title="\n">\n</span>"</span>, err<span class="token punctuation">)</span> 		<span class="token builtin class-name">return</span> 	<span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <pre><code class="prism language-bash">go run main.go  connect to etcd success Type: PUT Key:name Value:wxf Type: READ Key:name Value:wxf Type: DELETE Key:name Value: Type: PUT Key:name Value:xyy Type: PUT Key:name Value:test <span class="token keyword">for</span> terminal Type: PUT Key:name Value:test <span class="token keyword">for</span> terminal aabbccdd </code></pre> <pre><code class="prism language-bash">I have no name<span class="token operator">!</span>@5454f5a719a2:/opt/bitnami/etcd$ etcdctl put name <span class="token string">"test for terminal"</span> OK I have no name<span class="token operator">!</span>@5454f5a719a2:/opt/bitnami/etcd$ etcdctl put name <span class="token string">"test for terminal aabbccdd"</span> OK </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-68839.htm">给动物打的疫苗叫什么 给动物打的疫苗叫什么名字</a></p>
+                                        <p>下一个：<a href="/news/article-69481.htm">动物疫苗存放要求规范（动物疫苗保质期多久）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-54592.htm" title="成人畜牧兽医学校全日制脱产学校（畜牧兽医专业成人速成班）">成人畜牧兽医学校全日制脱产学校（畜牧兽医专业成人速成班）</a></li>
+                        <li class="py-2"><a href="/news/article-65047.htm" title="猫粮公司在全国有多少家 猫粮公司在全国有多少家店">猫粮公司在全国有多少家 猫粮公司在全国有多少家店</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-free-node-subscribe-links.htm" title="Mac V2ray|3月8日→22.6M/S|最新V2ray/Shadowrocket/SSR/Clash免费节点链接地址">Mac V2ray|3月8日→22.6M/S|最新V2ray/Shadowrocket/SSR/Clash免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-35811.htm" title="uniapp自定义弹窗组件">uniapp自定义弹窗组件</a></li>
+                        <li class="py-2"><a href="/news/article-37435.htm" title="和田宠物店联系方式电话号码（和田宠物店联系方式电话号码是多少）">和田宠物店联系方式电话号码（和田宠物店联系方式电话号码是多少）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-5-node-share.htm" title="Mac V2ray|2月5日→20.1M/S|最新Clash/V2ray/SSR/Shadowrocket免费节点链接地址">Mac V2ray|2月5日→20.1M/S|最新Clash/V2ray/SSR/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-26-free-high-speed-nodes.htm" title="Mac V2ray|2月26日→19.2M/S|最新SSR/Shadowrocket/Clash/V2ray免费节点链接地址">Mac V2ray|2月26日→19.2M/S|最新SSR/Shadowrocket/Clash/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-62613.htm" title="被猫抓不用***的图片（孩子10几天后才说被猫咬了）">被猫抓不用***的图片（孩子10几天后才说被猫咬了）</a></li>
+                        <li class="py-2"><a href="/news/article-36959.htm" title="怎么看幼猫性格好坏（怎么消除小猫刚到家的恐惧感）">怎么看幼猫性格好坏（怎么消除小猫刚到家的恐惧感）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-24-clash-v2ray-ss-ssr.htm" title="Mac V2ray|2月24日→20.2M/S|最新SSR/Clash/Shadowrocket/V2ray免费节点链接地址">Mac V2ray|2月24日→20.2M/S|最新SSR/Clash/Shadowrocket/V2ray免费节点链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
