@@ -121,6 +121,7 @@
                   				  				  				<p>我们在项目开发的过程中可能会遇到类似后台定时任务的需求，比如消息队列的消费者。</p> <p>按照<code>.NetF</code>时的开发习惯首先想到的肯定是<code>Windows Service</code>，拜托，都什么年代了还用<code>Windows服务</code>（小声bb）</p> <p>不用<code>Windows服务</code>这不是还有<code>Quartz</code>之流的包嘛，也不是不行，但是随便一点小需求就上这么重的包，是不是有点大材小用了。</p> <p>除了上面的方案，<code>Task.Run</code>也不失为一个好方法，方便简单，直接在管道：</p> <pre><code>Task.Run(() =&gt; { 	while (true) 	{ 		Console.WriteLine("running"); 		Thread.Sleep(1000); 	} });</code></pre> <p><strong>Ok，搞定</strong></p> <p>嗯......也不是不行，总觉得缺了点什么？难道是优雅？</p> <h3 id="ihostedservice">IHostedService</h3> <p><code>IHostedService</code>微软给的定义如下，大致的意思就是：<strong>定义主机托管对象的方法</strong>。</p> <pre><code>Defines methods for objects that are managed by the host.</code></pre> <p>下面我们就来实现一下：</p> <pre><code>public class WorkService : IHostedService, IDisposable { 	private Timer timer; 	public void Dispose() 	{ 		timer.Dispose(); 	}  	public Task StartAsync(CancellationToken cancellationToken) 	{ 		Console.WriteLine("start"); 		timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromSeconds(1)); 		return Task.CompletedTask; 	}  	public Task StopAsync(CancellationToken cancellationToken) 	{ 		Console.WriteLine("end"); 		timer?.Change(Timeout.Infinite, 0); 		return Task.CompletedTask; 	}  	private void DoWork(object state) 	{ 		Console.WriteLine("running"); 	} }</code></pre> <p>然后在<code>ConfigureServices</code> 注册：</p> <pre><code>services.AddHostedService&lt;WorkService&gt;();</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/85f3d279400804b64429f886c160ccf0.jpg" alt=".NET宝藏API之：IHostedService，后台任务执行"></p> <p>是不是既优雅又<code>so easy</code>。</p> <p>猴：放屁，本来几行代码就能解决的，你这用了这么多行才实现，优雅个屁。</p> <p>别着急，这不是赠送了两个功能嘛：<code>start</code>，<code>end</code>，很划算的啦。</p> <p>猴：我不要这两个功能，我只要执行任务，你这个就是不行。</p> <p>得，不要就不要，微软大大都给你准备好了。</p> <h3 id="backgroundservice">BackgroundService</h3> <p><code>BackgroundService</code>是微软封装的一个<code>IHostedService</code>派生类，顾名思义：<strong>后台服务</strong>嘛，往下看：</p> <pre><code>public class WorkService : BackgroundService { 	protected async override Task ExecuteAsync(CancellationToken stoppingToken) 	{ 		while(!stoppingToken.IsCancellationRequested) 		{ 			Console.WriteLine("running"); 			await Task.Delay(1000, stoppingToken); 		} 	} }</code></pre> <p>还是一样的注册：<code>services.AddHostedService&lt;WorkService&gt;();</code>，运行结果就...还是放一下吧。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/7d17981f46d548e30ae318990a87f316.jpg" alt=".NET宝藏API之：IHostedService，后台任务执行"></p> <p>这下够优雅了吧。</p> <p>猴：那还有更优雅的吗？</p> <p>年轻人，要知足（其实我也不知道了）</p> <p>因为<code>BackgroundService</code> 是<code>IHostedService</code>的派生类，如果你想要使用<code>start</code>和<code>end</code>也是可以的哦。</p> <pre><code>public override Task StartAsync(CancellationToken cancellationToken) { 	Console.WriteLine("start"); 	return base.StartAsync(cancellationToken); }  public override Task StopAsync(CancellationToken cancellationToken) { 	Console.WriteLine("end"); 	return base.StopAsync(cancellationToken); }</code></pre> <p>好了，这期的宝藏<code>API</code>就到这了，下期再见哦，如果有下期的话。</p> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-77471.htm">关于信号量Semaphore的acquire与release的说明</a></p>
+                                        <p>下一个：<a href="/news/article-78159.htm">动物防疫免税吗最新消息（动物防疫免税吗最新消息）</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -130,16 +131,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-48263.htm" title="CEPH-4：ceph RadowGW对象存储功能详解">CEPH-4：ceph RadowGW对象存储功能详解</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-4-clash-v2ray-ss-ssr.htm" title="1月4日→22.6M/S|2025年最新免费节点Mac V2ray订阅链接地址">1月4日→22.6M/S|2025年最新免费节点Mac V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-6-free-v2ray-subscribe.htm" title="Mac V2ray|1月6日→21.2M/S|最新SSR/Clash/V2ray/Shadowrocket免费节点链接地址">Mac V2ray|1月6日→21.2M/S|最新SSR/Clash/V2ray/Shadowrocket免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-54591.htm" title="附近宠物领养中心（附近宠物领养中心电话地址）">附近宠物领养中心（附近宠物领养中心电话地址）</a></li>
-                        <li class="py-2"><a href="/news/article-50862.htm" title="动物诊疗许可证申领准备材料有哪些（动物诊疗许可证申领准备材料有哪些呢）">动物诊疗许可证申领准备材料有哪些（动物诊疗许可证申领准备材料有哪些呢）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-2-free-high-speed-nodes.htm" title="Mac V2ray|2月2日→21.2M/S|最新SSR/V2ray/Shadowrocket/Clash免费节点链接地址">Mac V2ray|2月2日→21.2M/S|最新SSR/V2ray/Shadowrocket/Clash免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-37435.htm" title="和田宠物店联系方式电话号码（和田宠物店联系方式电话号码是多少）">和田宠物店联系方式电话号码（和田宠物店联系方式电话号码是多少）</a></li>
-                        <li class="py-2"><a href="/news/article-57949.htm" title="宠物疫苗可以托运吗现在（宠物疫苗可以托运吗现在还能打吗）">宠物疫苗可以托运吗现在（宠物疫苗可以托运吗现在还能打吗）</a></li>
-                        <li class="py-2"><a href="/news/article-48264.htm" title="t恤家衣服怎么样好看吗(t恤家价格)">t恤家衣服怎么样好看吗(t恤家价格)</a></li>
-                        <li class="py-2"><a href="/news/article-39900.htm" title="kafka生产者发送消息可靠性">kafka生产者发送消息可靠性</a></li>
+                        <li class="py-2"><a href="/news/article-48796.htm" title="java实现机械表">java实现机械表</a></li>
+                        <li class="py-2"><a href="/news/article-68206.htm" title="宠物医院好评怎么写评语 宠物医院好评怎么写评语大全">宠物医院好评怎么写评语 宠物医院好评怎么写评语大全</a></li>
+                        <li class="py-2"><a href="/news/article-38907.htm" title="养猫咪的人（养猫咪的人是怎么样的）">养猫咪的人（养猫咪的人是怎么样的）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-free-high-speed-nodes.htm" title="Mac V2ray|1月11日→19.2M/S|最新Shadowrocket/Clash/SSR/V2ray免费节点链接地址">Mac V2ray|1月11日→19.2M/S|最新Shadowrocket/Clash/SSR/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-38415.htm" title="用CSS实现超长的字符变成省略号">用CSS实现超长的字符变成省略号</a></li>
+                        <li class="py-2"><a href="/news/article-46822.htm" title="Eureka Server及Client 配置信息详解">Eureka Server及Client 配置信息详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-16-node-share-links.htm" title="Mac V2ray|2月16日→19.1M/S|最新Shadowrocket/SSR/Clash/V2ray免费节点链接地址">Mac V2ray|2月16日→19.1M/S|最新Shadowrocket/SSR/Clash/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-5-node-share.htm" title="Mac V2ray|2月5日→20.1M/S|最新Clash/V2ray/SSR/Shadowrocket免费节点链接地址">Mac V2ray|2月5日→20.1M/S|最新Clash/V2ray/SSR/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-high-speed-nodes.htm" title="Mac V2ray|3月15日→20.4M/S|最新Clash/V2ray/SSR/Shadowrocket免费节点链接地址">Mac V2ray|3月15日→20.4M/S|最新Clash/V2ray/SSR/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-20-free-v2ray.htm" title="Mac V2ray|2月20日→19.6M/S|最新SSR/Clash/Shadowrocket/V2ray免费节点链接地址">Mac V2ray|2月20日→19.6M/S|最新SSR/Clash/Shadowrocket/V2ray免费节点链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -151,7 +152,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+                <h4><span class="badge" style="float: right;">69</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
