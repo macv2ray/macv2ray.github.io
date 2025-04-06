@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN" class="no-js">
+
+<head>
+        <link rel="canonical" href="https://macv2ray.github.io/news/article-88747.htm" />
+    <meta charset="utf-8" />
+    <title>SSM框架中实现数据库操作-从零学习SSM框架（3）</title>
+        <meta name="description" content="前言  我的所有博客操作均有相应截图，所以只要跟着做，一定是能跑通的。  本篇讲到了在后台实现数据库的操作，涉及的数据的增删改查，以及一些框架自带函数的初步使用。如果没有配置好SSM框架，那就赏脸看一" />
+        <link rel="icon" href="/assets/website/img/macv2ray/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Mac V2ray机场节点订阅分享">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://macv2ray.github.io/news/article-88747.htm" />
+    <meta property="og:site_name" content="Mac V2ray机场节点订阅分享" />
+    <meta property="og:title" content="SSM框架中实现数据库操作-从零学习SSM框架（3）" />
+    <meta property="og:image" content="https://macv2ray.github.io/uploads/20240907-2/5394cecfcf5a497e290f2d563798d4cf.webp" />
+        <meta property="og:release_date" content="2025-04-05T08:16:51" />
+    <meta property="og:updated_time" content="2025-04-05T08:16:51" />
+        <meta property="og:description" content="前言  我的所有博客操作均有相应截图，所以只要跟着做，一定是能跑通的。  本篇讲到了在后台实现数据库的操作，涉及的数据的增删改查，以及一些框架自带函数的初步使用。如果没有配置好SSM框架，那就赏脸看一" />
+        
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SSM框架中实现数据库操作-从零学习SSM框架（3）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="/assets/website/js/frontend/macv2ray/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="/assets/website/css/macv2ray/animate.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/macv2ray/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/website/js/frontend/macv2ray/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="/assets/website/css/macv2ray/layout.min.css" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F98P9DTHJY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F98P9DTHJY');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header" data-page="detail">
+        <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container js_nav-item">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a class="logo-wrap" href="/">
+                                                <span>Mac V2ray</span>
+                                                </a>
+                    </div>
+                    <!-- End Logo -->
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">首页</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/free-nodes/">免费节点</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/paid-subscribe/">推荐机场</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/client.htm">客户端</a></li>
+                                                        <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news/">新闻资讯</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+    <!--========== SLIDER ==========-->
+    <div class="promo-block">
+        <div class="container">
+            <div class="margin-b-40">
+                <h1 class="promo-block-title">SSM框架中实现数据库操作-从零学习SSM框架（3）</h1>
+                <p class="promo-block-text">
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Products -->
+    <div id="products">
+        <div class="container content-lg">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h2><a id="_0" rel="nofollow"></a>前言</h2> <ul> <li>我的所有博客操作均有相应截图，所以只要跟着做，一定是能跑通的。</li> </ul> <p>本篇讲到了在后台实现数据库的操作，涉及的数据的增删改查，以及一些框架自带函数的初步使用。如果没有配置好SSM框架，那就赏脸看一下<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/babybabyup/article/details/79687097"  rel="nofollow">https://blog.csdn.net/babybabyup/article/details/79687097</a> 配置篇呗！</p> <h2><a id="_7" rel="nofollow"></a>工具</h2> <ul> <li>本机mysql数据库（database=helloword，table=user）</li> <li>IDEA</li> </ul> <h2><a id="_11" rel="nofollow"></a>具体操作</h2> <h4><a id="_12" rel="nofollow"></a>自动生成数据库函数</h4> <ul> <li>打开IDEA左栏中的<code>Maven project</code>-&gt;<code>helloworld Maven WebAPP</code>-&gt;<code>Plugins</code>-&gt;<code>mybatis-generator</code> 双击出现的<code>mybatieos-generator:generator</code></li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/d1fc0fdd249ab96197771b14908988bd.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"></p> <p>等待其完成后，控制台输出<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/69efb1eb72870a732ef79d18b15f35b9.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"></p> <p>并且生成相应的函数以及实体代码，dao层接口</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/9e841fa3c6e15407bd0a66d3ed2de38c.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"><br /> 在<code>dao</code> 层接口中，<code>mybatis</code> 生成了六个函数接口，分别是</p> <pre><code>int deleteByPrimaryKey(Integer id);  int insert(User record);  int insertSelective(User record);  User selectByPrimaryKey(Integer id);  int updateByPrimaryKeySelective(User record);  int updateByPrimaryKey(User record);</code></pre> <p>解释一下各个函数的意义吧</p> <ul> <li><code>deleteByPrimaryKey(Integer id)</code> :通过主键id在数据库中删除一条数据，成功则返回1，失败则返回0；</li> <li><code>insert(User record)</code> :插入数据，要注意如果数据库中的属性不能为空，那么对象记录record的所有属性一定要全部不为null，否则会插入失败。</li> <li><code>insertSelective(User record)</code> :</li> <li><code>selectByPrimaryKey(Integer id)</code> :通过主键id进行查找，查找到了则返回实体User，也就是一个对象，数据库中没有此条记录，则返回null；</li> <li><code>updateByPrimaryKeySelective(User record)</code>:更新某条 User 记录，但是如果record某些属性为空，则不会用空值去代替已存在的属性，即只是更新record设置的属性。</li> <li><code>updateByPrimaryKey(User record)</code>：不考虑更新的数据如何，将User属性全部更新。</li> </ul> <p>任何函数都可以进行单元测试，挑<code>updateByPrimaryKeySelective(User record)</code>和<code>updateByPrimaryKey(User record)</code> 比较一下吧。<br /> 首先在<code>test</code>数据库<code>user</code>数据库中插入一条数据。如图：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/2ee56317b8661c1a778f57110690edc0.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"><br /> 然后生成这两个函数的测试，具体方法可以参考https://blog.csdn.net/babybabyup/article/details/79687097</p> <pre><code>package com.springmvc.dao;  import com.springmvc.entity.User; import org.junit.After; import org.junit.Before; import org.junit.Test; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.context.ApplicationContext; import org.springframework.context.support.ClassPathXmlApplicationContext;   public class UserMapperTest {       @Autowired     UserMapper userMapper;     ApplicationContext applicationContext;       @Before     public void setUp() throws Exception {         applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext.xml");         userMapper = applicationContext.getBean(UserMapper.class);      }      @After     public void tearDown() throws Exception {     }      @Test     public void updateByPrimaryKeySelective() throws Exception {         User user = new User();         user.setId(1);         user.setName("James");        System.out.println(userMapper.updateByPrimaryKeySelective(user));     }      @Test     public void updateByPrimaryKey() throws Exception {              } }</code></pre> <p>不去设置<code>sex</code>属性则不会将<code>sex</code>更新，运行后的数据库变为<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/dcce7be9ca0c161d13708e1d8c9d5dcc.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"><br /> 那么再看一下，另一个函数到底是什么结果，在测试类新增为：</p> <pre><code>@Test     public void updateByPrimaryKey() throws Exception {         User user = new User();         user.setId(1);         user.setSex("female");         System.out.println(userMapper.updateByPrimaryKey(user));       }</code></pre> <p>不设置<code>name</code>属性，更新后所有的属性都更新了，包括空属性<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/f744e7c2f2a3d5f2a2decb4e2a705ace.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"></p> <h4><a id="_113" rel="nofollow"></a>从前端进行数据库存储</h4> <p>在<code>index.jsp</code>中新建一个<code>form</code>进行数据传输</p> <pre><code>&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt; &lt;%@ page contentType="text/html;charset=UTF-8" language="java" %&gt; &lt;html&gt; &lt;head&gt;     &lt;title&gt;Index&lt;/title&gt;     &lt;script src="/js/jquery-3.2.1.min.js"&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; 这个是index页面&lt;br&gt; 新增代码&lt;br&gt; &lt;form action="/test2" method="post"&gt;     &lt;table&gt;         &lt;tr&gt;             &lt;td&gt;                 id:             &lt;/td&gt;             &lt;td&gt;                 &lt;input type="text" name="id" placeholder="id"&gt;             &lt;/td&gt;         &lt;/tr&gt;         &lt;tr&gt;             &lt;td&gt;                 姓名：             &lt;/td&gt;             &lt;td&gt;                 &lt;input type="text" name="name" placeholder="name"&gt;             &lt;/td&gt;         &lt;/tr&gt;         &lt;tr&gt;             &lt;td&gt;                 性别：             &lt;/td&gt;             &lt;td&gt;                 &lt;input type="text" name="sex" placeholder="sex"&gt;             &lt;/td&gt;         &lt;/tr&gt;         &lt;tr&gt;             &lt;td&gt;                 &amp;nbsp;             &lt;/td&gt;             &lt;td&gt;                 &lt;input type="submit" value="提交"&gt;             &lt;/td&gt;         &lt;/tr&gt;     &lt;/table&gt; &lt;/form&gt; &lt;/body&gt; &lt;/html&gt;</code></pre> <p>在<code>IndexController.java</code>中，新添接收代码</p> <pre><code>package com.springmvc.controller;   import com.springmvc.entity.User; import com.springmvc.services.UserServices; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.stereotype.Controller; import org.springframework.ui.Model; import org.springframework.web.bind.annotation.ModelAttribute; import org.springframework.web.bind.annotation.RequestMapping; import org.springframework.web.bind.annotation.RequestMethod;    @Controller public class IndexController {      @Autowired     private UserServices userServices;     @RequestMapping(value = "/test2", method = RequestMethod.POST)     public String test2(@ModelAttribute User user, Model model) {         userServices.insert(user);         model.addAttribute("end","插入成功");         return "test1";     }  }</code></pre> <p>运行成功后，再次刷新数据库，则已经新添了一行数据<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/5525aa1a10bdfa551033396994b9a3a6.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"><br /> 这样，基本的操作已经完全OK了，继续后台开发的笔记。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-88050.htm">动物疫苗使用的注意事项 动物疫苗使用的注意事项有哪些</a></p>
+                                        <p>下一个：<a href="/news/article-88748.htm">小型宠物粮食加工设备厂家有哪些 小型宠物粮食加工设备厂家有哪些品牌</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-70123.htm" title="做宠物零食（做宠物零食需要什么手续）">做宠物零食（做宠物零食需要什么手续）</a></li>
+                        <li class="py-2"><a href="/news/article-68839.htm" title="给动物打的疫苗叫什么 给动物打的疫苗叫什么名字">给动物打的疫苗叫什么 给动物打的疫苗叫什么名字</a></li>
+                        <li class="py-2"><a href="/news/article-75438.htm" title="egg-socket.io搭配socket.io-client的坑">egg-socket.io搭配socket.io-client的坑</a></li>
+                        <li class="py-2"><a href="/news/article-88049.htm" title="上海的宠物美容培训学校（上海的宠物美容培训学校排名）">上海的宠物美容培训学校（上海的宠物美容培训学校排名）</a></li>
+                        <li class="py-2"><a href="/news/article-89494.htm" title="猫三联一共几针分几次打完啊（猫三联一共几针分几次打完啊图片）">猫三联一共几针分几次打完啊（猫三联一共几针分几次打完啊图片）</a></li>
+                        <li class="py-2"><a href="/news/article-85886.htm" title="农业大学动物医院收费标准 农业大学动物医院贵吗">农业大学动物医院收费标准 农业大学动物医院贵吗</a></li>
+                        <li class="py-2"><a href="/news/article-81592.htm" title="宠物领养小程序作业（宠物领养app该如何设计）">宠物领养小程序作业（宠物领养app该如何设计）</a></li>
+                        <li class="py-2"><a href="/news/article-82314.htm" title="一眼就能记住的店名（一眼就能记住的店名服装店）">一眼就能记住的店名（一眼就能记住的店名服装店）</a></li>
+                        <li class="py-2"><a href="/news/article-85156.htm" title="王允海宠物医院怎么样啊 王允海宠物医院怎么样啊知乎">王允海宠物医院怎么样啊 王允海宠物医院怎么样啊知乎</a></li>
+                        <li class="py-2"><a href="/news/article-88748.htm" title="小型宠物粮食加工设备厂家有哪些 小型宠物粮食加工设备厂家有哪些品牌">小型宠物粮食加工设备厂家有哪些 小型宠物粮食加工设备厂家有哪些品牌</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products -->
+        <!--========== FOOTER ==========-->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="margin-b-0">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Mac V2ray机场节点订阅分享</a> 版权所有 Powered by WordPress
+                    </p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="/assets/website/js/frontend/macv2ray/jquery.easing.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.back-to-top.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/jquery.wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/assets/website/js/frontend/macv2ray/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/wow.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/swiper.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/maginific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/macv2ray/components/masonry.min.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
