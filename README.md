@@ -1,4 +1,4 @@
-# Mac V2ray|5月5日→18.9M/S|最新SSR/Clash/V2ray/Shadowrocket免费节点链接地址  更新时间 2025-05-05 09:10:43
+# Mac V2ray|5月10日→22.5M/S|最新V2ray/Clash/Shadowrocket/SSR免费节点链接地址  更新时间 2025-05-10 08:57:34
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://macv2ray.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://macv2ray.github.io/uploads/2025/05/0-20250505.yaml
-- https://macv2ray.github.io/uploads/2025/05/1-20250505.yaml
-- https://macv2ray.github.io/uploads/2025/05/2-20250505.yaml
-- https://macv2ray.github.io/uploads/2025/05/3-20250505.yaml
-- https://macv2ray.github.io/uploads/2025/05/4-20250505.yaml
+- https://macv2ray.github.io/uploads/2025/05/0-20250510.yaml
+- https://macv2ray.github.io/uploads/2025/05/1-20250510.yaml
+- https://macv2ray.github.io/uploads/2025/05/2-20250510.yaml
+- https://macv2ray.github.io/uploads/2025/05/3-20250510.yaml
+- https://macv2ray.github.io/uploads/2025/05/4-20250510.yaml
 
 ### V2ray订阅链接
 
-- https://macv2ray.github.io/uploads/2025/05/0-20250505.txt
-- https://macv2ray.github.io/uploads/2025/05/1-20250505.txt
-- https://macv2ray.github.io/uploads/2025/05/2-20250505.txt
-- https://macv2ray.github.io/uploads/2025/05/3-20250505.txt
-- https://macv2ray.github.io/uploads/2025/05/4-20250505.txt
+- https://macv2ray.github.io/uploads/2025/05/0-20250510.txt
+- https://macv2ray.github.io/uploads/2025/05/1-20250510.txt
+- https://macv2ray.github.io/uploads/2025/05/2-20250510.txt
+- https://macv2ray.github.io/uploads/2025/05/3-20250510.txt
+- https://macv2ray.github.io/uploads/2025/05/4-20250510.txt
 
 ### Sing-box订阅链接
 
-- https://macv2ray.github.io/uploads/2025/05/20250505.json
+- https://macv2ray.github.io/uploads/2025/05/20250510.json
 
 ## 更多clash节点订阅 ：
 
