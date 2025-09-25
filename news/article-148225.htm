@@ -77,7 +77,7 @@
                     <!-- Logo -->
                     <div class="logo">
                         <a class="logo-wrap" href="/">
-                                                <span>Mac V2ray</span>
+                                                <span>Clash订阅节点更新</span>
                                                 </a>
                     </div>
                     <!-- End Logo -->
@@ -118,7 +118,7 @@
         <div class="container content-lg">
             <div class="row">
                 <div class="col-md-9">
-                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node免费节点站" data-url="https://clashnode.github.io">
                 <div class="xcblog-blog-detail xcblog-blog-detail-defined">
                       <p>在当今互联网环境下，网络代理工具已成为许多人访问全球资源、提升工作效率的必备利器。其中，Clash作为一款基于Golang开发的高性能代理工具，凭借其出色的稳定性、灵活的配置能力以及强大的协议兼容性，迅速在技术圈内赢得了广泛青睐。无论是科研工作者、开发者，还是普通网民，掌握Clash的使用方法，都能显著提升网络体验。本文将带你从零开始，全面解析Clash的配置与使用技巧，助你轻松实现高效、安全的科学上网。</p>  <hr />  <h2>一、初识Clash：为什么选择它？</h2>  <p>Clash不仅是一款支持多协议（如Vmess、Shadowsocks、Trojan等）的代理客户端，更是一个高度可定制的网络请求处理平台。与传统的VPN或其他代理工具相比，Clash具备以下优势：</p>  <ul> <li><strong>资源占用低</strong>：基于Golang编写，运行效率高，内存消耗小；</li> <li><strong>规则灵活</strong>：支持用户自定义分流策略，可针对不同网站或应用设置代理规则；</li> <li><strong>多平台支持</strong>：Windows、macOS、Linux均可使用，部分版本还兼容OpenWrt等路由器系统；</li> <li><strong>社区生态丰富</strong>：GitHub等平台有大量开源配置和规则集，方便用户直接使用或二次开发。</li> </ul>  <p>这些特性使Clash成为科学上网和网络调试的理想选择。</p>  <hr />  <h2>二、Clash配置详解：从获取到优化</h2>  <h3>2.1 配置文件的获取与导入</h3>  <p>Clash的核心在于配置文件（通常为YAML格式），它定义了代理节点、规则策略和其他参数。获取配置文件的常见方式如下：</p>  <ol> <li><p><strong>公共配置源</strong>：<br /> GitHub上有大量用户分享的Clash配置项目，例如通过搜索“free Clash config”可找到许多实时更新的节点列表。注意选择信誉较高的源，以避免安全风险。</p></li> <li><p><strong>自建配置</strong>：<br /> 如果你拥有自己的代理节点，可以手动编写YAML配置。基础结构包括：  </p>  <ul> <li><code>proxies</code>：定义节点服务器信息；  </li> <li><code>proxy-groups</code>：设置节点组（如自动选择、负载均衡）；  </li> <li><code>rules</code>：制定分流规则（如直连国内网站、代理国外流量）。<br /> 学习YAML语法是进阶使用的关键。</li> </ul></li> <li><p><strong>订阅链接</strong>：<br /> 许多服务商提供Clash格式的订阅链接，只需在客户端中填入链接即可自动拉取配置。</p></li> </ol>  <p><strong>操作步骤</strong>：<br /> - 在GitHub或论坛中找到配置文件URL或下载链接；<br /> - 将链接粘贴至Cl客户端的“配置”页面，或下载后保存为<code>.yaml</code>文件并导入；<br /> - 确保文件路径无误，重启Clash使配置生效。</p>  <h3>2.2 性能优化配置</h3>  <p>默认配置可能无法发挥Clash的全部潜力，通过以下调整可显著提升速度与稳定性：</p>  <ul> <li><p><strong>开启内存缓存</strong>：<br /> 在配置文件中添加<code>cache: true</code>，减少重复请求的响应时间。</p></li> <li><p><strong>智能节点选择</strong>：<br /> 使用<code>url-test</code>或<code>fallback</code>组策略，自动切换至延迟最低的节点。例如：<br /> ```yaml proxy-groups:</p>  <ul> <li>name: "Auto-Select" type: url-test proxies: ["node1", "node2"] url: "http://www.gstatic.com/generate_204" interval: 300 ```</li> </ul></li> <li><p><strong>分流规则优化</strong>：<br /> 合理设置规则（如GEOSITE、GEOIP）可避免不必要的代理流量。推荐结合ACL4SSR等开源规则集，实现国内外流量精准分流。</p></li> <li><p><strong>内核调优</strong>：<br /> 高级用户可启用TUN模式（需内核支持），提升并发处理能力。部分客户端（如Clash Premium）还支持多线程复用（MUX），进一步降低延迟。</p></li> </ul>  <hr />  <h2>三、Clash实战：启动与多平台使用</h2>  <h3>3.1 启动与访问</h3>  <ol> <li><p><strong>下载客户端</strong>：<br /> 从GitHub发布页下载对应系统的Clash客户端（如Windows版Clash for Windows、macOS版ClashX）。</p></li> <li><p><strong>导入配置</strong>：<br /> 将配置文件放入指定目录（通常为<code>~/.config/clash/</code>或客户端提示的路径）。</p></li> <li><p><strong>启动方法</strong>：  </p>  <ul> <li><strong>Windows</strong>：双击运行，任务栏会出现图标，右键可切换节点或规则模式；  </li> <li><strong>macOS</strong>：通过Launch启动，菜单栏图标支持快速开关；  </li> <li><strong>Linux</strong>：使用命令行启动（例如<code>clash -f config.yaml</code>），结合systemd可配置为守护进程。</li> </ul></li> <li><p><strong>访问控制台</strong>：<br /> 启动后，浏览器访问<code>http://clash.control.com:9090</code>（端口可能不同）可进入控制台，查看流量、节点延迟等信息。</p></li> </ol>  <h3>3.2 多平台使用技巧</h3>  <ul> <li><p><strong>Windows</strong>：<br /> 搭配系统代理或浏览器插件（如SwitchyOmega），实现应用级代理。建议规则模式日常使用，全局模式仅用于特殊需求。</p></li> <li><p><strong>macOS</strong>：<br /> 利用ClashX的增强模式（Enhanced Mode）可接管所有应用流量。Safari用户可通过配置PAC脚本实现智能分流。</p></li> <li><p><strong>Linux</strong>：<br /> 通过环境变量（如<code>export http_proxy=http://127.0.0.1:7890</code>）为终端设置代理，适合开发者调试。结合iptables可实现网关级代理。</p></li> </ul>  <hr />  <h2>四、高阶技巧与FAQ</h2>  <h3>实用技巧汇总</h3>  <ul> <li><p><strong>规则自定义</strong>：<br /> 在配置文件中添加<code>rules</code>字段，可实现基于域名、IP或关键词的代理。例如：<br /> <code>- DOMAIN-SUFFIX,google.com,Proxy</code> 表示谷歌相关域名走代理。</p></li> <li><p><strong>开发者工具集成</strong>：<br /> 配合Charles或Fiddler，将Clash作为中间层代理，捕获和分析网络请求。</p></li> <li><p><strong>多工具协同</strong>：<br /> Clash与V2Ray、Shadowsocks-libev等工具共存时，可通过端口转发实现链式代理，增强匿名性。</p></li> </ul>  <h3>常见问题解答（FAQ）</h3>  <p><strong>Q1: Clash支持哪些协议？</strong><br /> A1: 主流的Vmess、Shadowsocks、Trojan、Snell等均兼容，部分版本还支持SSR和HTTP代理。</p>  <p><strong>Q2: 与其他工具（如V2RayN）相比，Clash的优势在哪？</strong><br /> A2: Clash的规则系统更直观，资源控制更精细，尤其适合需要复杂分流的用户。图形化客户端也更易上手。</p>  <p><strong>Q3: 连接失败如何排查？</strong><br /> A3: 依次检查：节点可用性（通过ping或URL测试）、配置文件格式（YAML缩进是否正确）、端口冲突、系统防火墙设置。</p>  <p><strong>Q4: 是否支持路由器部署？</strong><br /> A4: 是的，OpenWrt等系统可安装Clash内核，实现全家设备科学上网。</p>  <p><strong>Q5: 如何确保配置安全？</strong><br /> A5: 避免使用未加密的公共节点，定期更新订阅链接，敏感配置本地加密存储。</p>  <hr />  <h2>结语与点评</h2>  <p>Clash以其模块化设计和强大的灵活性，重新定义了代理工具的使用体验。从配置获取到性能优化，从多平台适配到高阶技巧，每一个环节都体现了“高效”二字。它不仅是一个工具，更是一种网络自由的艺术——通过精细化的规则，用户既能畅游全球互联网，又能保障本地流量的高效访问。</p>  <p><strong>精彩点评</strong>：  </p>  <blockquote>   <p>在信息边界日益模糊的时代，Clash如同一位无声的守门人，既守护隐私，又打开视野。它的魅力在于：用代码的严谨性实现网络的流动性，用配置的复杂性换取使用的简便性。掌握Clash，不仅是技术能力的提升，更是一次对网络自主权的深刻践行。无论你是初探此道的新手，还是久经沙场的老将，这款工具都能让你在纷繁复杂的网络世界中，找到属于自己的节奏和路径。</p> </blockquote>  <p>通过本文的指导，相信你已具备独立配置和优化Clash的能力。现在，就打开客户端，开始你的高效网络之旅吧！</p>                 </div>
                 <div class="clearfix"></div>
@@ -133,16 +133,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-7-20-free-node-subscribe-links.htm" title="Mac V2ray|7月20日→22.6M/S|最新Shadowrocket/V2ray/Clash/SSR免费节点链接地址">Mac V2ray|7月20日→22.6M/S|最新Shadowrocket/V2ray/Clash/SSR免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-19-node-share.htm" title="Mac V2ray|8月19日→21.6M/S|最新Clash/V2ray/SSR/Shadowrocket免费节点链接地址">Mac V2ray|8月19日→21.6M/S|最新Clash/V2ray/SSR/Shadowrocket免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-21-free-v2ray.htm" title="Mac V2ray|7月21日→20.5M/S|最新SSR/Clash/V2ray/Shadowrocket免费节点链接地址">Mac V2ray|7月21日→20.5M/S|最新SSR/Clash/V2ray/Shadowrocket免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-6-free-subscribe-node.htm" title="Mac V2ray|8月6日→20.4M/S|最新V2ray/Clash/SSR/Shadowrocket免费节点链接地址">Mac V2ray|8月6日→20.4M/S|最新V2ray/Clash/SSR/Shadowrocket免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-27-clash-v2ray-ss-ssr.htm" title="Mac V2ray - 8月27日19.8M/S|免费V2ray/Shadowrocket/SSR/Clash节点推荐，V2rayC梯子购买推荐">Mac V2ray - 8月27日19.8M/S|免费V2ray/Shadowrocket/SSR/Clash节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-11-clash-v2ray-ss-ssr.htm" title="Mac V2ray|7月11日→20.4M/S|最新V2ray/SSR/Clash/Shadowrocket免费节点链接地址">Mac V2ray|7月11日→20.4M/S|最新V2ray/SSR/Clash/Shadowrocket免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-12-free-node-subscribe-links.htm" title="Mac V2ray|8月12日→22.8M/S|最新SSR/Shadowrocket/V2ray/Clash免费节点链接地址">Mac V2ray|8月12日→22.8M/S|最新SSR/Shadowrocket/V2ray/Clash免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-15-free-v2ray-subscribe.htm" title="Mac V2ray|8月15日→23M/S|最新SSR/Clash/Shadowrocket/V2ray免费节点链接地址">Mac V2ray|8月15日→23M/S|最新SSR/Clash/Shadowrocket/V2ray免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-3-clash-v2ray-ss-ssr.htm" title="Mac V2ray|8月3日→19.6M/S|最新SSR/Shadowrocket/V2ray/Clash免费节点链接地址">Mac V2ray|8月3日→19.6M/S|最新SSR/Shadowrocket/V2ray/Clash免费节点链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-148225.htm" title="Clash配置全攻略：解锁高效网络代理与科学上网新境界">Clash配置全攻略：解锁高效网络代理与科学上网新境界</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-14-free-node-subscribe.htm" title="Mac V2ray - 9月14日19.8M/S|免费SSR/V2ray节点/Shadowrocket节点/Clash节点推荐，V2rayC梯子购买推荐">Mac V2ray - 9月14日19.8M/S|免费SSR/V2ray节点/Shadowrocket节点/Clash节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-21-free-v2ray.htm" title="Mac V2ray|8月21日→22.7M/S|最新Clash节点/V2ray节点/Shadowrocket节点/SSR免费节点链接地址">Mac V2ray|8月21日→22.7M/S|最新Clash节点/V2ray节点/Shadowrocket节点/SSR免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-8-node-share-links.htm" title="Mac V2ray|8月8日→20.8M/S|最新Shadowrocket节点/SSR/V2ray节点/Clash免费节点链接地址">Mac V2ray|8月8日→20.8M/S|最新Shadowrocket节点/SSR/V2ray节点/Clash免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-15-free-node-subscribe.htm" title="Mac V2ray - 9月15日20.4M/S|免费Shadowrocket节点/V2ray节点/Clash节点/SSR节点推荐，V2rayC梯子购买推荐">Mac V2ray - 9月15日20.4M/S|免费Shadowrocket节点/V2ray节点/Clash节点/SSR节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-3-node-share.htm" title="Mac V2ray - 9月3日19.4M/S|免费Shadowrocket节点/V2ray节点/SSR/Clash节点推荐，V2rayC梯子购买推荐">Mac V2ray - 9月3日19.4M/S|免费Shadowrocket节点/V2ray节点/SSR/Clash节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-20-free-node-subscribe-links.htm" title="Mac V2ray|8月20日→18.5M/S|最新SSR/Clash节点/Shadowrocket节点/V2ray免费节点链接地址">Mac V2ray|8月20日→18.5M/S|最新SSR/Clash节点/Shadowrocket节点/V2ray免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-6-free-subscribe-node.htm" title="Mac V2ray|8月6日→20.4M/S|最新V2ray节点/Clash节点/SSR/Shadowrocket免费节点链接地址">Mac V2ray|8月6日→20.4M/S|最新V2ray节点/Clash节点/SSR/Shadowrocket免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-18-free-v2ray-subscribe.htm" title="Mac V2ray|8月18日→18.2M/S|最新Clash节点/Shadowrocket节点/V2ray节点/SSR免费节点链接地址">Mac V2ray|8月18日→18.2M/S|最新Clash节点/Shadowrocket节点/V2ray节点/SSR免费节点链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-19-free-node-subscribe.htm" title="Mac V2ray - 9月19日18.5M/S|免费SSR/Shadowrocket节点/V2ray节点/Clash节点推荐，V2rayC梯子购买推荐">Mac V2ray - 9月19日18.5M/S|免费SSR/Shadowrocket节点/V2ray节点/Clash节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-17-shadowrocket-node.htm" title="Mac V2ray - 9月17日22.3M/S|免费V2ray节点/Clash节点/Shadowrocket节点/SSR节点推荐，V2rayC梯子购买推荐">Mac V2ray - 9月17日22.3M/S|免费V2ray节点/Clash节点/Shadowrocket节点/SSR节点推荐，V2rayC梯子购买推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -154,10 +154,10 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-07/" title="2025-07 归档">2025-07</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
             </li>
                     </ul>
     </div>
@@ -175,7 +175,8 @@
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <p class="margin-b-0">
-                                            <p>
+                                            <p>本站内容仅供学习与技术研究用途，无意传播或倡导任何违反法律法规的行为。在此声明：用户须自行了解所在地法律法规，合法合规使用；因使用不当产生的法律责任，与本站及作者无关；请在使用前仔细阅读本声明，继续使用即视为同意以上条款。</p>
+                    <p>
                                                 <a href="/">首页</a> |
                                                 <a href="/free-nodes/">免费节点</a> |
                                                 <a href="/paid-subscribe/">推荐机场</a> |
@@ -186,7 +187,7 @@
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                        <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
+                                            <a href="/">Mac V2ray机场节点订阅官网</a> 版权所有 Powered by WordPress
                     </p>
                 </div>
             </div>
